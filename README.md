@@ -12,7 +12,8 @@ The device will also start a bluetooth characteristic and broadcast it's current
 There is also the option to manually force reset/recalibrate the device via the webserver, but you will need the password to do this (prevent spamming), and the password is in the code.
 
 The entry point to the code is:    
-`arduino/splitflap/esp32/splitflap/main.cpp`
+`arduino/splitflap/esp32/splitflap/main.cpp`    
+When editing the project, make sure you are using PlatformIO, and make sure the enviornment is set to `chainlink`. This is the only one that will work with the hardware and mechanical options implemented.
 
 Below is the original README:    
 - - - - - -
