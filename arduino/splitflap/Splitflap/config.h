@@ -66,6 +66,15 @@ const uint8_t flaps[NUM_FLAPS] = {
   #define MONITOR_SPEED 230400
 #endif
 
+// 6) WIFI Settings
+#define WIFI_SSID "microlab_IoT"
+#define WIFI_PASSWORD "shibboleet"
+
+// 7) Custom Definitions
+#define TINKER_DAY  3
+#define BUTTON_PIN  15
+
+
 /*************************/
 
 
@@ -124,10 +133,6 @@ const uint8_t flaps[NUM_FLAPS] = {
 #error NUM_MODULES must be at least 1
 #endif
 #ifdef CHAINLINK
-#if NUM_MODULES % 6 != 0
-#error NUM_MODULES must be a multiple of 6, to match the capacity of the connected Chainlink Drivers. You can use fewer than this number of modules, but the setting must match the Chainlink Driver outputs.
-#endif
-
 #define NUM_LOOPBACKS (NUM_MODULES / 3)
 #define CHAINLINK_ENFORCE_LOOPBACKS 1
 #endif

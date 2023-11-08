@@ -24,9 +24,18 @@
 class DisplayTask : public Task<DisplayTask> {
     friend class Task<DisplayTask>; // Allow base Task to invoke protected run()
 
+    private:
+    bool wifi_connected = false;
+    int wifi_state = 0; // 0 = not connected, 1 = connecting, 2 = connected, 3 = failed
+
     public:
+        bool wifi_failed = false;
+
         DisplayTask(SplitflapTask& splitflapTask, const uint8_t taskCore);
         ~DisplayTask();
+
+        void displayWiFiStatus(const String& status, uint16_t color, int16_t y);
+        void displayClockStatus(const String& status, uint16_t color);
 
         void setMessage(uint8_t i, String message);
 

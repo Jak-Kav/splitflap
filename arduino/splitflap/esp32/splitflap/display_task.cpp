@@ -19,6 +19,12 @@
 #include "../core/semaphore_guard.h"
 
 #include "display_layouts.h"
+#include <WiFi.h> 
+
+extern TFT_eSPI tft_;  // Reference the TFT_eSPI object declared in main.cpp
+const int message_height = 10;  // Define message_height at the global scope
+const uint8_t message_text_size = 1;  // Define message_text_size at the global scope
+
 
 DisplayTask::DisplayTask(SplitflapTask& splitflap_task, const uint8_t task_core) : Task("Display", 6000, 1, task_core), splitflap_task_(splitflap_task), semaphore_(xSemaphoreCreateMutex()) {
     assert(semaphore_ != NULL);
@@ -143,30 +149,52 @@ void DisplayTask::run() {
             last_state = state;
         }
 
-        const int message_height = 10;
-        const int message_text_size = 1;
-        bool redraw_messages = false;
-        {
-            SemaphoreGuard lock(semaphore_);
-            for (uint8_t i = 0; i < countof(messages_); i++) {
-                if (messages_[i] != last_messages[i]) {
-                    redraw_messages = true;
-                    last_messages[i] = messages_[i];
+        // Check and display WiFi status
+        if (!wifi_connected && !wifi_failed) {
+            if (WiFi.status() != WL_CONNECTED) {
+                // Display "Connecting" message
+                if (wifi_state != 1) {
+                    displayWiFiStatus("Connecting to WiFi...", TFT_RED, tft_.height() - message_height);
+                    wifi_state = 1;
+                }
+            } else if (WiFi.status() == WL_CONNECTED) {
+                // Display "Connected" message 
+                if (wifi_state != 2) {
+                    displayWiFiStatus("Connected to WiFi", TFT_GREEN, tft_.height() - message_height);
+                    wifi_connected = true;
+                    wifi_state = 2;
+                }
+            } else if (WiFi.status() == WL_CONNECTION_LOST || WiFi.status() == WL_DISCONNECTED) {
+                // Display "Connection Failed" message
+                if (wifi_state != 3) {
+                    displayWiFiStatus("WiFi Connection Failed", TFT_RED, tft_.height() - message_height);
+                    wifi_state = 3;
                 }
             }
         }
-        if (redraw_messages) {
-            tft_.setTextSize(message_text_size);
-            tft_.setTextColor(TFT_WHITE, TFT_BLACK);
-            tft_.fillRect(0, tft_.height() - message_height * countof(messages_), tft_.width(), message_height * countof(messages_), TFT_BLACK);
-            for (uint8_t i = 0; i < countof(messages_); i++) {
-                int y = tft_.height() - message_height * (countof(messages_) - i);
-                tft_.drawString(last_messages[i], 2, y);
-            }
+        if (wifi_failed) {
+            if (wifi_state != 3) {
+                    displayWiFiStatus("WiFi Connection Failed", TFT_RED, tft_.height() - message_height);
+                    wifi_state = 3;
+                }
         }
 
         delay(10);
     }
+}
+
+void DisplayTask::displayWiFiStatus(const String& status, uint16_t color, int16_t y) {
+    tft_.setTextSize(message_text_size);
+    tft_.setTextColor(TFT_BLACK, color);
+    tft_.fillRect(0, y, tft_.width(), message_height+2, color);
+    tft_.drawString(status, 2, y);
+}
+
+void DisplayTask::displayClockStatus(const String& status, uint16_t color) {
+    tft_.setTextSize(message_text_size);
+    tft_.setTextColor(TFT_BLACK, color);
+    tft_.fillRect(0, tft_.height()/2, tft_.width(), message_height+2, color);
+    tft_.drawString(status, 2, tft_.height()/2);
 }
 
 void DisplayTask::setMessage(uint8_t i, String message) {
