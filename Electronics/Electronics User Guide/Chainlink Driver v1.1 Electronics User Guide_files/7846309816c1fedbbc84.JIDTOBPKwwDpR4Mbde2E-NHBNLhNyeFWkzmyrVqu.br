@@ -1,0 +1,68 @@
+(window.__LOADABLE_LOADED_CHUNKS__=window.__LOADABLE_LOADED_CHUNKS__||[]).push([["paper_binder~paper_bundle~paper_cloud_docs~paper_jasmine_tests~paper_native_desktop~paper_pifs~paper~081759e5"],{
+385:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.TourGroupBase=void 0;var r=n(1),o=n(605),i=n(157),s=n(468),a=n(244),p=n(37),l=n(11),u=n(23),h=n(0),c=function(e){r.__extends(t,e)
+;function t(){var t=null!==e&&e.apply(this,arguments)||this;t.handleChildChange=function(e){var n,r;null===(r=(n=t.props).onChange)||void 0===r||r.call(n,t)};t.handleChildCurrent=function(e){var n,r
+;null===(r=(n=t.props).onCurrent)||void 0===r||r.call(n,e)};t.handleChildComplete=function(e){var n,r;null===(r=(n=t.props).onComplete)||void 0===r||r.call(n,e)};return t}
+t.prototype.checkReady=function(){return!1};t.prototype.componentWillReceiveProps=function(e){var t,n,r=h.Children.toArray(e.children)
+;0==this.context.onboardingStore.partitionByCompletion(r).incompleteStops.length&&(null===(n=(t=this.props).onComplete)||void 0===n||n.call(t,this))};t.prototype.incompleteStops=function(){
+var e=h.Children.toArray(this.props.children);return this.context.onboardingStore.partitionByCompletion(e).incompleteStops};t.prototype.render=function(){
+for(var e,t=this.context,n=t.tourGuide,i=t.tourMachine,s=this.incompleteStops(),a=[],p={className:void 0,app:this.props.app,editor:this.props.editor,currentPageName:this.props.currentPageName,
+padController:this.props.padController,currentUserIsPadCreator:this.props.currentUserIsPadCreator,sidebarIsOpen:this.props.sidebarIsOpen,stores:this.props.stores,onChange:this.handleChildChange,
+onCurrent:this.handleChildCurrent,onComplete:this.handleChildComplete},l=0,u=s;l<u.length;l++){var c=u[l],d=n.observedPropsForStop(c)
+;a.push(h.cloneElement(c,r.__assign(r.__assign(r.__assign({},p),d),{className:o("ob-".concat(c.props.name,"-stop"),c.props.className),isBlocked:i.isBlocked(c),isReady:i.isReady(c),
+isActive:i.isActive(c),isCurrent:i.isCurrent(c),passive:this.props.passive||c.props.passive,persistent:this.props.persistent||c.props.persistent,
+dependOn:o(c.props.dependOn,this.props.dependOn,this.props.nonSequential&&e)})));this.props.persistent||(e=c.props.name)}return h.createElement("div",{className:"hp-onboarding-tour-group"},a)}
+;t.contextTypes={tourGuide:u.instanceOf(s.default).isRequired,tourMachine:u.instanceOf(a.default).isRequired,onboardingStore:u.instanceOf(i.default).isRequired};return t=r.__decorate([l.default],t)
+}(p.default);t.TourGroupBase=c;var d=function(e){r.__extends(t,e);function t(){var t=null!==e&&e.apply(this,arguments)||this;t.state={machineRev:0};t.handleMachineChange=function(){t.setState({
+machineRev:t.state.machineRev+1})};return t}t.prototype.componentDidMount=function(){e.prototype.componentDidMount.call(this);this.context.tourMachine.on("change",this.handleMachineChange)}
+;t.prototype.componentWillUnmount=function(){this.context.tourMachine.off("change",this.handleMachineChange)};t.defaultProps={rateLimitingBucket:p.RateLimitingBucket.NotRateLimited};return t}(c)
+;t.default=d},468:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;var r=n(1),o=n(3),i=n(6),s=n(465),a=n(157),p=n(757),l=n(244),u=n(161),h=n(11),c=n(138),d=n(4),f=n(4),m=n(23),v=n(0),g={machineRev:0,observedProps:{}};function C(){
+if("undefined"==typeof App)return S();var e=App.getCurrentPadController();return{editor:App.getMainAce(),currentPageName:App.getCurrentPageName(),padController:e,
+currentUserIsPadCreator:e&&e.currentUserIsCreator,sidebarIsOpen:window.App&&App.getLeftNavSidebar()&&App.getLeftNavSidebar().isOpen()}}function S(){return{editor:void 0,currentPageName:void 0,
+padController:null,currentUserIsPadCreator:!1,sidebarIsOpen:!1}}var b=function(e){r.__extends(t,e);function t(t,n){var o=e.call(this,t,n)||this;o.handleMachineChange=function(){o.setState({
+machineRev:o.state.machineRev+1})};o.handleChildChange=function(e){o.machine.queueStateUpdate()};o.handleChildCurrent=function(e){o.machine.setCurrentStop(e)};o.handleChildComplete=function(e){
+(o.machine.isCurrent(e)||o.machine.isActive(e))&&p.informCompleted(e);o.machine.isCurrent(e)&&o.machine.clearCurrentStop();o.store.markCompleted(e.props.name,(function(){}),(function(){}))}
+;o.handleObserverChange=function(e,t){var n,r={},i=o.state.observedProps[e.constructor.name]?"$merge":"$set";r[e.constructor.name]=((n={})[i]=t,n);o.setState(s(o.state,{observedProps:r}))}
+;o.handleEachTourStop=function(e,t){for(var n=0,r=o.machine.getIncompleteStops();n<r.length;n++){var i=r[n];if(i.props.sharedObservers)for(var s=0,a=i.props.sharedObservers;s<a.length;s++){
+if(a[s].type.name==e.constructor.name){t(i);break}}}};o.store=n.productType==t.productType?n.stores.onboarding:new a.default(t.user,t.productType);o.machine=new l.default(o.store)
+;o.state=r.__assign(r.__assign({},g),C());return o}n=t;t.prototype.getChildContext=function(){return{tourGuide:this,tourMachine:this.machine,onboardingStore:this.store}}
+;t.prototype.componentDidMount=function(){this.bindEvents()};t.prototype.componentWillUnmount=function(){this.machine.off("change",this.handleMachineChange)}
+;t.prototype.shouldComponentUpdate=function(e,t){return!i.isEqual(this.props,e)||!i.isEqual(this.state,t)};t.prototype.bindEvents=function(){var e=this
+;this.machine.on("change",this.handleMachineChange);this.events.on(f.events,"sidebar-documents-open",(function(){e.setState({sidebarIsOpen:!0})}))
+;this.events.on(f.events,"sidebar-documents-close",(function(){e.setState({sidebarIsOpen:!1})}));this.events.on(f.events,d.IntentionEvent.NavigatePage.canonicalName,(function(){
+e.props.isDesktop?e.setState({editor:void 0,currentPageName:void 0,padController:null,currentUserIsPadCreator:!1,sidebarIsOpen:!1},(function(){e.store.getCompleted((function(){e.setState(C())}))
+})):e.setState(C())}))};t.prototype.getObservers=function(){for(var e={},t=0,n=this.machine.getIncompleteStops();t<n.length;t++){var r=n[t]
+;if(r.props.sharedObservers)for(var o=0,s=r.props.sharedObservers;o<s.length;o++){var a=s[o];e[a.type.name]||(e[a.type.name]=a)}}return i.values(e)};t.prototype.observedPropsForStop=function(e){
+var t={};if(e.props.sharedObservers)for(var n=0,r=e.props.sharedObservers;n<r.length;n++){var o=r[n];i.assign(t,this.state.observedProps[o.type.name])}return t};t.prototype.render=function(){
+if(!this.state.renderHiddenThings)return null
+;for(var e=this.state,t=e.editor,n=e.currentPageName,i=e.padController,s=e.currentUserIsPadCreator,a=e.sidebarIsOpen,p=[],l=v.Children.toArray(this.props.children),h=this.store.partitionByCompletion(l).incompleteStops,c=0,d=this.getObservers();c<d.length;c++){
+var f=d[c];p.push(v.cloneElement(f,{key:f.type.name,forEachTourStop:this.handleEachTourStop,onChange:this.handleObserverChange}))}for(var m={className:void 0,app:window.App,editor:t,currentPageName:n,
+padController:i,currentUserIsPadCreator:s,sidebarIsOpen:a,stores:this.context.stores,onChange:this.handleChildChange,onCurrent:this.handleChildCurrent,onComplete:this.handleChildComplete
+},g=0,C=h;g<C.length;g++){var S=C[g],b=this.observedPropsForStop(S);p.push(v.cloneElement(S,r.__assign(r.__assign(r.__assign({},m),b),{
+className:o("ob-".concat(S.props.name,"-stop"),S.props.className),isBlocked:this.machine.isBlocked(S),isReady:this.machine.isReady(S),isActive:this.machine.isActive(S),
+isCurrent:this.machine.isCurrent(S)})))}return v.createElement(u.SilentlyUnmountErrorBoundary,null,v.createElement("div",{className:"hp-onboarding-container"},p))};var n;t.displayName="TourGuide"
+;t.contextTypes={stores:m.object.isRequired};t.childContextTypes={tourGuide:m.instanceOf(n).isRequired,tourMachine:m.instanceOf(l.default).isRequired,onboardingStore:m.instanceOf(a.default).isRequired
+};return t=n=r.__decorate([h.default,c.default],t)}(v.Component);t.default=b},930:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;var r=n(1),o=n(6),i=n(3),s=n(30),a=n(11),p=n(0),l=parseInt(s.default.lightbox_transition_time,10);function u(e){return p.Children.toArray(e).map((function(e){return e.key}))}var h=function(e){
+r.__extends(t,e);function t(){var t=null!==e&&e.apply(this,arguments)||this;t.transitionTimeout=null;t.state={touchStartLocation:null,touchLatestLocation:null,isTransitioning:!1,animationOffset:null,
+transitioningOutChildren:null};t.onTouchStart=function(e){e.preventDefault();t.setTransition(!1);t.setState({touchStartLocation:o.pick(e.touches[0],["pageX","pageY"])})};t.onTouchMove=function(e){
+e.preventDefault();t.setState({touchLatestLocation:o.pick(e.touches[0],["pageX","pageY"])})};t.resetState=function(e){void 0===e&&(e=!1);t.setState({touchStartLocation:null,touchLatestLocation:null,
+animationOffset:null,transitioningOutChildren:null});t.setTransition(e)};t.onTouchEnd=function(e){e.preventDefault();var n=t.state,r=n.touchStartLocation,o=n.touchLatestLocation;if(r&&o){
+var i=t.container.getBoundingClientRect().width,s=o.pageX-r.pageX,a=o.pageY-r.pageY,p=null;if(!t.isVerticalSwipeEnabled()||Math.abs(s)>Math.abs(a)){if(Math.abs(s)/i<.45){t.resetState(!0);return}
+p=s>0?t.props.onSwipeRight:t.props.onSwipeLeft}else{if(Math.abs(a)<80){t.resetState(!0);return}p=a>0?t.props.onSwipeDown:t.props.onSwipeUp}p&&p();t.resetState(t.props.animationEnabled)}else{
+t.props.onTap&&t.props.onTap();t.resetState()}};return t}t.prototype.componentWillReceiveProps=function(e){e.disabled&&!this.props.disabled&&this.resetState()
+;var t=u(this.props.children),n=u(e.children),r=e.animationEnabled&&!e.disabled,i=!!n.length;if(r&&i&&!o.isEqual(t,n)){var s=n.indexOf(t[1]);if(s>=0){var a=this.fillChildren(),p=s-1;a[p>0?2:0]=null
+;this.setTransition(!0);this.setState({transitioningOutChildren:a,animationOffset:p})}else this.resetState()}};t.prototype.setTransition=function(e){var t=this;this.setState({isTransitioning:e})
+;if(this.transitionTimeout){clearTimeout(this.transitionTimeout);this.transitionTimeout=null}e&&(this.transitionTimeout=this.timers.setTimeout((function(){t.setState({isTransitioning:!1})
+;t.resetState(!1);t.transitionTimeout=null}),l))};t.prototype.isVerticalSwipeEnabled=function(){return!(!this.props.onSwipeUp&&!this.props.onSwipeDown)};t.prototype.getStyle=function(){
+var e=this,t=this.state,n=t.touchStartLocation,r=t.touchLatestLocation,o=t.animationOffset,i=function(){if(n&&r){var t=Math.abs(r.pageX-n.pageX)<Math.abs(r.pageY-n.pageY)
+;return e.isVerticalSwipeEnabled()&&t?null:"".concat(r.pageX-n.pageX,"px")}return o?100*o+"%":null}();return{position:"absolute",top:"0",left:"0",height:"100%",width:"100%",
+transform:i?"translate3d(".concat(i,", 0, 0)"):null,transition:this.state.isTransitioning?"transform ".concat(s.default.lightbox_transition_time," ease-in-out"):null}}
+;t.prototype.fillChildren=function(){var e=p.Children.toArray(this.props.children);(!this.props.onSwipeRight&&e.length<=2||1==e.length)&&e.unshift(null);this.props.onSwipeLeft||e.push(null);return e}
+;t.prototype.renderChildren=function(){var e=this.fillChildren();if(this.props.disabled)return e[1]||null;var t=this.state.transitioningOutChildren||e,n=this.getStyle(),i=[{left:"-100%"},{left:"0"},{
+left:"100%"}].map((function(e){return r.__assign(r.__assign({},n),e)}));return o.zip(i,t).map((function(e){var t=e[0],n=e[1];return n&&p.cloneElement(n,{style:t})}))};t.prototype.render=function(){
+var e=this,t=this.props.disabled?{}:{onTouchStart:this.onTouchStart,onTouchMove:this.onTouchMove,onTouchEnd:this.onTouchEnd,onTouchCancel:function(){return e.resetState(!0)}}
+;return p.createElement("div",r.__assign({className:i(this.props.className,{"hp-swipeable":!this.props.disabled}),ref:function(t){return e.container=t}},t),this.renderChildren())}
+;t.displayName="Swipeable";return t=r.__decorate([a.default],t)}(p.PureComponent);t.default=h}}]);
+
+//# sourceMappingURL=https://paper.dropbox.com/static/sourcemap/7846309816c1fedbbc84.JIDTOBPKwwDpR4Mbde2E-NHBNLhNyeFWkzmyrVqu0aY.js.map

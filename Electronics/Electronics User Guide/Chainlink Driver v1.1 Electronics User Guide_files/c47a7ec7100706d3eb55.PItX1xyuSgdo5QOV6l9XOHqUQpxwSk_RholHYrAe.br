@@ -1,0 +1,854 @@
+(window.__LOADABLE_LOADED_CHUNKS__=window.__LOADABLE_LOADED_CHUNKS__||[]).push([["paper_binder~paper_bundle~paper_cloud_docs~paper_jasmine_tests~paper_native_desktop~paper_native_mob~4c1a8991"],{
+1740:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.replaceMatchRange=t.unHighlightMatch=t.highlightMatch=t.clearHighlights=t.highlightSearchMatches=void 0
+;var o=n(245),a=n(22),s=n(840),r=n(64),i=n(54),c=n(20),l="clientside-searchMatch",d="clientside-selectedMatch",m=1e3;t.highlightSearchMatches=function(e,t){!function(e,t,n,o){
+if(!t||0===t.length)return;var a=50,r=5,i=0,c=function(){var l=Math.min(i+a,t.length),d=t.slice(i,l);h(e,d,n,o);i=l;l<t.length?p=setTimeout(c,r):(0,s.setScrollMarks)(e,(0,s.computeScrollMarks)(e))}
+;c()}(e,t,"highlightSearchMatches",[[l,"true"]])};t.clearHighlights=function(e){p&&clearTimeout(p);e.execute("clearHighlights",(function(){e.callStack.makeNewNonundoableEvent((function(){
+var t=e.contents.internalZatext(),n=e.getApool(),o=(0,r.docHand)(t,n).changesetFromEachOp((function(e,t){var n=[];t.getAttribute(l)&&n.push([l,""]);t.getAttribute(d)&&n.push([d,""])
+;n.length>0?e.keepOverOpWithNewAttributes(t,n):e.keepOverOp(t)}));e.contents.performDocumentApplyChangeset(o,!1,i.EditableState.Readonly)}))}));(0,s.setScrollMarks)(e,[])};var p=0;function h(e,t,n,s){
+if(t&&0!==t.length){t.length>m&&(t=t.slice(0,m));var r=t.map((function(t){return function(e,t,n){return function(e,t,n){var s=function(e,t){var n=e.getRep(t).lines.totalWidth()
+;return a.builder(n,"Z",t)}(e,t.start.zone);(0,o.buildKeepToStartOfRange)(e.getReps(),s,t.start);(0,o.buildKeepRange)(e.getReps(),s,t.start,t.end,n,e.getApool());return s.toChangeset()}(e,t.range,n)
+}(e,t,s)}));!function(e,t,n){var o=a.composeChangesets(t,e.getApool());e.execute(n,(function(){e.callStack.makeNewNonundoableEvent((function(){
+e.contents.performDocumentApplyChangeset(o,!1,i.EditableState.Readonly)}))}))}(e,r,n)}}t.highlightMatch=function(e,t,n){!function(e,t,n){var o=t[n];if(!o)return;var a,s=o.range.start.zone
+;a=s===c.Position.ROOT_ZONE?e.managers.getLineManager(s,o.range.start.line):e.managers.getLineManagerForNonRootZoneId(s);a&&a.focusOnFindMatch&&a.focusOnFindMatch(o)}(e,t,n)
+;u(e,t,n,"markSelectedMatch","true")};t.unHighlightMatch=function(e,t,n){u(e,t,n,"clearSelectedMatch","")};function u(e,t,n,o,a){t[n]&&h(e,[t[n]],o,[[d,a]])}t.replaceMatchRange=function(e){
+if(e.editor.contents.hasMinimumEditableState(i.EditableState.Editable)&&e.searchMatchRecords&&0!==e.searchMatchRecords.length){var t=e.searchMatchRecords.slice(e.fromMatchIndex,e.toMatchIndex)
+;h(e.editor,t,"clearSearchMatch",[[l,""],[d,""]]);e.editor.execute("replaceSearchMatches",(function(){for(var n=0,o=t.reverse();n<o.length;n++){var a=o[n],s=a.text.replace(e.searchTerm,e.replaceText)
+;e.editor.contents.performAttributePreservingDocumentReplaceRange(a.range.start,a.range.end,s)}}))}}},1785:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.EmojiReaction=void 0
+;var o=n(3),a=n(25),s=n(2),r=n(60),i=n(10),c=n(5),l=n(149),d=n(0),m=n(218),p=(0,c.PaperIntlFactory)(),h=p.FormattedNumber,u=p._f,f=(0,s.defineMessages)({axReact:{id:"gVQnif",
+defaultMessage:"React to comment with {emoji} emoji"}});t.EmojiReaction=(0,a.createReactClass)({displayName:"EmojiReaction",mixins:[m.default,l],tooltipContent:function(){var e=[]
+;for(var t in this.props.authors)e.push(this.props.authors[t].authorName);return d.createElement("div",null,d.createElement("strong",{className:"notranslate"},e.join(", ")))},render:function(){
+var e=this,t=this.props.emoji;return d.createElement(i.default,{onClick:function(){e.props.onClick(t)},"aria-label":u(f.axReact,{emoji:t}),className:o("comment-reaction",{
+"comment-reaction-self":this.props.selfReacted})},d.createElement(r.default,{str:t}),d.createElement("span",{className:"comment-reaction-count"},d.createElement(h,{value:this.props.count})))}})},
+1786:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.SuggestComment=void 0
+;var o=n(1),a=n(72),s=n(91),r=n(21),i=n(22),c=n(3),l=n(489),d=n(926),m=n(141),p=n(8),h=n(2),u=n(924),f=n(925),g=n(11),C=n(10),v=n(83),y=n(365),E=n(27),S=n(394),k=n(92),I=n(85),T=n(0),A=n(182),b=n(166),_=n(31),x=n(64),P=n(22),N=(0,
+n(5).PaperIntlFactory)().F,D=(0,h.defineMessages)({copyLinkMessage:{id:"FSl2e6",defaultMessage:"Click to copy link to comment."},commentTimeMessage:{id:"s3UET1",
+defaultMessage:"Comment time: {commentTime}"},you:{id:"vr8pC6",defaultMessage:"You"},showMore:{id:"JZEdSO",defaultMessage:"Show more"},edit:{id:"UwFkjc",defaultMessage:"Edit"},delete:{id:"9v2+SN",
+defaultMessage:"Delete"},lastModified:{id:"9IIj0I",defaultMessage:"{lastModified} (edited)"},linkCopied:{id:"NDXCLl",defaultMessage:"Link copied."},acceptButton:{id:"tkcwI+",defaultMessage:"Accept"},
+rejectButton:{id:"HACZFQ",defaultMessage:"Reject"},suggests:{id:"Ru4rh1",defaultMessage:"suggests"}}),w=function(e){o.__extends(t,e);function t(t){var n=e.call(this,t)||this;n.onExpand_=function(){
+n.setState({isCollapsed:!1});n.props.onChange()};n.onEdit_=function(){n.setState({isEditing:!0,shouldFocusCommentEntry:!0},(function(){n.props.onChange();n.setState({shouldFocusCommentEntry:!1})}))}
+;n.onDelete_=function(e){I.default.checkState(!n.props.comment.isDeleted);var t={atext:n.props.comment.atext,apool:(new a.default).fromJsonable(n.props.comment.apool),isDeleted:!0};n.setState({
+isEditing:!0});n.props.onChange();n.onCommentUpdated_(t);n.props.onCommentDeleted&&n.props.onCommentDeleted(n.props.comment.id);e&&e.stopPropagation()};n.onCancelEdit_=function(){n.setState({
+isEditing:!1,draftContent:null},(function(){var e,t;n.props.onCommentCancelUpdate&&n.props.onCommentCancelUpdate()
+;null===(t=(e=n.props).onUpdateDraftComments)||void 0===t||t.call(e,n.props.comment.threadId,n.props.comment.id)}))};n.onCommentUpdated_=function(e){n.props.onCommentUpdated(n.props.comment,e)
+;n.setState({isEditing:!1})};n.onClick_=function(){n.onExpand_()};n.onAccept=function(){
+var e=n.props.app.getMainAce().getApool(),t=(new a.default).fromJsonable(n.props.comment.apool),o=i.atextToZatext(n.props.comment.atext),s=(0,P.changesetReplacingZatext)((0,P.empty)(),o),r=(0,
+P.applyToZatext)((0,P.moveOpsToNewPool)(s,t,e),(0,P.empty)(),e),c=(0,x.docHand)(r,e),l=!1;(0,x.docHand)(o,t).changesetFromEachOp((function(e,t){
+var n=t.getAttribute("strikethrough"),o=t.getAttribute("highlight");n&&"#FFBFB5"==o&&(l=!0)}));var d=n.props.app.getMainAce().contents.internalZatext(),m=(0,
+x.docHand)(d,e),p=!1,h=m.changesetFromEachOp((function(e,t){for(var o=t.getAttributePairs(),a="",s=0;s<o.length;s++){var r=o[s];if(r[0].startsWith("thread-"+n.props.thread.id)&&"false"!=r[1]){a=r[0]
+;break}}if(a){e.removeChars(t.chars);if(!p&&!l){e.insertAText(c);p=!0}}else e.keepOverOp(t)}));n.props.app.getMainAce().contents.importZatext((0,P.applyToZatext)(h,d,e),e)
+;n.props.onResolveSuggestion()};n.onReject=function(){n.props.onResolveSuggestion()};n.onEmojiAddReactionClick_=function(e){n.props.onAddEmojiReaction(n.props.comment,e)}
+;n.onEmojiRemoveReactionClick_=function(e){n.props.onRemoveEmojiReaction(n.props.comment,e)};n.interceptLinkClicks=function(e){(0,v.interceptLinkClicks)(e,n.props.onOpenLink,(0,
+v.shouldOpenInNewTab)(e))};n.state={isCollapsed:!0,isEditing:!!n.props.draftContent,shouldFocusCommentEntry:!1,draftContent:n.props.draftContent};return n}
+t.prototype.shouldComponentUpdate=function(e,t){return!k.dumbDeepCompare(this.props,e,["stores","app"])||!k.dumbDeepCompare(this.state,t)};t.prototype.componentWillReceiveProps=function(e){
+e.isHighlight||this.setState({isCollapsed:!0})};t.prototype.edit=function(){this.onEdit_()};t.prototype.isEditing=function(){return this.state.isEditing};t.prototype.displayContent=function(){
+return _.isOnButDoNotLog("paper_draft_comments")&&this.state.draftContent?this.state.draftContent:{atext:this.props.comment.atext,apool:this.props.comment.apool}};t.prototype.render=function(){
+var e,t=this,n=this.props.comment.secureAuthorId==p.default.secureUserId?T.createElement(N,o.__assign({},D.you)):T.createElement("span",{className:"notranslate"
+},this.props.comment.authorName),a=null!==(e=this.props.comment.authorPic)&&void 0!==e?e:void 0,i=this.props.getAuthorInfoForId(this.props.comment.secureAuthorId),h={
+userName:this.props.comment.authorName,bgcolor:i?i.bgcolor:"#000",userPic:a},g=T.createElement(s.Avatar,{className:"notranslate",src:h.userPic,backgroundColor:h.bgcolor,size:"small",hasNoOutline:!0
+},(0,E.nameToInitials)(h.userName));this.props.unsaved&&(g=T.createElement("div",{style:{position:"relative",width:"24px",height:"24px"}},T.createElement("div",{style:{position:"absolute",left:"15px",
+top:"-53px"}},T.createElement("div",{className:"awesome-spinner"}))));var v,k={maxChars:this.props.isHighlight?void 0:80,maxLines:this.props.isHighlight?void 0:2,enableEnormojis:!0,
+renderContext:b.thisBrowserRenderContext(),locale:p.default.userLocale},I=A.renderEditorStaticHtml({text:{0:this.props.comment.atext.text},attribs:{0:this.props.comment.atext.attribs}
+},this.props.comment.apool,"commententry",k,(0,m.default)("commententry"));I.isTruncated&&(v=T.createElement("span",{className:"comment-expand"},T.createElement(C.default,{onClick:this.onExpand_
+},T.createElement(N,o.__assign({},D.showMore)))));var _,x=this.props.comment.isPrivate||this.props.threadIsPrivate,P=T.createElement(y.default,{enabled:!0,isPrivate:x},T.createElement("div",{
+id:"editor-comment-"+this.props.comment.id,className:c("content",{"comment-private-toggled":x}),onClick:this.onClick_,dangerouslySetInnerHTML:{__html:I.html}}),v);if(this.state.isEditing){
+var w="undefined"!=typeof window&&window.isRunningTests?"commentEntry":void 0;return T.createElement(d.SuggestCommentEntry,{mainAce:this.props.app.getMainAce(),containsComments:!0,
+onOpenLink:this.props.onOpenLink,authorUserInfo:this.props.userInfo,threadId:this.props.comment.threadId,hashedPadId:this.props.hashedPadId,commentId:this.props.comment.id,
+onChange:this.props.onChange,onCommentPost:this.onCommentUpdated_,onCancel:this.onCancelEdit_,onAddSuggestion:this.props.onAddSuggestion,onDismissSuggestion:this.props.onDismissSuggestion,
+onDelete:this.onDelete_,stores:this.props.stores,canCreateComments:this.props.canCreateComments,threadIsPrivate:this.props.threadIsPrivate,threadSuggestionInfo:this.props.threadSuggestionInfo,
+threadIsResolved:this.props.threadIsResolved,annotationId:this.props.annotationId,annotationLabel:this.props.annotationLabel,onDetachAnnotation:this.props.onDetachAnnotation,
+shouldBeFocused:!!this.state.shouldFocusCommentEntry,ref:w,content:this.displayContent(),entryIndex:0})}
+this.props.canCreateComments&&!this.props.threadIsResolved&&(_=T.createElement(u.EmojiReactionButton,{app:this.props.app,onClick:this.onEmojiAddReactionClick_}))
+;var R=T.createElement(f.EmojiReactions,{app:this.props.app,canCreateComments:this.props.canCreateComments,onAddClick:this.onEmojiAddReactionClick_,onRemoveClick:this.onEmojiRemoveReactionClick_,
+reactions:this.props.comment.reactions,currentUserId:p.default.secureUserId}),M=null;this.props.annotationId&&this.props.annotationLabel&&(M=T.createElement(l.default,{
+annotationLabel:this.props.annotationLabel}));var L=null;L=this.props.threadIsPrivate?T.createElement(S.NoteToSelfUserAvatar,{userAvatar:g,annotationIndicator:M}):T.createElement("div",{
+className:"comment-user-avatar-wrapper"},g,M);var O=null,H=null;if(this.props.userInfo.isOwner){O=T.createElement(r.default,{variant:"primary",size:"small",className:"suggest-changes-accept-button",
+tooltip:{title:"Accept"},onClick:function(){return t.onAccept()}},T.createElement(N,o.__assign({},D.acceptButton)));H=T.createElement(r.default,{variant:"transparent",size:"small",
+className:"suggest-changes-reject-button",tooltip:{title:"Reject"},onClick:this.onReject},T.createElement(N,o.__assign({},D.rejectButton)))}return T.createElement("div",{
+className:"selenium-comment comment"},L,T.createElement("div",{className:"byline"},T.createElement("span",{className:"comment-suggests"},T.createElement(N,o.__assign({},D.suggests,{values:{
+name:T.createElement("span",{className:"comment-author-name"},n)}}))),_),T.createElement("span",{onClick:this.interceptLinkClicks},P),T.createElement("div",{className:"suggest-changes-accept-reject"
+},O,H),R)};t.displayName="SuggestComment";return t=o.__decorate([g.default],t)}(T.Component);t.SuggestComment=w},1787:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.commentIsSticker=void 0;var o=n(72),a=n(22);t.commentIsSticker=function(e){
+var t=(new o.default).fromJsonableNoCloning(e.apool),n=a.attributeNameTester("live-sticker",t),s=a.attributeNameTester("sticker",t);return n(e.atext.attribs)||s(e.atext.attribs)}},
+1788:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.HiddenNoteToSelf=void 0;var o=n(1),a=n(91),s=n(2),r=n(205),i=n(10),c=n(27),l=n(394),d=n(0),m=(0,n(5).PaperIntlFactory)().F,p=(0,
+s.defineMessages)({viewNote:{id:"Qt3Wn5",defaultMessage:"View note"},noteToSelf:{id:"2CLu56",defaultMessage:"Note to self"}});t.HiddenNoteToSelf=function(e){
+var t=e.commentsToRender,n=e.isViewingSelfNote,s=e.onViewSelfNote,h=e.userInfo,u=d.createElement(a.Avatar,{className:"notranslate",src:h.userPic,backgroundColor:(0,r.getBgcolor)(h),size:"small",
+hasNoOutline:!0},(0,c.nameToInitials)((0,r.getNameForInitials)(h))),f=d.createElement("span",null,d.createElement(i.default,{onClick:s},d.createElement(m,o.__assign({},p.viewNote))))
+;return n?t:d.createElement("div",{className:"selenium-comment comment"},d.createElement(l.NoteToSelfUserAvatar,{userAvatar:u,annotationIndicator:null
+}),d.createElement("span",null,d.createElement("div",{className:"content note-to-self-hint"},d.createElement(m,o.__assign({},p.noteToSelf)))),d.createElement("div",{className:"edit-actions"
+}," ",f," "))};t.HiddenNoteToSelf.displayName="HiddenNoteToSelf"},1789:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.renderEditorStaticHtml=t.renderDocxExportHtml=t.renderDiffHtmlBatch=t.createRenderDiffHtmlParams=t.renderDiffHtml=t.renderLinesInZatextToHtmlBatch=t.renderTaskLineToHtmlBatch=t.renderCommentsToHtmlBatch=t.renderZatextToHtml=void 0
+;var o=n(1790).default;t.renderZatextToHtml=o.renderZatextToHtml;t.renderCommentsToHtmlBatch=o.renderCommentsToHtmlBatch;t.renderTaskLineToHtmlBatch=o.renderTaskLineToHtmlBatch
+;t.renderLinesInZatextToHtmlBatch=o.renderLinesInZatextToHtmlBatch;t.renderDiffHtml=o.renderDiffHtml;t.createRenderDiffHtmlParams=o.createRenderDiffHtmlParams
+;t.renderDiffHtmlBatch=o.renderDiffHtmlBatch;t.renderDocxExportHtml=o.renderDocxExportHtml;t.renderEditorStaticHtml=o.renderEditorStaticHtml},1790:function(e,t,n){
+Object.defineProperty(t,"__esModule",{value:!0});var o=n(72),a=n(64),s=n(589),r=n(928),i=n(763),c=n(182),l={renderZatextToHtml:function(e,t,n,o,s){i.SyntaxHighlighter.lexingsCount=0
+;return c.renderStaticHtml((0,a.docHand)(t,n),c.parseRenderStaticHtmlOptions(o),e,s)},renderCommentsToHtmlBatch:function(e,t,n){return t.map((function(t){return c.renderStaticHtml((0,
+a.commentHand)(t.comment),c.parseRenderStaticHtmlOptions(t.options),e,n)}))},renderTaskLineToHtmlBatch:function(e,t,n){return t.map((function(t){var s=(0,
+a.docHand)(t.zatext,n[t.localPadId]||new o.default);return c.renderTaskLine(s,0,"en",e)}))},renderLinesInZatextToHtmlBatch:function(e,t,n,o,s){var r={};(0,
+a.docHand)(t,n).forEachAtextZone((function(e){r[e.zone()]=e}));return o.map((function(t){var n=r[t.zoneId];return c.renderLine(c.parseRenderOptions(n,t.options),e,s).node}))},
+renderDiffHtml:function(e,t,n,o,a,s){var i=new r.default(t,n,e,a,s);return{diffHTML:i.render(),isTrivial:i.getIsTrivial(),newText:i.getNewText()}},createRenderDiffHtmlParams:function(e,t,n,o,a,s,r){
+throw new Error("createRenderDiffHtmlParams is not implemented on client")},renderDiffHtmlBatch:function(e,t,n){throw new Error("renderDiffHtmlBatch is not implemented on client")},
+renderDocxExportHtml:function(e,t,n,o,r,i){var c=(0,a.docHand)(t,n),l=c.textlines();return new s.CopyCutHtmlRenderer({zatext:t,alines:c.alines(),textlines:l,apool:c.pool(),zoneId:"0",startLine:0,
+startCharacter:0,endLine:l.length,endCharacter:l[l.length-1].length,isFirstLineTitle:!0,relativeUrlPrefix:r,locale:o,isForDocxExport:!0,galleryIndex:void 0,contentTypeRegistry:e,prefetchData:i
+}).render()},renderEditorStaticHtml:function(e,t,n,o,a,s){return c.renderEditorStaticHtml(e,t,n,o,a,s)}};t.default=l},394:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.NoteToSelfUserAvatar=void 0;var o=n(1),a=n(2),s=n(120),r=n(0),i=n(13),c=(0,n(5).PaperIntlFactory)().F,l=(0,a.defineMessages)({onlyYou:{id:"qEQsgb",defaultMessage:"Only you can see this note"}})
+;t.NoteToSelfUserAvatar=function(e){var t=e.userAvatar,n=e.annotationIndicator,a=r.createElement("div",{className:"svg-icon-acl-lock-filled-note-to-self"},r.createElement(i.default,{
+name:"note-to-self"})),d=r.createElement("div",{className:"note-to-self-lock-explanation"},r.createElement(c,o.__assign({},l.onlyYou)));return r.createElement(s.default,{
+className:"comment-user-avatar-wrapper private-opacity-control",tooltip:d},t,a,n)};t.NoteToSelfUserAvatar.displayName="NoteToSelfUserAvatar"},395:function(e,t,n){Object.defineProperty(t,"__esModule",{
+value:!0});t.stickerUrl=t.isLiveSticker=t.getStickerConfig=t.getActiveStickerSets=void 0;var o=n(39),a=n(26),s=n(47),r=n(8),i=n(31),c=[{name:"wizards",tabIcon:"wizard-hat",
+liveStickers:["appreciation","cool","face-palm","fire-hand","fist-bump","hilarious","love-it","magic-ball","mind-blown","shy","thank-you","thumbs-up"]},{name:"mousse",tabIcon:"desktop-new-update",
+liveStickers:["love-it","happy-thoughts","tgif"],staticStickerCount:7,stormcrow:"mousse_fan_club"},{name:"worklife",tabIcon:"worklife",staticStickerCount:20},{name:"cupcake",tabIcon:"sticker-cupcake",
+liveStickers:["plus-one","sweat-the-details","get-to-simple","taurus","you-rock","cupcake","want","meh","get-in-sync","reiterate","aim-higher","thumbs-up","love","psychobox","too-much","working-late"]
+},{name:"pigeons",tabIcon:"pigeon",liveStickers:["hey-over-here","a-ok","goodbye","dinner","stressed","excuse-me","frustrated","sad","busy","buddy","popcorn","brb","can-can","riding-shoulders"]},{
+name:"InKitties",tabIcon:"cat",staticStickerCount:12},{name:"Chillusaurus",tabIcon:"dinosaur",staticStickerCount:16},{name:"Eyeballs",tabIcon:"eyeball",staticStickerCount:16},{name:"GrimCreeper",
+tabIcon:"skull",staticStickerCount:16},{name:"Utilitarian",tabIcon:"utilitarian",staticStickerCount:15},{name:"SportBall",tabIcon:"basketball",staticStickerCount:15}];function l(){
+var e=c.filter((function(e){return!e.stormcrow||i.isOnButDoNotLog(e.stormcrow)}));if(!r.default.isDropboxer)for(var t=0,n=e;t<n.length;t++){var o=n[t]
+;o.liveStickers&&"cupcake"==o.name&&(o.liveStickers=o.liveStickers.filter((function(e){return-1==["taurus","too-much"].indexOf(e)})))}return e}t.getActiveStickerSets=l;t.getStickerConfig=function(){
+for(var e="".concat(s.default.protocol,"//").concat(s.default.host),t=[],n=function(n){n.liveStickers&&t.push({name:n.name,tabIcon:n.tabIcon,count:0,isLive:!0,stickers:n.liveStickers.map((function(t){
+return m(n.name,t,void 0,e)}))});if(n.staticStickerCount){for(var o=[],a=1;a<=n.staticStickerCount;++a){var s=a<10?"0".concat(a):"".concat(a);o.push(m(n.name,s,"original",e))}t.push({name:n.name,
+tabIcon:n.tabIcon,count:n.staticStickerCount,isLive:!1,stickers:o})}},o=0,a=l();o<a.length;o++){n(a[o])}return t};function d(e,t){for(var n=0,o=c;n<o.length;n++){var a=o[n]
+;if(a.name==e)return!(!a.liveStickers||-1==a.liveStickers.indexOf(t))}return!1}t.isLiveSticker=d;function m(e,t,n,s){void 0===n&&(n="");void 0===s&&(s="");a.default.cdn&&(s=a.default.cdn)
+;if(d(e,t))return(0,o.addPathPrefix)("".concat(s,"/static/img/ace/live-stickers/").concat(e,"/").concat(t).concat(n,".png"));n||(n=window&&window.devicePixelRatio>1?"original":"small");return(0,
+o.addPathPrefix)("".concat(s,"/static/img/ace/stickers/").concat(e,"/").concat(n,"/").concat(t,".png"))}t.stickerUrl=m},396:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.SidebarCommentsUI=void 0
+;var o=n(1),a=n(645),s=n(646),r=n(269),i=n(129),c=n(8),l=n(63),d=n(6),m=n(24),p=n(11),h=n(195),u=n(18),f=n(4),g=n(17),C=n(0),v=n(30),y=n(61),E=parseInt(v.default.comment_vertical_spacing,10),S=function(e){
+o.__extends(t,e);function t(t){var n=e.call(this,t)||this;n.debounceLayoutThreads=(0,h.debounceAndDelayUntilPageLoad)((function(){return n.layoutThreads()}),33)
+;n.onObserverEditableStateChanged=function(){var e=n.canCreateComments();e!=n.state.canCreateComments&&n.setState({canCreateComments:e})};n.refreshThreads=function(){n.setState({
+threads:n.props.comments.getAllThreads(!1)})};n.onChange=function(){var e=!1;for(var t in n.refs)if(0==t.indexOf("thread-")&&n.mainAce&&!n.mainAce.dom.getRoot().querySelector(".ace-line ."+t)){e=!0
+;break}n.eachFirstCommentNodeInDocumentOrder((function(t,o){if(!n.refs["thread-"+t.id]){e=!0;return!1}}));e?n.forceUpdate():n.layoutThreads()};n.handleDraftCommentsStoreChange=function(e){
+var t=n.props.stores.draftCommentsStore.getUpdatedDraftCommentsFromStore(e)||{};n.setState({draftThreads:o.__assign({},t),hasDraftsAndShowColor:Object.keys(t)},(function(){
+if(n.state.draftThreadFirstRender){if(Object.keys(n.state.draftThreadFirstRender).length>0){for(var e=n.state.draftThreadFirstRender,t=0,o=Object.keys(n.state.draftThreadFirstRender);t<o.length;t++){
+i=o[t];-1===n.state.hasDraftsAndShowColor.indexOf(i)&&(e[i]=!1)}n.setState({draftThreadFirstRender:e})}}else{var a={}
+;if(0!=n.state.hasDraftsAndShowColor.length)for(var s=0,r=n.state.hasDraftsAndShowColor;s<r.length;s++){var i;a[i=r[s]]=!0}n.setState({draftThreadFirstRender:a})}}))};n.handleBodyClick=function(e){
+if(!(0,u.closest)(e.target,".toolbar-comment")&&!document.body.classList.contains("pad-lightbox-open")){var t=n.mainAce.commentsController._getCommentThreadIdForEvent(e)
+;if(n.state.highlightThreadId&&t!=n.state.highlightThreadId){var o=n.getHighlightThread();if(o){var a=m.findDOMNode(o)
+;!e.target||g.default.dom.contains(a,e.target)||g.default.dom.contains(a,document.activeElement)||(0,u.closest)(e.target,".hp-emoji-menu")||n.mainAce.commentsController.hideCurrentCommentThread()
+}else console.warn("null commentThread for id: "+n.state.highlightThreadId)}}};n.handlePadUnreadNotificationsChange=function(){n.setState({unreadThreadIds:n.props.comments.getInDocUnreadThreadIds()})}
+;n.onPost_=function(){var e=n.state.highlightThreadId,t=n.getCommentThread(e);t&&t.refs.commentEntry&&t.refs.commentEntry.postComment()};n.childRedraw_=function(){
+n.timers.setTimeout(n.layoutThreads.bind(n),0);var e=!!n.highlightNewThreadHasEdits();n.state.isHighlightThreadDirty!=e&&n.setState({isHighlightThreadDirty:e})}
+;n.handleCreateSuggestionThread=function(e){n.setState((function(t){return{suggestionThreadIds:[e].concat(t.suggestionThreadIds)}}))};n.handleResolveSuggestionThread=function(e){
+n.setState((function(t){return{suggestionThreadIds:d.filter(t.suggestionThreadIds,(function(t){return t!==e}))}}))};n.handleCommentThreadInteraction=function(e,t){
+if(d.includes(n.state.unreadThreadIds,e)){f.IntentionEvent.ReadCommentNotification.track({interactionType:t});n.props.comments.handleCommentThreadInteraction(e);n.setState({
+fadingThreadIds:d.union(n.state.fadingThreadIds,[e])});n.timers.setTimeout((function(){n.setState({fadingThreadIds:d.without(n.state.fadingThreadIds,e)})
+}),parseInt(v.default.time_notifications_blue_box_fade,10))}};n.handleMarkCommentThreadUnread=function(e){if(!d.includes(n.state.unreadThreadIds,e)){f.IntentionEvent.MarkThreadUnread.track()
+;n.props.comments.markThreadUnread(e)}};n.onClickDraftCommentThread=function(e){if(d.includes(n.state.hasDraftsAndShowColor,e)){n.setState({
+hasDraftsAndShowColor:d.without(n.state.hasDraftsAndShowColor,e),draftsFadeToWhite:d.union(n.state.draftsFadeToWhite,[e])});n.timers.setTimeout((function(){n.setState({
+draftsFadeToWhite:d.without(n.state.draftsFadeToWhite,e)})}),parseInt(v.default.time_drafts_yellow_box_fade,10));if(n.state.draftThreadFirstRender&&n.state.draftThreadFirstRender[e]){
+var t=n.state.draftThreadFirstRender;t[e]=!1;n.setState({draftThreadFirstRender:t})}}};n.onThreadToggleExpand=function(){n.timers.setTimeout((function(){return n.layoutThreads()}),350)}
+;n.handleRequestAnnotation=function(e,t){var o=n.props.mainAce.commentsController.getGalleryForThread(e);o&&o.promptAnnotationCreationForThread(e,t)};n.handleCancelAnnotation=function(e){
+n.props.mainAce.commentsController.cancelAnnotationPrompt(e)};n.props.mainAce&&n.setAce(n.props.mainAce,!0);n.state={threads:n.props.comments.getAllThreads(!1),
+unreadThreadIds:n.props.comments.getInDocUnreadThreadIds(),fadingThreadIds:[],displayedResolvedThreadIds:{},highlightThreadId:null,highlightNode:null,isHighlighting:!1,isHighlightThreadDirty:!1,
+markingUnsaved:!1,canCreateComments:n.canCreateComments(),suggestionThreadIds:[],hasDraftsAndShowColor:null,draftThreadFirstRender:null};n.props.threadIdForFirstRender&&d.assignIn(n.state,{
+highlightThreadId:n.props.threadIdForFirstRender,isHighlighting:!0});return n}n=t;t.prototype.setAce=function(e,t){this.mainAce=e;t||this.setState({threads:this.props.comments.getAllThreads(!1),
+unreadThreadIds:this.props.comments.getInDocUnreadThreadIds()});this.showComments(!0)};t.prototype.canCreateComments=function(){
+return c.default.isSignedIn()&&this.mainAce&&this.mainAce.contents.getIsCommentable()};t.prototype.dispose=function(){var e,t,n,o,a;this.props.comments.off("updated-thread",this.refreshThreads)
+;this.props.comments.off("new-thread",this.refreshThreads);null===(e=document.body)||void 0===e||e.removeEventListener("click",this.handleBodyClick);if(this.mainAce){
+null===(t=this.mainAce.observer)||void 0===t||t.off("change-debounced",this.onChange);null===(n=this.mainAce.observer)||void 0===n||n.off("invalidate-cache",this.debounceLayoutThreads)
+;null===(o=this.mainAce.observer)||void 0===o||o.off("resize",this.debounceLayoutThreads)
+;null===(a=this.mainAce.observer)||void 0===a||a.off("editable-state-changed",this.onObserverEditableStateChanged)}this.mainAce=null};t.prototype.setMarkingUnsaved=function(e){
+e!==this.state.markingUnsaved&&this.setState({markingUnsaved:e})};t.prototype.eachFirstCommentNodeInDocumentOrder=function(e){if(this.mainAce){
+var t=[],n=this.mainAce.comments,o=this.state.displayedResolvedThreadIds,a=this.state.highlightThreadId
+;Array.prototype.slice.call(this.mainAce.dom.getRoot().querySelectorAll(".attrcommentfirst")).forEach((function(s){for(var r,i=/thread-([0-9a-zA-Z]+)-first/g;r=i.exec(s.className);){var l=r[1]
+;if(!(t.indexOf(l)>-1)){var d=n.getThread(l);if(d&&!d.isHardDeleted&&!(d.isDeleted&&!(l in o)&&a!=l||d.isPrivate&&d.secureAuthorId!=c.default.secureUserId)){if(n.getComments(d.id).some((function(e){
+return!e||!e.isDeleted}))||d.isComposing&&d.secureAuthorId==c.default.secureUserId){t.push(l);if(0==e(d,s))return!1}}}}}))}};t.prototype.layoutThreads=function(){var e=this;if(this.mainAce){var t=(0,
+u.offset)(this.mainAce.dom.getRoot()),n=t.top+this.mainAce.dom.getScrollTop(),o=0,a=!1,s={};if(this.state.highlightNode&&!this.isHighlightNodeStillInDom()){
+var i=this.mainAce.dom.getRoot().querySelector(".ace-line .thread-"+this.state.highlightThreadId+"-first");i&&(s.highlightNode=i)}var c=[];for(var l in this.state.displayedResolvedThreadIds){
+var p=this.mainAce.comments.getThread(l);(!p||p.isHardDeleted||p.isDetached)&&c.push(l)}c.length>0&&(s.displayedResolvedThreadIds=d.omit(this.state.displayedResolvedThreadIds,c))
+;if(this.state.highlightThreadId){var h=this.mainAce.comments.getThread(this.state.highlightThreadId);(!h||h.isHardDeleted||h.isDetached)&&(s.highlightThreadId=null)}if(d.isEmpty(s)){
+if(this.state.isHighlighting&&this.state.highlightNode&&(0,u.hasParents)(this.state.highlightNode,this.mainAce.dom.getRootSelector())){o=(0,u.offset)((0,
+r.findFirstNonCollapsedLine)(this.state.highlightNode)).top-t.top+n;a=!0}var f,g,C=[],y=[];this.eachFirstCommentNodeInDocumentOrder((function(o,s){o.id==e.state.highlightThreadId&&(a=!1)
+;var i=e.refs["thread-"+o.id];if(i){var c=!1,l=e.mainAce&&e.mainAce.media.getGallery(s);if(l){var d=l.getIndexForEl(s);c=l.getIsImageByIndex(d)}var p=null,h=o.annotationIds,f=h&&h.length>0?h[0]:null
+;if(f){var g=s?s.querySelector(".annotation-".concat(f)):null;g&&g.dataset&&(p=g.dataset.annotationLabel)}(a?C:y).push({preferredTop:(0,u.offset)((0,r.findFirstNonCollapsedLine)(s)).top-t.top+n,
+node:m.findDOMNode(i),child:i,canAttachAnnotations:c,annotationLabel:p})}}));S(C,!0,o);S(y,!1,0);[].concat(C,y).forEach((function(e){var t=e.child.state.top;if(!g||t<g){f=e.child.props.thread.id;g=t}
+var n={};(!t||Math.abs(t-e.top)>1)&&(n.top=e.top);e.child.state.canAttachAnnotations!=e.canAttachAnnotations&&(n.canAttachAnnotations=e.canAttachAnnotations)
+;e.child.state.annotationLabel!=e.annotationLabel&&(n.annotationLabel=e.annotationLabel);if(!d.isEmpty(n)){e.child.setState(n);e.child.isWithinFullWidthTable()&&e.child.forceUpdate()}}))
+;this.state.topmostThreadId!=f&&this.setState({topmostThreadId:f});this.timers.setTimeout((function(){var e=document.getElementById("comments-sidebar");e&&e.classList.remove("animate")
+}),parseInt(v.default.time_page_transition,10))}else this.setState(s)}function S(e,t,n){var o=t?d.forEachRight:d.forEach,a=n;o(e,(function(e){var n=(0,
+u.outerHeight)(e.node,!0),o=t?Math.min(a-n,e.preferredTop):Math.max(a,e.preferredTop);e.top=o-E;a=t?o:o+n}))}};t.prototype.componentDidUpdate=function(e,t){var n=this;if(this.mainAce){
+var o=this.isHighlightNodeStillInDom()
+;this.state.isHighlighting!=t.isHighlighting&&(o?this.mainAce.getViewport().saveScrollPositionUsingBottomNode():this.mainAce.getViewport().saveScrollPositionFromNode())
+;this.state.isHighlighting?document.body.classList.add("hp-highlighting-comment"):document.body.classList.remove("hp-highlighting-comment");if(this.mainAce.observer){var a="",s=(0,
+u.closest)(this.state.highlightNode,".ace-editor");s&&(a=s.dataset.zoneId);this.mainAce.observer.trigger(this.state.isHighlighting?"open-comments-sidebar":"close-comments-sidebar",{zoneId:a})}
+this.layoutThreads();var r=document.getElementById("padpage");if(this.state.isHighlighting!=t.isHighlighting&&(0,u.width)(r)<=parseInt(v.default.editor_width_for_hide_comments,10)){
+this.mainAce.observer.invalidateCache();if(o&&this.state.highlightNode&&(this.state.isHighlighting||!this.state.isHighlighting&&!this.isRootOrInnerZoneFocused()))this.timers.setTimeout((function(){
+n.mainAce.getViewport().scrollNodeVerticallyIntoViewDeprecated((0,u.closest)(n.state.highlightNode,"span"),"center",void 0,void 0,void 0,!0)
+}),0);else if(this.state.isHighlighting&&(!o||this.isRootOrInnerZoneFocused())){this.mainAce.getViewport().restoreScrollPosition();this.mainAce.getViewport().clearScrollPosition()}}}}
+;t.prototype.isRootOrInnerZoneFocused=function(){return(0,u.isFocused)(this.mainAce.dom.getRoot())||(0,u.hasParents)(document.activeElement,".ace-editor")};t.prototype.setupEvents=function(){var e
+;this.props.comments&&this.props.comments.padUnreadNotificationsStore&&this.props.comments.padUnreadNotificationsStore.on("pad-unread-notifications-change",this.handlePadUnreadNotificationsChange)
+;null===(e=document.body)||void 0===e||e.addEventListener("click",this.handleBodyClick);this.props.comments.on("updated-thread",this.refreshThreads)
+;this.props.comments.on("new-thread",this.refreshThreads);var t=this.mainAce.observer;this.events.on(t,"change-debounced",this.onChange);this.events.on(t,"invalidate-cache",this.debounceLayoutThreads)
+;this.events.on(t,"resize",this.debounceLayoutThreads);this.events.on(t,"editable-state-changed",this.onObserverEditableStateChanged)};t.prototype.componentDidMount=function(){this.layoutThreads()
+;this.setupEvents();if(l.isOnButDoNotLog("paper_draft_comments")&&this.mainAce.padController){
+var e=this.props.stores.draftCommentsStore.getDraftCommentStoreKey(c.default.secureUserId,this.mainAce.padController.getHashedPadId())
+;this.props.stores.draftCommentsStore.on("update-draft-comments",this.handleDraftCommentsStoreChange);this.props.stores.draftCommentsStore.getDecryptedComments(e)}}
+;t.prototype.componentWillUnmount=function(){
+this.props.comments&&this.props.comments.padUnreadNotificationsStore&&this.props.comments.padUnreadNotificationsStore.off("pad-unread-notifications-change",this.handlePadUnreadNotificationsChange)}
+;t.prototype.showComments=function(t){e.prototype.showComments.call(this,t);t||this.layoutThreads()};t.prototype.focusCommentEntry=function(e){var t,n=this.getCommentThread(e)
+;if(n&&n.focusCommentEntry){n.focusCommentEntry();this.mainAce.comments.getThread(e).isDeleted&&!(e in this.state.displayedResolvedThreadIds)&&this.setState({
+displayedResolvedThreadIds:o.__assign(o.__assign({},this.state.displayedResolvedThreadIds),(t={},t[e]=!0,t))})}};t.prototype.getCommentThread=function(e){return this.refs["thread-"+e]}
+;t.prototype.getHighlightThread=function(){return this.getCommentThread(this.state.highlightThreadId)};t.prototype.highlightThreadAtNode=function(e,t,n){var o
+;y.default.webkit||null===(o=document.getElementById("comments-sidebar"))||void 0===o||o.classList.add("animate");this.showComments(!0);var a=t;this.setState({highlightThreadId:e,highlightNode:a,
+isHighlighting:!0},n);this.mainAce.padController&&this.mainAce.padController.trigger("comment-thread-opened",void 0)};t.prototype.startAnnotationPromptForThread=function(e){
+var t=this.getCommentThread(e);t&&t.handleRequestAnnotation()};t.prototype.onUnresolve=function(e){e in this.state.displayedResolvedThreadIds&&this.setState({
+displayedResolvedThreadIds:d.omit(this.state.displayedResolvedThreadIds,e)})};t.prototype.clearHighlightThread=function(){var e,t,n
+;y.default.webkit||null===(t=document.getElementById("comments-sidebar"))||void 0===t||t.classList.add("animate")
+;this.state.highlightThreadId&&(n=this.mainAce.comments.getThread(this.state.highlightThreadId))
+;n&&!(this.state.highlightThreadId in this.state.displayedResolvedThreadIds)&&n.isDeleted&&!n.isHardDeleted&&this.highlightNewThreadHasEdits()?this.setState({isHighlighting:!1,highlightThreadId:null,
+displayedResolvedThreadIds:o.__assign(o.__assign({},this.state.displayedResolvedThreadIds),(e={},e[this.state.highlightThreadId]=!0,e))}):this.setState({isHighlighting:!1,highlightThreadId:null})}
+;t.prototype.highlightNewThreadHasEdits=function(){if(this.state.highlightThreadId){var e=this.getHighlightThread();return e&&e.hasEdits()}return!1};t.prototype.anyThreadHasNewEdits=function(){
+for(var e in this.refs)if(0==e.indexOf("thread-")){var t=this.getCommentThread(e.substring(7));if(t.hasEdits()||l.isOnButDoNotLog("paper_comments_perf")&&t.isEditingComment())return!0}return!1}
+;t.prototype.hoverThread=function(e){var t;this.setState({hoveredThreadId:e});null===(t=document.getElementById("comments-sidebar"))||void 0===t||t.classList.add("hp-hovering-comment-in-doc")}
+;t.prototype.unhoverThread=function(e){this.state.hoveredThreadId==e&&this.setState({hoveredThreadId:null});var t=document.getElementById("comments-sidebar")
+;t&&t.classList.remove("hp-hovering-comment-in-doc")};t.prototype.isPadEditable=function(){return this.mainAce&&this.mainAce.padController&&this.mainAce.padController.isPadEditable()}
+;t.prototype.isHighlightNodeStillInDom=function(){return this.state.highlightNode&&document.body.contains(this.state.highlightNode)};t.prototype.eachThreadToRender=function(e){
+if(this.mainAce)this.eachFirstCommentNodeInDocumentOrder(e);else{
+if(!this.props.comments||!this.props.threadIdForFirstRender)throw new Error("SidebarCommentsUI rendering with neither Ace nor Comments!")
+;var t=this.props.threadIdForFirstRender,n=this.props.comments.getThread(t);n&&e(n)}};t.prototype.render=function(){var e=this,t=[],o=0;this.eachThreadToRender((function(s,r){var c=e.props.comments
+;if(s&&(!s.isDeleted||e.isPadEditable())){var l=e.state.isHighlighting&&e.state.highlightThreadId==s.id,m=d.includes(e.state.unreadThreadIds,s.id),p=d.includes(e.state.fadingThreadIds,s.id),h=r&&!!(0,
+u.closest)(r,".".concat((0,i.getFullWidthClassname)())),f=e.state.suggestionThreadIds.indexOf(s.id);-1==f&&(f=null)
+;var g=d.includes(e.state.draftsFadeToWhite,s.id),v=!!e.state.draftThreadFirstRender&&e.state.draftThreadFirstRender[s.id]&&d.includes(e.state.hasDraftsAndShowColor,s.id),y=null
+;e.state.draftThreads&&s.id in e.state.draftThreads&&(y=e.state.draftThreads[s.id]);t.push(C.createElement(a.CommentThread,{ref:"thread-"+s.id,key:"thread-"+s.id,mainAce:e.mainAce,isUnread:m,
+stores:e.props.stores,onCommentThreadInteraction:e.handleCommentThreadInteraction,onMarkCommentThreadUnread:e.handleMarkCommentThreadUnread,thread:s,isHighlight:l,
+isHighlightingAnyComment:e.state.isHighlighting,redraw:e.childRedraw_,isHovered:e.state.hoveredThreadId==s.id,isAlwaysExpanded:!1,isPadEditable:e.isPadEditable(),isResolved:s.isDeleted,
+canCreateComments:e.state.canCreateComments,markingUnsaved:e.state.markingUnsaved,withinFullWidthTable:h,app:window.App,comments:c,draftComments:y,hasDrafts:v,draftsFadeToWhite:g,
+onClickDraftCommentThread:e.onClickDraftCommentThread,onUnresolve:e.onUnresolve.bind(e),centerOnScreen:!r,isFading:p,onToggleExpand:e.onThreadToggleExpand,
+onRequestAnnotation:e.handleRequestAnnotation,onOpenLink:e.props.onOpenLink||n.defaultOnOpenLink,onCancelAnnotation:e.handleCancelAnnotation,threadIndex:o,
+onCreateSuggestionThread:e.handleCreateSuggestionThread,onResolveSuggestionThread:e.handleResolveSuggestionThread,suggestionThreadIndex:f,isSuggestChanges:s.isSuggestChanges}));o+=1}}))
+;return C.createElement("div",null,C.createElement(f.TrackContext,{trackContext:f.EditorContext.Comment},C.createElement("div",{className:"comments-sidebar-body",ref:"commentsSidebarBody"},t)))}
+;t.dispose=function(e){var t=e.commentsController&&e.commentsController.getCommentsUI();if(t){t.dispose();e.commentsController.unlinkCommentsUI();var n=m.findDOMNode(t).parentNode
+;m.unmountComponentAtNode(n)}};var n;t.displayName="SidebarCommentsUI";t.defaultOnOpenLink=function(){return!1};return t=n=o.__decorate([p.default],t)}(s.CommentsUI);t.SidebarCommentsUI=S},
+486:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.prepareSearchTerm=t.shouldMatchCase=void 0;var o=n(293),a=n(27);t.shouldMatchCase=function(e){
+return e==e.toLocaleLowerCase()&&e!=o(e)};t.prepareSearchTerm=function(e,t){if(null==e||0==e.length)return null;if(!t.matchCase){var n=o(e);n.length==e.length&&(e=n)}try{
+return t.matchRegex?s(e,t.matchCase?"g":"ig"):s(a.escapeRegExp(e),t.matchCase?"g":"ig")}catch(e){if(!(e instanceof SyntaxError))throw e}return null};function s(e,t){var n=RegExp(e,t)
+;return n.exec("")?null:n}},489:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var o=n(0);t.default=function(e){var t=e.annotationLabel;return o.createElement("div",{
+className:"comment-annotation-point-wrapper"},o.createElement("div",{className:"annotation-point comment-annotation-point notranslate"},t))}},490:function(e,t,n){Object.defineProperty(t,"__esModule",{
+value:!0});var o=n(1),a=n(6),s=n(25),r=n(10),i=n(23),c=n(0),l=n(13),d=(0,s.createReactClass)({displayName:"HpSplitButton",propTypes:{children:i.element.isRequired},render:function(){
+var e=this.props,t=e.children,n=e.primary,s=e.secondary,i=e.className,d=a.omit(this.props,"children","primary","secondary","className");return c.createElement("div",{
+className:"hp-split-button ".concat(i)},c.cloneElement(t,{primary:n,secondary:s}),c.createElement(r.default,o.__assign({className:"hp-split-button-caret",primary:n,secondary:s
+},d),c.createElement(l.default,{name:"caret"})))}});t.default=d},640:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.FindReplaceController=void 0
+;var o=n(1740),a=n(910),s=n(54),r=n(911),i=function(){function e(e){this.currentMatchIndex=0;this.searchMatchRecords=[];this.visualPlainTextLineRecords=[];this.aceEditor=e}
+e.prototype.editor=function(){return this.aceEditor};e.prototype.onDocContentChange=function(){this.invalidateCache();this.refreshMatches()};e.prototype.scrollCurrentMatchToView=function(){
+var e=this.getCurrentNode();e&&this.editor().getViewport().scrollIntoViewIfNeeded(e)};e.prototype.getCurrentNode=function(){var e=this.editor().dom.getRoot().querySelectorAll(".search-match-selected")
+;return e.length>0?e[0]:null};e.prototype.getTotalMatches=function(){return this.searchMatchRecords?this.searchMatchRecords.length:0};e.prototype.getCurrentMatchIndex=function(){
+return this.currentMatchIndex};e.prototype.replace=function(e){this.invalidateCache();(0,o.replaceMatchRange)({editor:this.editor(),searchMatchRecords:this.searchMatchRecords,
+searchTerm:this.searchTerm,replaceText:e,fromMatchIndex:this.currentMatchIndex,toMatchIndex:this.currentMatchIndex+1})};e.prototype.replaceAll=function(e){this.invalidateCache();(0,
+o.replaceMatchRange)({editor:this.editor(),searchMatchRecords:this.searchMatchRecords,searchTerm:this.searchTerm,replaceText:e,fromMatchIndex:0,toMatchIndex:this.searchMatchRecords.length})}
+;e.prototype.findAndHighlight=function(e,t){this.clearHighlights();this.searchTerm=e;var n=this.editor().selection.getStart();this.matchCase!=t&&(this.visualPlainTextLineRecords=[]);this.matchCase=t
+;if(e){0==this.visualPlainTextLineRecords.length&&(this.visualPlainTextLineRecords=(0,r.extractVisualPlainText)(this.editor().contents.internalZatext(),this.editor().getApool(),!this.matchCase,n))
+;this.searchMatchRecords=(0,a.collectSearchMatches)(this.visualPlainTextLineRecords,e);this.currentMatchIndex=(0,a.findFirstMatchAfterSelection)(this.searchMatchRecords,n);(0,
+o.highlightMatch)(this.editor(),this.searchMatchRecords,this.currentMatchIndex);(0,o.highlightSearchMatches)(this.editor(),this.searchMatchRecords)}};e.prototype.clearHighlights=function(){(0,
+o.clearHighlights)(this.editor());this.searchTerm=null;this.searchMatchRecords=[];this.currentMatchIndex=0};e.prototype.next=function(){
+this.searchMatchRecords&&this.setCurrentMatch(this.currentMatchIndex+1)};e.prototype.prev=function(){this.searchMatchRecords&&this.setCurrentMatch(this.currentMatchIndex-1)}
+;e.prototype.setCurrentMatch=function(e){(0,o.unHighlightMatch)(this.editor(),this.searchMatchRecords,this.currentMatchIndex)
+;this.currentMatchIndex=(this.searchMatchRecords.length+e)%this.searchMatchRecords.length;(0,o.highlightMatch)(this.editor(),this.searchMatchRecords,this.currentMatchIndex)}
+;e.prototype.refreshMatches=function(){this.findAndHighlight(this.searchTerm,this.matchCase)};e.prototype.isEditable=function(){
+return this.editor().contents.hasMinimumEditableState(s.EditableState.Editable)};e.prototype.invalidateCache=function(){this.visualPlainTextLineRecords=[]};return e}();t.FindReplaceController=i},
+645:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.CommentThread=void 0
+;var o=n(1),a=n(6),s=n(33),r=n(3),i=n(197),c=n(919),l=n(1786),d=n(920),m=n(926),p=n(1787),h=n(30),u=n(8),f=n(99),g=n(2),C=n(11),v=n(12),y=n(27),E=n(1788),S=n(10),k=n(4),I=n(28),T=n(92),A=n(18),b=n(0),_=n(24),x=n(32),P=n(927),N=n(32),D=n(300),w=n(63),R=n(13),M=n(41),L=n(84),O=n(48),H=n(78),B=n(194),U=n(17),F=n(39),j=(0,
+n(5).PaperIntlFactory)().F,z=(0,g.defineMessages)({subscribedThread:{id:"zdrQfd",defaultMessage:"You’re now subscribed to notifications about this comment thread."},unsubscribedThread:{id:"Gy1X7U",
+defaultMessage:"You’ve unsubscribed and won’t get anymore notifcations about this comment thread."},couldntUnsubscribe:{id:"7Pb+Mt",
+defaultMessage:"Couldn’t unsubscribe from comment thread. Try again later."},restore:{id:"qoUqGR",defaultMessage:"Restore"},resolve:{id:"rH+VjM",defaultMessage:"Resolve"},markedResolvedBy:{
+id:"LtD8e2",defaultMessage:"Marked resolved by {name}"},markedResolved:{id:"s8LbrM",defaultMessage:"Marked resolved"},signInToPaper:{id:"QSWkFQ",defaultMessage:"Sign in to Paper"},dropboxPaper:{
+id:"neBk7u",defaultMessage:"Dropbox Paper"},signToleaveComments:{id:"qvu47o",defaultMessage:"{signInLink} to leave comments on this doc."},replyAndRestore:{id:"sKIqdH",
+defaultMessage:"Reply and restore…"},add:{id:"H8ot2Q",defaultMessage:"Add…"},reply:{id:"3v26Tb",defaultMessage:"Reply…"},tooltipContentSubscribed:{id:"kEcDc7",
+defaultMessage:"Unsubscribe from all notifications for this comment thread. You will be resubscribed if you respond to the thread or if someone mentions you in the thread."},
+tooltipContentNotSubscribed:{id:"gn4cVr",defaultMessage:"Subscribe to get notifications about this thread."},toggleReadUnreadButtonSubscribed:{id:"Xqx2gR",
+defaultMessage:"{isSubscribed, select, true {Unsubscribe} false {Subscribe}}"},toggleReadUnreadButtonUnread:{id:"lubYJJ",defaultMessage:"{isUnread, select, true {Unread} false {Mark as unread}}"},
+commentsCount:{id:"wWI6Ns",defaultMessage:"{numComments, plural, one {# comment} other {# comments}}"}}),W=parseInt(h.default.header_full_height,10)+22,Z=function(e){o.__extends(t,e);function t(t){
+var n=e.call(this,t)||this;n.mainAce=null;n.replyBoxDraftContent=null;n.updateThreadLink=function(){n.setState({threadLink:n.getThreadLink()})};n.onCommentChange=function(e){
+n.props.thread.id==e.threadId&&n.setState({comments:n.getComments()})};n.onObjectStoreSave=function(){n.setState({comments:n.getComments()})};n.onCommentPostNew_=function(e,t,a){
+if(n.props.onPostAnnotation){var s=n.getThreadAnnotationId();n.props.onPostAnnotation(s,(function(){n.mainAce.commentsController.detachAnnotation(n.props.thread.id)}))}
+var r=n.getGalleryCommentTracking();n.onCommentPost(e,t,a);k.IntentionEvent.PostComment.track(o.__assign(o.__assign({},r),{reply:!1,document_level_comment_thread:!!n.state.thread.isDocLevel,
+isPrivate:t,userIsPadCreator:n.props.mainAce.padController.getUserIsCreator(),padType:n.props.mainAce.padController.getPadType(),__padId:n.props.mainAce.padController.getPadId()}))}
+;n.handleRequestAnnotation=function(){var e=n.state.thread.id;if(n.props.onRequestAnnotation){n.setState({awaitingAnnotation:!0});n.props.onRequestAnnotation(e,(function(t){n.setState({
+awaitingAnnotation:!1});if(t){n.mainAce.commentsController.attachAnnotation(e,t);n.onAnnotationUpdate()}}))}};n.handleCancelAnnotation=function(){n.setState({awaitingAnnotation:!1})
+;n.props.onCancelAnnotation(n.props.thread.id);n.onAnnotationUpdate()};n.handleDetachAnnotation=function(){n.mainAce.commentsController.detachAnnotation(n.props.thread.id);n.onAnnotationUpdate()
+;if(n.props.onDetachAnnotation){var e=n.getThreadAnnotationId();n.props.onDetachAnnotation(e)}};n.onAnnotationUpdate=function(){n.props.redraw();n.setState({
+thread:n.props.comments.getThread(n.props.thread.id),comments:n.getComments()},(function(){n.refs.commentEntry&&n.refs.commentEntry.focus()}))};n.onCommentPostReply_=function(e,t){n.onCommentPost(e,t)
+;var a=n.getGalleryCommentTracking();k.IntentionEvent.PostComment.track(o.__assign(o.__assign({},a),{reply:!0,document_level_comment_thread:!!n.state.thread.isDocLevel,isPrivate:t,
+userIsPadCreator:n.props.mainAce.padController.getUserIsCreator(),padType:n.props.mainAce.padController.getPadType(),__padId:n.props.mainAce.padController.getPadId()}))}
+;n.onCommentEditPrevious_=function(){var e=n.getCurrentUserComments();if(0==e.length)return!1;if((0,p.commentIsSticker)(e[e.length-1].comment))return!1;var t=e[e.length-1].comment.id
+;if(n.refs["comment-".concat(t)]){n.refs.commentEntry&&n.refs.commentEntry.clear();n.refs["comment-".concat(t)].edit();return!0}return!1};n.toggleSubscribed=function(){
+var e=n.mainAce&&n.mainAce.padController;if(e){var t=e.getPadId(),a=!n.isSubscribed();v.post({url:"/ep/comments/update-subscribe",data:{localPadId:t,threadId:n.state.thread.id,subscribe:a},
+shardingKey:v.getShardingKeyForPad(t),analyticsTag:"update-thread-subscribe",successHandler:function(){
+var e=a?b.createElement(j,o.__assign({},z.subscribedThread)):b.createElement(j,o.__assign({},z.unsubscribedThread));O.default.show(b.createElement(O.default,{autoDismiss:!0,autoDismissDelayMs:5e3},e))
+},errorHandler:function(){var e=b.createElement(O.default,{autoDismiss:!0,autoDismissDelayMs:5e3},b.createElement(j,o.__assign({},z.couldntUnsubscribe)));O.default.show(e);return!0}})}}
+;n.onNewThreadCommentCancel_=function(){n.handleCancelAnnotation();n.updateDraftComments(n.state.thread.id,n.getCommentId());n.delete()};n.onExistingThreadCommentEntryCancel_=function(){
+var e=!n.entryHasContent();n.refs.commentEntry&&n.refs.commentEntry.clear();e&&n.mainAce.commentsController.hideCurrentCommentThreadAndFocusEditor()
+;n.updateDraftComments(n.state.thread.id,n.getCommentId());n.props.isResolved&&n.setState({hasEdits:!1})};n.onResolve_=function(){var e=n.getGalleryCommentTracking()
+;k.IntentionEvent.ResolveCommentThread.track(o.__assign(o.__assign({},e),{is_document_level:n.props.thread.isDocLevel,isPrivate:n.props.thread.isPrivate,num_comments:n.props.thread.commentIds.length,
+thread_age:n.getThreadAge()}));if(w.isOnButDoNotLog("paper_draft_comments")){
+var t=n.props.stores.draftCommentsStore.getDraftCommentStoreKey(u.default.secureUserId,n.getHashedPadId()),a=n.props.stores.draftCommentsStore.getUpdatedDraftCommentsFromStore(t)
+;a&&a[n.state.thread.id]&&"temporaryDraftCommentId"in a[n.state.thread.id]&&"temporaryDraftCommentId"===n.refs.commentEntry.props.commentId&&(n.replyBoxDraftContent=n.refs.commentEntry.props.content)
+;n.props.stores.draftCommentsStore.clearComment(t,n.state.thread.id,"clearAll")}n.delete()};n.onUnresolve_=function(){n.props.onUnresolve&&n.props.onUnresolve(n.state.thread.id)
+;if(w.isOnButDoNotLog("paper_draft_comments")){var e=n.props.stores.draftCommentsStore.getDraftCommentStoreKey(u.default.secureUserId,n.getHashedPadId())
+;n.replyBoxDraftContent&&n.props.stores.draftCommentsStore.saveComment(e,n.state.thread.id,n.getCommentId(),n.replyBoxDraftContent)}n.undelete()};n.onExpand_=function(){n.onClick_();n.setState({
+isCollapsed:!1},(function(){n.props.redraw()}));(0,k.track)("comments-expand")};n.onToggleUnread_=function(e){e.preventDefault();e.stopPropagation()
+;!n.props.isUnread&&n.props.onMarkCommentThreadUnread?n.props.onMarkCommentThreadUnread(n.props.thread.id):n.props.isUnread&&n.props.onCommentThreadInteraction&&n.props.onCommentThreadInteraction(n.props.thread.id,"button")
+};n.onClick_=function(){n.props.onCommentThreadInteraction&&n.props.onCommentThreadInteraction(n.props.thread.id,"click")
+;n.props.onClickDraftCommentThread&&n.props.hasDrafts&&n.props.onClickDraftCommentThread(n.props.thread.id);if(!n.props.isHighlight)if(n.props.onClick){n.props.onClick()
+;n.refs.commentEntry&&n.refs.commentEntry.onFocus()}else n.mainAce&&n.mainAce.commentsController.openCommentThread(n.props.thread.id,{callback:n.focusCommentEntry,scrollOnlyIfOffscreen:!0})}
+;n.focusCommentEntry=function(){if(n.refs.commentEntry){var e=n.mainAce.dom.getScrollTop();n.refs.commentEntry.focus();(0,A.setScrollTop)(n.mainAce.dom.getScrollEl(),e)}};n.onHighlight_=function(){
+n.props.onCommentThreadInteraction&&n.props.onCommentThreadInteraction(n.props.thread.id,"highlight")};n.onMouseEnter_=function(e){n.mainAce.commentsController.setHoveredThreadId(n.props.thread.id)
+;n.props.onToggleHover&&n.props.onToggleHover(!0)};n.onMouseLeave_=function(e){
+e.relatedTarget&&U.default.dom.contains(_.findDOMNode(n),e.relatedTarget)||n.mainAce.commentsController.setHoveredThreadId(null);n.props.onToggleHover&&n.props.onToggleHover(!1)}
+;n.onFocus_=function(){n.props.onCommentThreadInteraction&&n.props.onCommentThreadInteraction(n.props.thread.id,"focus")
+;n.props.isHighlight||n.mainAce.commentsController.openCommentThread(n.props.thread.id,{callback:n.focusCommentEntry,scrollOnlyIfOffscreen:!0});I.isPhone()&&n.scrollThreadToBottom(!0)}
+;n.onChange_=function(){n.props.onCommentThreadInteraction&&n.props.onCommentThreadInteraction(n.props.thread.id,"type");var e=n.entryHasContent()
+;n.props.isResolved&&n.state.hasEdits&&!e||n.setState({hasEdits:e});n.props.redraw()};n.updateOnScroll_=function(){n.setState({
+isScrolled:n.refs.overflow&&n.refs.overflow.scrollTop>0&&n.props.isHighlight})};n.onCommentUpdated_=function(e,t){var o=n.mainAce.commentsController.editComment(e.id,{atext:t.atext,
+apool:t.apool.toJsonable(),isDeleted:t.isDeleted});n.updateDraftComments(e.threadId,e.id);if(o.threadIsEmpty){k.IntentionEvent.DeleteCommentThread.track({is_document_level:n.props.thread.isDocLevel,
+isPrivate:n.props.thread.isPrivate,num_comments:n.props.thread.commentIds.length,thread_age:n.getThreadAge()});n.props.onCommentThreadDeleted&&n.props.onCommentThreadDeleted()}}
+;n.onAddEmojiReaction_=function(e,t){var o={emoji:t};n.props.comments.addEmojiReaction({commentId:e.id,reaction:o})};n.onRemoveEmojiReaction_=function(e,t){var o={emoji:t}
+;n.props.comments.removeEmojiReaction({commentId:e.id,reaction:o})};n.getThreadAge=function(){var e=(new Date).getTime()-new Date(n.state.comments[0].comment.createdTime).getTime()
+;return Math.round(e/M.Time.SECOND)};n.updateDraftComments=function(e,t){
+w.isOnButDoNotLog("paper_draft_comments")&&n.props.stores.draftCommentsStore.clearComment(n.props.stores.draftCommentsStore.getDraftCommentStoreKey(u.default.secureUserId,n.getHashedPadId()),e,t)}
+;n.getCustomStyle=function(){var e=0
+;if(n.props.withinFullWidthTable&&document.querySelector(".comments-sidebar-body"))if(n.props.isHighlight||n.props.isHighlightingAnyComment)e=0;else if(window.innerWidth<=parseInt(h.default.editor_width_for_hide_comments,10))e=0;else{
+var t=(0,A.offset)(document.querySelector(".comments-sidebar-body")).left;e=Math.max(0,window.innerWidth-t-60)}var o={top:n.state.top,left:e};n.props.isHighlight&&(o.left=e);if(n.state.isStuckToTop){
+var s=n.props.suggestionThreadIndex,r=a.isNumber(s)?150*s:0;o={position:"fixed",top:W+r+"px",left:"auto"}}return o};n.renderNewComment=function(e){
+var t=e.cls,o=e.customStyle,a=e.userInfo,s=e.draftContent;return n.props.canCreateComments||n.state.hasEdits||n.props.draftComments?n.props.isSuggestChanges?b.createElement(i.default,{
+onClickOutside:n.props.onClickOutside},b.createElement(g.IntlProvider,{locale:u.default.userLocale},b.createElement("div",{onClick:n.onClick_,className:t,style:o
+},b.createElement(m.SuggestCommentEntry,{mainAce:n.props.mainAce,containsComments:!0,onOpenLink:n.props.onOpenLink,canCreateComments:n.props.canCreateComments,authorUserInfo:a,
+threadId:n.state.thread.id,hashedPadId:n.getHashedPadId(),commentId:n.getCommentId(),content:s,onCommentPost:n.onCommentPostNew_,onCancel:n.onNewThreadCommentCancel_,onFocus:n.onFocus_,
+onChange:n.onChange_,stores:n.props.stores,threadIsPrivate:n.state.thread.isPrivate,threadSuggestionInfo:n.state.thread.suggestionInfo,threadIsResolved:n.props.isResolved,isNew:!0,
+canAttachAnnotations:n.state.canAttachAnnotations,awaitingAnnotation:n.state.awaitingAnnotation,onRequestAnnotation:n.handleRequestAnnotation,onCancelAnnotation:n.handleCancelAnnotation,
+onDetachAnnotation:n.handleDetachAnnotation,annotationId:n.getThreadAnnotationId(),annotationLabel:n.state.annotationLabel,ref:"commentEntry",
+showTangoPlaceholdersForNewComments:n.props.showTangoPlaceholdersForNewComments,entryIndex:n.props.threadIndex||0})))):b.createElement(i.default,{onClickOutside:n.props.onClickOutside
+},b.createElement(g.IntlProvider,{locale:u.default.userLocale},b.createElement("div",{onClick:n.onClick_,className:t,style:o},b.createElement(d.CommentEntry,{containsComments:!0,
+onOpenLink:n.props.onOpenLink,canCreateComments:n.props.canCreateComments,authorUserInfo:a,threadId:n.state.thread.id,hashedPadId:n.getHashedPadId(),commentId:n.getCommentId(),content:s,
+onCommentPost:n.onCommentPostNew_,onCancel:n.onNewThreadCommentCancel_,onFocus:n.onFocus_,onChange:n.onChange_,stores:n.props.stores,threadIsPrivate:n.state.thread.isPrivate,
+threadSuggestionInfo:n.state.thread.suggestionInfo,threadIsResolved:n.props.isResolved,isNew:!0,canAttachAnnotations:n.state.canAttachAnnotations,awaitingAnnotation:n.state.awaitingAnnotation,
+onRequestAnnotation:n.handleRequestAnnotation,onCancelAnnotation:n.handleCancelAnnotation,onDetachAnnotation:n.handleDetachAnnotation,annotationId:n.getThreadAnnotationId(),
+annotationLabel:n.state.annotationLabel,ref:"commentEntry",showTangoPlaceholdersForNewComments:n.props.showTangoPlaceholdersForNewComments,entryIndex:n.props.threadIndex||0})))):null}
+;n.renderToggleSubscribed=function(){var e=null;if(n.props.canCreateComments&&f.isOn("unsubscribe_comment_ui")&&!n.props.isResolved&&n.props.isHighlight&&!u.default.isCurrentUserBeingAssumed){
+var t=n.isSubscribed(),a=t?b.createElement(j,o.__assign({},z.tooltipContentSubscribed)):b.createElement(j,o.__assign({},z.tooltipContentNotSubscribed));e=b.createElement("div",{className:r({
+"comment-mark-unread":t,"comment-mark-read":!t})},b.createElement(S.default,{onClick:n.toggleSubscribed.bind(n),tooltip:a},b.createElement(j,o.__assign({},z.toggleReadUnreadButtonSubscribed,{values:{
+isSubscribed:t}}))))}return e};n.onViewSelfNote_=function(){n.setState({isViewingSelfNote:!0});n.mainAce&&n.mainAce.commentsController.openCommentThread(n.props.thread.id,{
+callback:n.focusCommentEntry,scrollOnlyIfOffscreen:!0});var e=n.getGalleryCommentTracking();k.IntentionEvent.ClickViewNoteToSelf.track(o.__assign(o.__assign({},e),{
+document_level_comment_thread:n.props.thread.isDocLevel,isPrivate:n.props.thread.isPrivate,num_comments:n.props.thread.commentIds.length,thread_age:n.getThreadAge(),
+padType:n.props.mainAce.padController.getPadType(),__padId:n.props.mainAce.padController.getPadId()}))};n.mainAce=t.mainAce;n.state={thread:n.props.thread,threadLink:"",comments:n.getComments(),
+isCollapsed:!n.props.draftComments,hasEdits:!1,isScrolled:!1,top:n.props.isPlaceholderThread?160:null,awaitingAnnotation:!1,placeholderCreationTime:n.props.isPlaceholderThread?new Date:void 0,
+canAttachAnnotations:n.props.canAttachAnnotations,annotationLabel:n.props.annotationLabel,containsComments:!0,isViewingSelfNote:!1,entryIndex:0};return n}t.prototype.isEditingComment=function(){
+var e=this.props.comments&&this.props.comments.getComments(this.props.thread.id);if(!e)return!1;for(var t=0,n=e;t<n.length;t++){var o=n[t].id,a=this.refs["comment-".concat(o)]
+;if(a&&a.isEditing())return!0}return!1};t.prototype.isFocused=function(){return!(!this.refs.commentEntry||!this.refs.commentEntry.isFocused())};t.prototype.componentDidMount=function(){
+this.props.isHighlight&&this.onHighlight_();this.props.isHighlight&&this.refs.commentEntry&&this.refs.commentEntry.ensureAceIsCreated();this.subscribeEvents();this.updateThreadLink()}
+;t.prototype.componentWillUnmount=function(){this.unsubscribeEvents();this.mainAce=null};t.prototype.subscribeEvents=function(){var e=this.props.comments;if(e){
+e.on("updated-comment",this.onCommentChange);e.on("new-comment",this.onCommentChange);e.on("comment-request-saved",this.onObjectStoreSave)}var t=this.mainAce&&this.mainAce.padController
+;t&&t.isCloudDoc()&&t.cloudDocsUrlStore.on("change",this.updateThreadLink)};t.prototype.unsubscribeEvents=function(){var e=this.props.comments;if(e){e.off("updated-comment",this.onCommentChange)
+;e.off("new-comment",this.onCommentChange);e.off("comment-request-saved",this.onObjectStoreSave)}var t=this.mainAce.padController
+;t&&t.isCloudDoc()&&t.cloudDocsUrlStore.off("change",this.updateThreadLink)};t.prototype.isSubscribed=function(){
+return!this.props.thread.secureParticipants||u.default.secureUserId in this.props.thread.secureParticipants};t.prototype.openStickerMenuInReplyBox=function(){
+this.refs.commentEntry&&this.refs.commentEntry.openStickerMenu()};t.prototype.isWithinFullWidthTable=function(){return this.props.withinFullWidthTable};t.prototype.shouldComponentUpdate=function(e,t){
+return!T.dumbDeepCompare(this.props,e,["mainAce","stores","app","comments"])||!T.dumbDeepCompare(this.state,t)};t.prototype.componentWillReceiveProps=function(e){
+e.isHighlight||e.isAlwaysExpanded||this.setState({isCollapsed:!0});e.annotationLabel!=this.state.annotationLabel&&this.setState({annotationLabel:e.annotationLabel})
+;e.mainAce&&e.mainAce!=this.mainAce&&(this.mainAce=e.mainAce)};t.prototype.getComments=function(){var e=this.props.comments;return e?e.getComments(this.props.thread.id).map((function(t){
+var n=e.getObjectStore();return{comment:t,unsaved:n&&t&&n.doesObjectHaveUncommittedChanges(t.id)}})):[]};t.prototype.getThreadLink=function(){var e={threadId:this.state.thread.id
+},t=this.mainAce&&this.mainAce.padController;if(!t)return"";var n=t.getUrl()+N.padUrlSuffixString(e);if(t&&t.isCloudDoc()){var o=t.cloudDocsUrlStore.getMaxAccessUrl()
+;o&&(n=D.addQueryParamsAndFragmentToUrl(o,{padFocusOptions:e}))}return n};t.prototype.getTrackingFromGalleryItemData=function(){
+var e=this.mainAce.commentsController.getGalleryForThread(this.props.thread.id),t=null,n=null;if(e){
+var o=".gallery-item-wrapper.thread-"+this.props.thread.id,a=this.mainAce.dom.getRoot().querySelector(o),s=e.getIndexForEl(a);if(s<e.getCount()){n=e.getEmbedComponentByIndex(s)
+;t=e.getGalleryData().items[s]}}return t?{embedType:t.type,fileExtension:n&&n.getFileExtension&&n.getFileExtension()}:{}};t.prototype.getGalleryCommentTracking=function(){
+var e=!!this.state.annotationLabel,t=this.getTrackingFromGalleryItemData();return t?o.__assign({hasAnnotation:e,isGallery:!0},t):{hasAnnotation:!1,isGallery:!1}}
+;t.prototype.getThreadAnnotationId=function(){var e=this.props.thread.annotationIds;return e&&e.length>0?e[0]:null};t.prototype.onCommentPost=function(e,t,n,o){var a=this;this.handleCancelAnnotation()
+;this.mainAce.commentsController.postComment(this.props.thread.id,e,t,n);this.props.isResolved&&this.onUnresolve_();this.updateDraftComments(this.state.thread.id,this.getCommentId())
+;this.props.redraw();this.setState({thread:this.props.comments.getThread(this.props.thread.id),comments:this.getComments(),hasEdits:!1,entryIndex:this.state.entryIndex+1},(function(){
+a.refs.commentEntry&&a.refs.commentEntry.focus();a.scrollThreadToBottom(!1);o&&o()}))};t.prototype.delete=function(){if(this.state.annotationLabel&&this.props.onDetachAnnotation){
+var e=this.getThreadAnnotationId();this.props.onDetachAnnotation(e)}this.mainAce.commentsController.deleteCommentThread(this.props.thread.id)
+;this.props.onCommentThreadDeleted&&this.props.onCommentThreadDeleted()};t.prototype.undelete=function(){this.mainAce.commentsController.undeleteCommentThread(this.props.thread.id,!0)}
+;t.prototype.shouldDoPreventScrollCheck=function(){return this.props.isHighlight};t.prototype.hasEdits=function(){
+return w.isOnButDoNotLog("paper_comments_perf")?!!this.state.hasEdits:this.entryHasContent()};t.prototype.entryHasContent=function(){
+return!(!this.refs.commentEntry||!this.refs.commentEntry.getContent())};t.prototype.getDraftContentToDisplay=function(e){if(this.props.draftComments){return this.props.draftComments[e]}return null}
+;t.prototype.getDraftContent=function(){return this.refs.commentEntry&&this.refs.commentEntry.getContent()};t.prototype.setDraftContent=function(e){
+this.refs.commentEntry&&this.refs.commentEntry.setContentFromDraftTransfer(e)};t.prototype.clearDraftContent=function(){this.refs.commentEntry&&this.refs.commentEntry.clear()}
+;t.prototype.isAwaitingAnnotations=function(){return!!this.state.awaitingAnnotation};t.prototype.shouldShowDraftThreadColor=function(){
+return w.isOnButDoNotLog("paper_draft_comments")&&this.props.hasDrafts&&!this.props.isUnread};t.prototype.shouldShowDraftThreadFading=function(){
+return w.isOnButDoNotLog("paper_draft_comments")&&this.props.draftsFadeToWhite&&!this.props.isFading};t.prototype.componentDidUpdate=function(e,t){
+this.props.isHighlight&&this.refs.commentEntry&&this.refs.commentEntry.ensureAceIsCreated();this.props.isHighlight&&!e.isHighlight&&this.onHighlight_()
+;this.props.isResolved&&!this.props.isHighlight&&e.isHighlight&&this.setState({hasEdits:this.entryHasContent()});!this.props.isHighlight&&e.isHighlight&&U.default.consumeQueryParam("t",!0)}
+;t.prototype.scrollThreadToBottom=function(e){var t,n=this,o=1e5;if(this.refs.overflow){e?t=new Promise((function(e){(0,A.animateElementScroll)({element:n.refs.overflow,direction:{scrollTop:o},
+duration:650,onFinished:e})})):this.refs.overflow.scrollTop=o;this.updateOnScroll_()}return t};t.prototype.getValidComments=function(){var e={};return this.state.comments.filter((function(t){
+var n=t.comment;if(!n)return!1;if(n.isDeleted)return!1;if(e[n.id])return!1;e[n.id]=!0;return!0}))};t.prototype.getCurrentUserComments=function(){var e=u.default.secureUserId
+;return this.state.comments.filter((function(t){var n=t.comment;return n.secureAuthorId==e&&!n.isDeleted}))};t.prototype.getCommentId=function(){
+return w.isOnButDoNotLog("paper_draft_comments")?"temporaryDraftCommentId":null};t.prototype.getHashedPadId=function(){
+return this.mainAce.padController?this.mainAce.padController.getHashedPadId():null};t.prototype.render=function(){var e=this,t=this.getValidComments()
+;if(0==t.length&&this.state.thread.isDeleted)return null;if(this.props.thread.suggestionInfo)return null;var n=r("comment-thread","selenium-comment-thread",{
+"comment-thread-drafts":this.shouldShowDraftThreadColor(),"comment-thread-drafts-fading":this.shouldShowDraftThreadFading(),"comment-thread-unread":this.props.isUnread,
+"comment-thread-fading":this.props.isFading,"comment-thread-resolved":this.props.isResolved,"comment-thread-no-reply":!this.props.canCreateComments&&!this.state.hasEdits,
+"comment-highlight":this.props.isHighlight||this.props.isAlwaysExpanded||this.state.hasEdits,"comment-thread-hover":this.props.isHovered&&!this.props.isAlwaysExpanded,multiple:t.length>1,
+"comment-thread-scrolled":this.state.isScrolled,"comment-within-table":this.props.withinFullWidthTable,"comment-thread-center-on-screen":this.props.centerOnScreen,
+"comment-new":0==t.length&&this.state.thread.secureAuthorId==u.default.secureUserId,"comment-thread-actions-disabled":!u.default.isSignedIn(),stuck:this.state.isStuckToTop
+}),a=this.mainAce&&this.mainAce.padController,m=a?a.getUserInfo():u.default,p=this.getCustomStyle();if(!this.props.showContext&&0==t.length&&this.state.thread.secureAuthorId==u.default.secureUserId){
+var h=this.getDraftContentToDisplay(this.getCommentId());return this.renderNewComment({cls:n,customStyle:p,userInfo:m,draftContent:h})}
+var f,g,C,v,k,T,A,_=this.mainAce&&this.mainAce.authors,x=_?_.getAuthorInfoForId.bind(_):function(e){return null},P=function(n,o){var a=n.comment
+;return e.props.isSuggestChanges&&a.secureAuthorId!=u.default.secureUserId&&0==o?b.createElement(l.SuggestComment,{userInfo:m,ref:"comment-".concat(a.id),key:"comment-".concat(a.id),comment:a,
+draftContent:e.getDraftContentToDisplay(a.id),hashedPadId:e.getHashedPadId(),threadLink:e.state.threadLink,thread:e.props.thread,isPadEditable:e.props.isPadEditable,
+canCreateComments:e.props.canCreateComments,threadIsResolved:e.props.isResolved,threadIsPrivate:e.props.thread.isPrivate,threadSuggestionInfo:e.props.thread.suggestionInfo,
+expand:e.props.isHighlight&&o===t.length-1,isHighlight:e.props.isHighlight,unsaved:!(!e.props.markingUnsaved||!n.unsaved),getAuthorInfoForId:x,onCommentUpdated:e.onCommentUpdated_,
+onUpdateDraftComments:e.updateDraftComments,onAddEmojiReaction:e.onAddEmojiReaction_,onRemoveEmojiReaction:e.onRemoveEmojiReaction_,onDismissSuggestion:e.onResolve_,onChange:e.props.redraw,
+onResolveSuggestion:e.onResolve_,app:e.props.app,annotationLabel:0==o?e.state.annotationLabel:null,annotationId:0==o?e.getThreadAnnotationId():null,onDetachAnnotation:e.handleDetachAnnotation,
+onOpenLink:e.props.onOpenLink,stores:e.props.stores}):b.createElement(c.Comment,{userInfo:m,ref:"comment-".concat(a.id),key:"comment-".concat(a.id),comment:a,
+draftContent:e.getDraftContentToDisplay(a.id),hashedPadId:e.getHashedPadId(),threadLink:e.state.threadLink,isPadEditable:e.props.isPadEditable,canCreateComments:e.props.canCreateComments,
+threadIsResolved:e.props.isResolved,threadIsPrivate:e.props.thread.isPrivate,threadSuggestionInfo:e.props.thread.suggestionInfo,expand:e.props.isHighlight&&o===t.length-1,
+isHighlight:e.props.isHighlight,unsaved:!(!e.props.markingUnsaved||!n.unsaved),getAuthorInfoForId:x,onCommentUpdated:e.onCommentUpdated_,onUpdateDraftComments:e.updateDraftComments,
+onAddEmojiReaction:e.onAddEmojiReaction_,onRemoveEmojiReaction:e.onRemoveEmojiReaction_,onDismissSuggestion:e.onResolve_,onChange:e.props.redraw,app:e.props.app,
+annotationLabel:0==o?e.state.annotationLabel:null,annotationId:0==o?e.getThreadAnnotationId():null,onDetachAnnotation:e.handleDetachAnnotation,onOpenLink:e.props.onOpenLink,stores:e.props.stores})}
+;f=this.props.isHighlight||t.length<=2?t.map(P):[P(t[0],0),b.createElement("div",{className:"comment-thread-expand",key:"expand"},b.createElement(S.default,{onClick:this.onExpand_
+},b.createElement(j,o.__assign({},z.commentsCount,{values:{numComments:t.length-2}})))),P(t[t.length-1],t.length-1)];this.props.showContext&&(g=b.createElement(V,{mainAce:this.mainAce,
+threadId:this.state.thread.id,stores:this.props.stores}));if(this.props.canCreateComments||this.state.hasEdits){var N=this.props.isHighlight||this.state.hasEdits||this.props.isAlwaysExpanded
+;if(!I.isPhone()){var D=this.state.thread.secureAuthorId==u.default.secureUserId;(this.props.isPadEditable||D)&&(this.props.isResolved?v=b.createElement("div",{className:"comment-resolve"
+},b.createElement(s.Button,{variant:"transparent",size:"small",onClick:this.onUnresolve_
+},b.createElement(j,o.__assign({},z.restore)))):this.props.isSuggestChanges&&m.isOwner||(v=b.createElement("div",{className:"comment-resolve"},b.createElement(s.Button,{variant:"transparent",
+size:"small",className:"selenium-comment-resolve-button",onClick:this.onResolve_},b.createElement(j,o.__assign({},z.resolve))))));var w=b.createElement(j,o.__assign({},z.toggleReadUnreadButtonUnread,{
+values:{isUnread:this.props.isUnread}})),M="en"==u.default.userLocale||this.props.isUnread?null:w;if(!this.props.isResolved){var O=b.createElement(s.Button,{variant:"transparent",size:"small",
+onClick:this.onToggleUnread_},b.createElement("span",{className:r({"comment-mark-unread-glyph":this.props.isUnread,"comment-mark-read-glyph":!this.props.isUnread})}),w);C=b.createElement("div",{
+className:r({"comment-mark-unread":this.props.isUnread,"comment-mark-read":!this.props.isUnread})},M?b.createElement(H.Tooltip,{title:M,openDelay:B.TOOLTIP_DELAY},O):O)}}
+var U=this.shouldShowReplyEntry(N);if(!this.props.isResolved||this.state.hasEdits){var W=this.getReplyText();k=[b.createElement("div",{className:"reply-label",style:{display:N?"none":""},
+key:"reply-fake-button"},W),b.createElement("div",{style:{display:U?"":"none"},key:this.state.entryIndex},b.createElement(d.CommentEntry,{containsComments:this.state.containsComments,
+onOpenLink:this.props.onOpenLink,authorUserInfo:this.mainAce.padController.getUserInfo(),threadId:this.state.thread.id,hashedPadId:this.getHashedPadId(),commentId:this.getCommentId(),
+content:this.getDraftContentToDisplay(this.getCommentId()),isNewReply:!0,onCommentPost:this.onCommentPostReply_,onCancel:this.onExistingThreadCommentEntryCancel_,onFocus:this.onFocus_,
+onChange:this.onChange_,onEditPrevious:this.onCommentEditPrevious_,stores:this.props.stores,canCreateComments:this.props.canCreateComments,threadIsResolved:this.props.isResolved,
+threadIsPrivate:this.state.thread.isPrivate,threadSuggestionInfo:this.state.thread.suggestionInfo,annotationLabel:null,ref:"commentEntry",entryIndex:this.state.entryIndex}))]}
+if(this.props.isResolved){var Z=this.props.isHighlight?"content":"content thread-unhighlight",q=this.mainAce.authors.getAuthorInfoForId(this.state.thread.secureResolverId),K=void 0;q&&(K=(0,
+y.firstNameLastInitial)({fullName:q.name,givenName:q.givenName,surname:q.surname}));T=b.createElement("div",{className:"comment-resolve-notice"},b.createElement("div",{className:Z
+},K?b.createElement(j,o.__assign({},z.markedResolvedBy,{values:{name:K}})):b.createElement(j,o.__assign({},z.markedResolved))))}}else if(!u.default.isSignedIn()&&this.props.isPlaceholderThread){
+var G=F.addPathPrefix("/ep/account/sign-in")+"?fromSignInButton=1&cont="+encodeURIComponent(window.location.href),J=b.createElement(S.default,{className:"placeholder-comment-link",href:G,
+"track-title":"Sign in placeholder"},b.createElement(j,o.__assign({},z.signInToPaper)));f=b.createElement("div",{className:"comment"},b.createElement("div",{
+className:"logged-out-placeholder-comment-avatar"},b.createElement(R.default,{name:"dropbox-24"})),b.createElement("div",{className:"byline"},b.createElement("span",{className:"comment-author-name"
+},b.createElement(j,o.__assign({},z.dropboxPaper))),b.createElement("span",{className:"notranslate"},"  "),b.createElement(L.TimeAgo,{className:"comment-timestamp",
+date:this.state.placeholderCreationTime})),b.createElement("div",{className:"content"},b.createElement(j,o.__assign({},z.signToleaveComments,{values:{signInLink:J}}))))}
+A=this.props.thread.isPrivate?b.createElement("div",{onScroll:this.updateOnScroll_,ref:"overflow",className:"comment-thread-scroll"},g,b.createElement(E.HiddenNoteToSelf,{userInfo:m,
+commentsToRender:t.map(P),onViewSelfNote:this.onViewSelfNote_,isViewingSelfNote:this.state.isViewingSelfNote})):b.createElement("div",{onScroll:this.updateOnScroll_,ref:"overflow",
+className:"comment-thread-scroll"},g,f);var Q=b.createElement("div",{className:n,onClick:this.onClick_,style:p,onMouseEnter:this.onMouseEnter_,onMouseLeave:this.onMouseLeave_,
+"data-thread-id":this.state.thread.id,role:"comment",id:"comment-thread-".concat(this.state.thread.id)},b.createElement("div",{className:"comment-thread-inner"},b.createElement("div",{
+className:"comment-thread-header"},T,C,v),this.renderToggleSubscribed(),A,k));return b.createElement(i.default,{onClickOutside:this.props.onClickOutside},Q)}
+;t.prototype.shouldShowReplyEntry=function(e){var t=this.props.thread.isPrivate&&!this.state.isViewingSelfNote;if(!e||t){this.state.isViewingSelfNote&&this.setState({isViewingSelfNote:!1});return!1}
+return e};t.prototype.getReplyText=function(){
+return this.props.thread.isPrivate?this.props.isResolved?b.createElement(j,o.__assign({},z.replyAndRestore)):b.createElement(j,o.__assign({},z.add)):this.props.isResolved?b.createElement(j,o.__assign({},z.replyAndRestore)):b.createElement(j,o.__assign({},z.reply))
+};t.displayName="CommentThread";t.commentThreadId=0;t.defaultProps={showTangoPlaceholderForNewComments:!0};return t=o.__decorate([C.default],t)}(b.Component);t.CommentThread=Z;var V=function(e){
+o.__extends(t,e);function t(t){return e.call(this,t)||this}t.prototype.shouldComponentUpdate=function(e,t){
+return!T.dumbDeepCompare(this.props,e,["mainAce","stores","app"])||!T.dumbDeepCompare(this.state,t)};t.prototype.render=function(){
+var e,t=this.props.mainAce.padController.getPadId(),n=this.props.mainAce.padController.getTitle(),o=(0,
+x.relativePrettyPaperDocUrl)(t,n,u.default.userLocale),a=this.props.mainAce.getApool().copy(),s=this.props.mainAce.contents.exportZatext(),r=(0,P.renderThreadContext)(o,this.props.threadId,s,a,"",{
+isNativeComment:!1,addAceHashToLinks:!0});r&&(e=b.createElement("div",{dangerouslySetInnerHTML:{__html:r}}));return b.createElement("div",{className:"selenium-comment comment thread-context"
+},b.createElement("div",{className:"content"},e))};t.displayName="CommentThreadContext";return t}(b.Component)},646:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.CommentsUI=void 0
+;var o=n(1),a=function(e){o.__extends(t,e);function t(){var t=null!==e&&e.apply(this,arguments)||this;t.mainAce=null;t.on=function(){};t.off=function(){};t.once=function(){};t.trigger=function(){}
+;return t}t.prototype.startAnnotationPromptForThread=function(e){};t.prototype.getDraftComments=function(e){var t=this,n={};e.forEach((function(e){var o=t.getCommentThread(e);if(o){
+var a=o.getDraftContent();n[e]=a}}));return n};t.prototype.updateDraftComments=function(e){for(var t in e){var n=this.getCommentThread(t)
+;n&&(e[t]?n.setDraftContent(e[t]):n.getDraftContent()&&n.clearDraftContent())}};t.prototype.hideComments=function(){document.body.classList.remove("show-comments")
+;this.mainAce.commentsController.hideCurrentCommentThread()};t.prototype.showComments=function(e){document.body.classList.add("show-comments")};t.prototype.dispose=function(){}
+;t.displayName="CommentsUI";return t}(n(0).PureComponent);t.CommentsUI=a},910:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.findFirstMatchAfterSelection=t.collectSearchMatches=void 0;var o=n(20);t.collectSearchMatches=function(e,t){var n=o.Position.ROOT_ZONE,a="",s=[],r=0,i=0,c=!1;function l(){
+!function(e,t,n,a,s,r,i,c){function l(e){return a[s+e-n]}var d,m=n,p=0,h=function(){if(0==d[0].length)return"break";for(;l(m).finalText.length+p<=d.index;){p+=l(m).finalText.length;m++}
+for(var e=m,t=d.index-p,n=e,a=t+d[0].length;l(n).finalText.length<a;){a-=l(n).finalText.length;n++}var s=t,h=a;l(e).mods.forEach((function(e){var n=e.offset,o=e.length;n<=t&&(n+o<=t?t-=o:t=n)}))
+;l(n).mods.forEach((function(e){var t=e.offset,n=e.length;t<=a&&(t+n<a?a-=n:a=t+1)}));for(var u="",f=e;f<=n;f++)u+=l(f).finalText;var g={text:d[0],plaintextStartCol:s,plaintextEndCol:h,
+plaintextContext:u,range:{start:new o.Position(i,e,t),end:new o.Position(i,n,a)},onOrAfterSelectionLine:c};r.push(g)};for(;d=e.exec(t);){if("break"===h())break}}(t,a,r,e,i,s,n,c)}
+e.forEach((function(e,t){if(e.zone==n)a+=e.finalText;else{l();r=e.rangeOffset;a=e.finalText;n=e.zone;i=t}c=c||e.hasSelStart}));l();return s};t.findFirstMatchAfterSelection=function(e,t){
+for(var n=0;n<e.length;n++){var a=e[n];if(a.onOrAfterSelectionLine&&o.Position.greaterOrEqual(a.range.start,t))return n}return 0}},911:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.extractTimelinePlainText=t.extractVisualPlainText=void 0;var o=n(22),a=n(180),s=n(64),r=n(196),i=n(58),c=n(51),l=n(293);t.extractVisualPlainText=function(e,t,n,o){for(var r=(0,
+s.docHand)(e,t),c=r.alines(),l=r.textlines(),m=[],C=0,v=0;v<c.length;v++){var y=i.getLineLevelObjectOrList(c[v],t,new a.default)
+;if(y&&"aceTable"===y.key)C=d(C,v,y,r,t,m,n,o);else if(y&&"gallery"===y.key&&h(r,y.value)){C=p(C,v,y.value,r,t,m,n,o)}else if(y&&"timeline"===y.key){C=u(C,v,JSON.parse(y.value).timelineId,r,t,m,n,o)
+}else{var E=f(r.zone(),C,l[v],c[v],t,n,g(r.zone(),v,o));m.push(E)}}return m};function d(e,t,n,o,a,s,r,i){e=t+1
+;var l=n.value.split(" ")[0],d=n.value.split(" ")[1],p=o.getRowsText(l).ids(),h=o.getColsText(d).ids();c.crossProduct(p,h,!1).forEach((function(e){m(o,e,a,r,i,s)}));return e}function m(e,t,n,o,a,s){
+for(var r=e.root().handForSerializedPath(t).asAtext(),i=r.alines(),c=r.textlines(),l=0;l<i.length;l++){var d=f(r.zone(),0,c[l],i[l],n,o,g(r.zone(),l,a));s.push(d)}}function p(e,t,n,o,a,s,r,i){e=t+1
+;JSON.parse(n).items.forEach((function(e){if(e.innerZones&&e.innerZones.captionZone){var t=e.innerZones.captionZone;m(o,t,a,r,i,s)}}));return e}function h(e,t){
+for(var n=0,o=JSON.parse(t).items;n<o.length;n++){var a=o[n];if(a.innerZones&&a.innerZones.captionZone)return!0}return!1}function u(e,t,n,o,a,s,i,c){e=t+1;(0,
+r.getTimelineZoneIdsFromZatext)(n,o.raw(),a).filter((function(e){return 0===e.indexOf("timeline")})).forEach((function(e){return m(o,e,a,i,c,s)}));return e}t.extractTimelinePlainText=u
+;function f(e,t,n,a,s,r,i){for(var c=o.opIterator(a),d=0,m="",p=[],h=function(){var e=c.next(),t=n.substring(d,d+e.chars);d+=e.chars;if("*"===t.charAt(0)){var a={}
+;o.eachAttribNumber(e.attribs,(function(e){var t=s.getAttribKey(e),n=s.getAttribValue(e);n&&(a[t]=n)}));if(a.list)p.push({offset:d-e.chars,length:-1});else if(a.magicObject){var r=void 0
+;r=a.mentionpadid||a.mentionfolderid?"+"+(a.mentiontext||""):a.mentionurl||a.mentionspecial||a.mentionsoft?"@"+(a.mentiontext||""):"";for(var i=0;i<e.chars;i++){p.push({offset:d-e.chars+i,
+length:r.length-1});m+=r}}else m+=t}else m+=t};c.hasNext();)h();if(r){var u=l(m);u.length==m.length&&(m=u)}return{zone:e,rangeOffset:t,finalText:m,mods:p,hasSelStart:i}}function g(e,t,n){
+return n.zone===e&&n.line===t}},919:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.Comment=void 0
+;var o=n(1),a=n(134),s=n(72),r=n(91),i=n(22),c=n(3),l=n(414),d=n(489),m=n(920),p=n(141),h=n(8),u=n(2),f=n(54),g=n(223),C=n(924),v=n(925),y=n(11),E=n(10),S=n(93),k=n(83),I=n(365),T=n(28),A=n(27),b=n(394),_=n(92),x=n(85),P=n(0),N=n(182),D=n(166),w=n(32),R=n(31),M=n(84),L=(0,
+n(5).PaperIntlFactory)(),O=L.F,H=L._f,B=(0,u.defineMessages)({copyLinkMessage:{id:"FSl2e6",defaultMessage:"Click to copy link to comment."},commentTimeMessage:{id:"s3UET1",
+defaultMessage:"Comment time: {commentTime}"},you:{id:"vr8pC6",defaultMessage:"You"},showMore:{id:"JZEdSO",defaultMessage:"Show more"},edit:{id:"UwFkjc",defaultMessage:"Edit"},delete:{id:"9v2+SN",
+defaultMessage:"Delete"},lastModified:{id:"9IIj0I",defaultMessage:"{lastModified} (edited)"},linkCopied:{id:"NDXCLl",defaultMessage:"Link copied."}}),U=function(e){o.__extends(t,e);function t(t){
+var n=e.call(this,t)||this;n.onExpand_=function(){n.setState({isCollapsed:!1});n.props.onChange()};n.onEdit_=function(){n.setState({isEditing:!0,shouldFocusCommentEntry:!0},(function(){
+n.props.onChange();n.setState({shouldFocusCommentEntry:!1})}))};n.onDelete_=function(e){x.default.checkState(!n.props.comment.isDeleted);var t={atext:n.props.comment.atext,
+apool:(new s.default).fromJsonable(n.props.comment.apool),isDeleted:!0};n.setState({isEditing:!0});n.props.onChange();n.onCommentUpdated_(t)
+;n.props.onCommentDeleted&&n.props.onCommentDeleted(n.props.comment.id);e&&e.stopPropagation()};n.onCancelEdit_=function(){n.setState({isEditing:!1,draftContent:null},(function(){var e,t
+;n.props.onCommentCancelUpdate&&n.props.onCommentCancelUpdate();null===(t=(e=n.props).onUpdateDraftComments)||void 0===t||t.call(e,n.props.comment.threadId,n.props.comment.id)}))}
+;n.onCommentUpdated_=function(e){n.props.onCommentUpdated(n.props.comment,e);n.setState({isEditing:!1})};n.onClick_=function(){n.onExpand_()};n.onEmojiAddReactionClick_=function(e){
+n.props.onAddEmojiReaction(n.props.comment,e)};n.onEmojiRemoveReactionClick_=function(e){n.props.onRemoveEmojiReaction(n.props.comment,e)};n.interceptLinkClicks=function(e){(0,
+k.interceptLinkClicks)(e,n.props.onOpenLink,(0,k.shouldOpenInNewTab)(e))};n.state={isCollapsed:!0,isEditing:!!n.props.draftContent,shouldFocusCommentEntry:!1,draftContent:n.props.draftContent}
+;return n}t.prototype.shouldComponentUpdate=function(e,t){return!_.dumbDeepCompare(this.props,e,["stores","app"])||!_.dumbDeepCompare(this.state,t)};t.prototype.componentWillReceiveProps=function(e){
+e.isHighlight||this.setState({isCollapsed:!0});R.isOnButDoNotLog("paper_draft_comments")&&e.draftContent&&e.draftContent!==this.props.draftContent&&this.setState({isEditing:!0,
+draftContent:e.draftContent})};t.prototype.edit=function(){this.onEdit_()};t.prototype.isEditing=function(){return this.state.isEditing};t.prototype.displayContent=function(){
+return R.isOnButDoNotLog("paper_draft_comments")&&this.state.draftContent?this.state.draftContent:{atext:this.props.comment.atext,apool:this.props.comment.apool}};t.prototype.render=function(){
+var e,t=this.props.comment.secureAuthorId==h.default.secureUserId?P.createElement(O,o.__assign({},B.you)):P.createElement("span",{className:"notranslate"
+},this.props.comment.authorName),n=null!==(e=this.props.comment.authorPic)&&void 0!==e?e:void 0,l=this.props.getAuthorInfoForId(this.props.comment.secureAuthorId),u={
+userName:this.props.comment.authorName,bgcolor:l?l.bgcolor:"#000",userPic:n},y=P.createElement(r.Avatar,{className:"notranslate",src:u.userPic,backgroundColor:u.bgcolor,size:"small",hasNoOutline:!0
+},(0,A.nameToInitials)(u.userName));this.props.unsaved&&(y=P.createElement("div",{style:{position:"relative",width:"24px",height:"24px"}},P.createElement("div",{style:{position:"absolute",left:"15px",
+top:"-53px"}},P.createElement("div",{className:"awesome-spinner"}))));var k,_,x=!this.props.comment.atext.text,w=!1,R=!1;if(!x){
+var L=(new s.default).fromJsonableNoCloning(this.props.comment.apool),U=i.attributeNameTester("live-sticker",L),F=i.attributeNameTester("sticker",L);w=U(this.props.comment.atext.attribs)
+;R=F(this.props.comment.atext.attribs)}if(x){k=this.props.comment.atext;k=(k=S.escapeHtmlWithClickableLinks(k,"_blank")).replace(g.getUnanchoredEmailRegex(),(function(e){
+return'<span class="mention"><span class="mention-content">'+e+"</span></span>"}));_=P.createElement("div",{className:"content notranslate",dangerouslySetInnerHTML:{__html:k}})}else if(w){
+var j="editor-comment-".concat(this.props.comment.id),z="".concat(j,"-container");_=P.createElement("div",{className:"content",id:z},P.createElement(a.default,{id:j,
+editableState:f.EditableState.Readonly,type:"commententry",toolbar:!1,content:{zatext:i.atextToZatext(this.props.comment.atext),apool:this.props.comment.apool},stores:this.props.stores}))}else{var W={
+maxChars:this.props.isHighlight?void 0:80,maxLines:this.props.isHighlight?void 0:2,enableEnormojis:!0,renderContext:D.thisBrowserRenderContext(),locale:h.default.userLocale},Z=void 0
+;(k=N.renderEditorStaticHtml({text:{0:this.props.comment.atext.text},attribs:{0:this.props.comment.atext.attribs}},this.props.comment.apool,"commententry",W,(0,
+p.default)("commententry"))).isTruncated&&(Z=P.createElement("span",{className:"comment-expand"},P.createElement(E.default,{onClick:this.onExpand_},P.createElement(O,o.__assign({},B.showMore)))))
+;var V=this.props.comment.isPrivate||this.props.threadIsPrivate;_=P.createElement(I.default,{enabled:!0,isPrivate:V},P.createElement("div",{id:"editor-comment-"+this.props.comment.id,
+className:c("content",{"comment-private-toggled":V}),onClick:this.onClick_,dangerouslySetInnerHTML:{__html:k.html}}),Z)}if(this.state.isEditing){
+var q="undefined"!=typeof window&&window.isRunningTests?"commentEntry":void 0;return P.createElement(m.CommentEntry,{mainAce:this.props.app.getMainAce(),containsComments:!0,
+onOpenLink:this.props.onOpenLink,authorUserInfo:this.props.userInfo,threadId:this.props.comment.threadId,hashedPadId:this.props.hashedPadId,commentId:this.props.comment.id,
+onChange:this.props.onChange,onCommentPost:this.onCommentUpdated_,onCancel:this.onCancelEdit_,onAddSuggestion:this.props.onAddSuggestion,onDismissSuggestion:this.props.onDismissSuggestion,
+onDelete:this.onDelete_,stores:this.props.stores,canCreateComments:this.props.canCreateComments,threadIsPrivate:this.props.threadIsPrivate,threadSuggestionInfo:this.props.threadSuggestionInfo,
+threadIsResolved:this.props.threadIsResolved,annotationId:this.props.annotationId,annotationLabel:this.props.annotationLabel,onDetachAnnotation:this.props.onDetachAnnotation,
+shouldBeFocused:!!this.state.shouldFocusCommentEntry,ref:q,content:this.displayContent(),entryIndex:0})}var K,G,J,Q=!(w||R)
+;if(this.props.comment.secureAuthorId==h.default.secureUserId&&this.props.canCreateComments&&!this.props.threadIsResolved){!T.isPhone()&&Q&&(K=P.createElement("span",null,P.createElement(E.default,{
+className:"comment-action-edit selenium-comment-edit",onClick:this.onEdit_},P.createElement(O,o.__assign({},B.edit))),P.createElement("span",{className:"notranslate"}," • ")))
+;G=P.createElement("span",null,P.createElement(E.default,{className:"comment-action-delete selenium-comment-delete",onClick:this.onDelete_},P.createElement(O,o.__assign({},B.delete))))}
+this.props.canCreateComments&&!this.props.threadIsResolved&&(J=P.createElement(C.EmojiReactionButton,{app:this.props.app,onClick:this.onEmojiAddReactionClick_}))
+;var Y=P.createElement(v.EmojiReactions,{app:this.props.app,canCreateComments:this.props.canCreateComments,onAddClick:this.onEmojiAddReactionClick_,onRemoveClick:this.onEmojiRemoveReactionClick_,
+reactions:this.props.comment.reactions,currentUserId:h.default.secureUserId
+}),X=new Date(this.props.comment.createdTime),$=new Date(this.props.comment.lastModifiedTime),ee=X.getTime()!=$.getTime(),te=P.createElement("a",{href:this.props.threadLink,
+onClick:this.onThreadLinkClick.bind(this),title:H(B.copyLinkMessage)},P.createElement(M.TimeAgoLegacy,{className:"comment-timestamp",ariaLabel:H(B.commentTimeMessage,{commentTime:(0,
+M.timeAgoTooltipContent)($)}),ref:"timestamp",date:$})),ne=ee?P.createElement(O,o.__assign({},B.lastModified,{values:{lastModified:te}})):te,oe=null
+;this.props.annotationId&&this.props.annotationLabel&&(oe=P.createElement(d.default,{annotationLabel:this.props.annotationLabel}));var ae=null
+;ae=this.props.threadIsPrivate?P.createElement(b.NoteToSelfUserAvatar,{userAvatar:y,annotationIndicator:oe}):P.createElement("div",{className:"comment-user-avatar-wrapper"},y,oe)
+;return P.createElement("div",{className:"selenium-comment comment"},ae,P.createElement("div",{className:"byline"},P.createElement("span",{className:"comment-author-name"},t),P.createElement("span",{
+className:"notranslate"},"  "),ne,J),P.createElement("span",{onClick:this.interceptLinkClicks},_),P.createElement("div",{className:"edit-actions"},K,G),Y)};t.prototype.onThreadLinkClick=function(e){
+var t=this.props.app;if(t){e.preventDefault();e.stopPropagation();if(l.canCopy()){var n=P.createElement(O,o.__assign({},B.linkCopied));l.copy(this.props.threadLink,n)}var a=w.padUrlSuffixString({
+threadId:this.props.comment.threadId});t.navigateToPad({id:t.getCurrentPadId(),suffix:a},{keepThreadId:!0})}};t.displayName="Comment";return t=o.__decorate([y.default],t)}(P.Component);t.Comment=U},
+920:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.CommentEntry=void 0
+;var o=n(1),a=n(6),s=n(134),r=n(91),i=n(21),c=n(65),l=n(22),d=n(3),m=n(489),p=n(921),h=n(8),u=n(2),f=n(54),g=n(15),C=n(7),v=n(11),y=n(205),E=n(10),S=n(68),k=n(103),I=n(490),T=n(33),A=n(43),b=n(50),_=n(58),x=n(38),P=n(69),N=n(28),D=n(27),w=n(394),R=n(92),M=n(302),L=n(7),O=n(20),H=n(0),B=n(922),U=n(395),F=n(63),j=n(13),z=n(923),W=n(4),Z=n(226),V=n(16),q=n(17),K=(0,
+n(5).PaperIntlFactory)(),G=K.F,J=K._f,Q=(0,u.defineMessages)({replyPlaceholder:{id:"bCu3Na",defaultMessage:"Reply"},newPlaceholder:{id:"r2WuDp",defaultMessage:"New comment"},editPlaceholder:{
+id:"OxaCVx",defaultMessage:"Edit comment"},axStickerButton:{id:"MJzVGO",defaultMessage:"Add sticker"},noteToSelfPlaceholder:{id:"CU4lo8",defaultMessage:"Add note to self"},easyCommentPlaceholder:{
+id:"sgJUuY",defaultMessage:"Add comment, sticker"},addAnnotationButton:{id:"x6Geq1",defaultMessage:"Comment on specific area"},removeAnnotationButton:{id:"drQjXZ",defaultMessage:"Remove annotation"},
+cancelButton:{id:"GemlPv",defaultMessage:"Cancel"},deleteButton:{id:"9v2+SN",defaultMessage:"Delete"},saveButton:{id:"78AHo5",defaultMessage:"Save"},postButton:{id:"eFisP/",defaultMessage:"Post"},
+approveButton:{id:"eyx/FG",defaultMessage:"Approve"},dismissButton:{id:"cK/p7/",defaultMessage:"Dismiss"},addButton:{id:"YcxVqg",defaultMessage:"Add"},postComment:{id:"kjI6dx",
+defaultMessage:"Post comment"},commentEntryBox:{id:"ww8lkF",defaultMessage:"Comment Entry"}}),Y=q.default.events.getAccel,X=function(e){o.__extends(t,e);function t(t){var n=e.call(this,t)||this
+;n.ace=null;n.aceUI=null;n.commentEntryBox=null;n.stickers=null;n.postButton=null;n.postCommentMenuButton=null;n.featureEasyComment=!1;n.commentCancelConfirmModal=null;n.clearComment=function(){
+n.props.onCancel?n.props.onCancel():n.clear()};n.saveComment=a.debounce((function(){
+n.content&&n.props.stores.draftCommentsStore.saveComment(n.props.stores.draftCommentsStore.getDraftCommentStoreKey(n.props.authorUserInfo.secureUserId,n.props.hashedPadId),n.props.threadId,n.props.commentId,n.content)
+}),500);n.postComment=function(){n.postComment_()};n.insertSuggestionIntoDoc=function(){if(n.props.onAddSuggestion){var e=n.getContentIfHasIt()
+;null!=e&&n.props.mainAce&&n.props.threadSuggestionInfo&&n.props.onDismissSuggestion&&n.props.onAddSuggestion(e,n.props.mainAce,n.props.threadSuggestionInfo,n.props.onDismissSuggestion)}}
+;n.handleSuggestHighlightClick=function(){n.postComment_({type:C.PaperSuggestionType.Highlight})};n.handleSuggestActionItemClick=function(){n.postComment_({type:C.PaperSuggestionType.ActionItem})}
+;n.handleKeyDown=function(e){var t,o;switch(e.keyCode){case A.KeyCode.UP:if(n.props.onEditPrevious&&n.shouldEditPrevious(e)){e.preventDefault();return!n.props.onEditPrevious()}break
+;case A.KeyCode.RETURN:if(e.ctrlKey||e.altKey||e.metaKey){e.preventDefault();n.state.isEmpty?n.props.onDelete&&n.props.onDelete():n.postComment();return!1}break;case A.KeyCode.ESCAPE:
+if(n.props.onCancel&&(n.props.content||!n.hasContent(n.content))){e.preventDefault();n.props.onCancel();return!1}break;case A.KeyCode.TAB:
+if(!(null===(t=n.ace)||void 0===t?void 0:t.autoComplete.isVisible())&&(n.postButton||n.postButtonForwardRef.current)){e.preventDefault()
+;n.postButtonForwardRef.current?n.postButtonForwardRef.current.focus():null===(o=n.postButton)||void 0===o||o.focus();return!1}}};n.onChange=function(){
+if(!n.ace)throw Error("Ace editor not available");var e=n.ace.contents.exportHand(),t={atext:{text:e.text(),attribs:e.attribs()},apool:e.pool()};if(n.hasContent(t)){
+n.commentEntryBox&&n.commentEntryBox.classList.add("comment-edited");n.content=t;n.setState({isEmpty:!1});F.isOnButDoNotLog("paper_draft_comments")&&n.saveComment()}else{n.content=void 0
+;if(!n.props.isNew||!n.props.annotationLabel){n.commentEntryBox&&n.commentEntryBox.classList.remove("comment-edited");n.setState({isEmpty:!0})}
+if(F.isOnButDoNotLog("paper_draft_comments")&&n.props.hashedPadId){var o=n.props.stores.draftCommentsStore.getDraftCommentStoreKey(n.props.authorUserInfo.secureUserId,n.props.hashedPadId)
+;n.props.stores.draftCommentsStore.clearComment(o,n.props.threadId,n.props.commentId)}}n.props.onChange()};n.onFocus=function(){document.body.classList.add("hp-posting-comment")
+;n.props.onFocus&&n.props.onFocus();n.setState({isFocused:!0})};n.onBlur=function(){document.body.classList.remove("hp-posting-comment");n.setState({isFocused:!1})};n.onCancel_=function(){
+n.hasContent(n.content)&&!n.hasContent(n.props.content)||F.isOnButDoNotLog("paper_draft_comments")&&(n.props.isNewReply||n.props.isNew)?n.openConfirmationModal():n.clearComment()}
+;n.onEasyStickerSelected=function(e,t,o){(0,W.trackEng)("paper-easy-comments-sticker",{type:"".concat(e,"_").concat(t)});n.onStickerSelected_(e,t,o)};n.onStickerSelected_=function(e,t,o){var a
+;null===(a=n.stickers)||void 0===a||a.close();var s=n.ace;if(s){s.execute("insertSticker",(function(){
+var n=s.selection.getStart()?s.selection.getStart():O.Position.zero,a=s.selection.getEnd()?s.selection.getEnd():O.Position.zero;s.contents.performDocumentReplaceRange(n,a,"");var r=n;if(r.col>0){
+s.contents.performDocumentReplaceRange(r,r,"\n");r=new O.Position(r.zone,r.line+1,0)}s.getRep(r.zone).lines.atIndex(r.line).text.length>0&&s.contents.performDocumentReplaceRange(r,r,"\n")
+;var i=U.isLiveSticker(e,t);s.contents.performDocumentReplaceRange(r,r,"*",_.getGalleryAttributesForSticker(i,o))}));n.postComment()}};n.onStickerMenuOpen=function(){
+n.state.isStickerMenuSeen||n.setState({isStickerMenuSeen:!0})};n.requestAnnotation=function(){n.props.onRequestAnnotation&&n.props.onRequestAnnotation()};n.cancelAnnotation=function(){
+n.props.onCancelAnnotation&&n.props.onCancelAnnotation()};n.detachAnnotation=function(){n.props.onDetachAnnotation&&n.props.onDetachAnnotation()};n.dismissSuggestion=function(){
+n.props.onDismissSuggestion&&n.props.onDismissSuggestion()};n.onAceCreated_=function(e){n.ace=e;n.events.on(e.observer,"change",n.onChange);n.events.on(e.observer,"blur",n.onBlur)
+;n.events.on(e.observer,"focus",n.onFocus);e.observer.on("keydown",n.handleKeyDown,M.ObserverEventPriority.Comments)
+;n.props.content?n.focus():n.state.transferredDraftContent&&n.setContent(n.state.transferredDraftContent)};n.content=n.props.content;n.state={isEmpty:!n.props.content,isFocused:!0,
+isPrivate:!!n.props.threadIsPrivate,isStickerMenuSeen:!1,containsComments:!!n.props.containsComments,transferredDraftContent:null}
+;n.props.isNew&&(n.props.authorUserInfo.isOwner||0!=h.default.numComments||(n.featureEasyComment=!0));n.postButtonForwardRef=H.createRef();return n}
+Object.defineProperty(t.prototype,"__aceForLegacyTests",{get:function(){return this.ace},enumerable:!1,configurable:!0});t.prototype.shouldComponentUpdate=function(e,t){
+return!R.dumbDeepCompare(this.props,e,["stores","mainAce"])||!R.dumbDeepCompare(this.state,t)||this.props.mainAce!==e.mainAce};t.prototype.hasContent=function(e){
+return!(!e||!e.atext.text.trim().length)};t.prototype.clear=function(){if(this.ace){this.ace.contents.importText("");this.ace.focus()}};t.prototype.openConfirmationModal=function(){var e
+;null===(e=this.commentCancelConfirmModal)||void 0===e||e.open()};t.prototype.setContent=function(e){if(this.ace&&e){this.content=e;var t={zatext:l.atextToZatext(this.content.atext),
+apool:this.content.apool};this.ace.contents.importZatext(t.zatext,t.apool)}};t.prototype.setContentFromDraftTransfer=function(e){this.ace&&e&&this.setContent(e);this.setState({
+transferredDraftContent:e})};t.prototype.getContentIfHasIt=function(){var e,t=this.ace;if(!t)return null;t.execute("trimTrailingWhitespace",(function(){(0,Z.trimTrailingWhitespace)(t)
+;e=t.contents.exportHand()}));if(!e)return null;var n={atext:{text:e.text(),attribs:e.attribs()},apool:e.pool()};return this.hasContent(n)?n:null};t.prototype.postComment_=function(e){
+this.saveComment.cancel();var t=this.ace;if(!t)throw Error("Ace editor not available");var n=t.autoComplete.mentionUndoer;n&&n.clearUndoMentionToasts();var o=this.getContentIfHasIt();if(null!=o){
+this.props.onCommentPost(o,this.state.isPrivate,e);this.content=void 0;this.clear();if(this.featureEasyComment){(0,W.trackEng)("paper-easy-comments-posted");h.default.updateInPlace({
+numComments:(h.default.numComments||0)+1})}}};t.prototype.shouldEditPrevious=function(e){return!(e.ctrlKey||e.altKey||e.metaKey||e.shiftKey)&&!this.hasContent(this.content)}
+;t.prototype.openStickerMenu=function(){this.stickers&&this.stickers.open()};t.prototype.isFocused=function(){return this.state.isFocused};t.prototype.getContent=function(){this.ensureAceIsCreated()
+;return this.content};t.prototype.focus=function(){this.ensureAceIsCreated();if(this.ace){var e=O.Position.endOfZone(this.ace,O.Position.ROOT_ZONE);this.ace.selection.focusOn(e)}}
+;t.prototype.ensureAceIsCreated=function(){!this.ace&&this.aceUI&&this.aceUI.attachAce()};t.prototype.renderCommentEditActions=function(){var e=this;if(!this.props.canCreateComments)return null
+;if(!this.state.isEmpty&&!this.props.content||F.isOnButDoNotLog("paper_draft_comments")&&(this.props.isNew||this.props.isNewReply))return this.renderCommentCreateActions()
+;var t,n,a=H.createElement(E.default,{onClick:this.onCancel_},H.createElement(G,o.__assign({},Q.cancelButton))),s="comment-edit-actions"
+;if(this.state.isEmpty&&this.props.annotationLabel)return H.createElement("div",{className:s},a);if(this.state.isEmpty&&!this.props.isNewReply){t=H.createElement(G,o.__assign({},Q.deleteButton))
+;n=this.props.onDelete}else{t=this.props.content?H.createElement(G,o.__assign({},Q.saveButton)):H.createElement(G,o.__assign({},Q.postButton));n=this.postComment}
+var r=H.createElement("kbd",null,Y(),"+",H.createElement("b",null,"↵"));return H.createElement("div",{className:s},H.createElement(E.default,{ref:function(t){return e.postButton=t},
+className:"selenium-comment-edit-save",tooltip:r,onClick:n},t),H.createElement("span",{className:"notranslate"}," • "),a)};t.prototype.renderCommentCreateActions=function(){
+var e,t=this,n=H.createElement("kbd",null,Y(),"+",H.createElement("b",null,"↵"));e=F.isOnButDoNotLog("paper_note_to_self")?this.state.containsComments?H.createElement(E.default,{ref:function(e){
+return t.postButton=e},className:"selenium-comment-create-post comment-create-post",primary:!0,tooltip:H.createElement("kbd",null,Y(),"+",H.createElement("b",null,"↵")),onClick:this.postComment
+},this.props.threadIsPrivate?H.createElement(G,o.__assign({},Q.addButton)):H.createElement(G,o.__assign({},Q.postButton))):H.createElement(P.default,{ref:function(e){return t.postCommentMenuButton=e}
+},H.createElement(I.default,{primary:!0,className:"comment-create-post-dropdown"},H.createElement(E.default,{className:"comment-create-post comment-create-post-dropdown",hasPopup:!0,ref:function(e){
+return t.postButton=e},tooltip:n,onClick:this.postComment
+},this.state.isPrivate?H.createElement(G,o.__assign({},Q.addButton)):H.createElement(G,o.__assign({},Q.postButton)))),H.createElement(S.default,{className:"comment-create-post-dropdown-menu"
+},H.createElement("ul",null,H.createElement(k.HpMenuItem,null,H.createElement(E.default,{className:d("comment-create-post-dropdown-item",{"hp-menu-selected":!this.state.isPrivate}),tooltip:n,
+onClick:this.handleCommentSettingsClick.bind(this,!1)},H.createElement(G,o.__assign({},Q.postComment)))),H.createElement(k.HpMenuItem,null,H.createElement(E.default,{
+className:d("comment-create-post-dropdown-item",{"hp-menu-selected":this.state.isPrivate}),tooltip:n,onClick:this.handleCommentSettingsClick.bind(this,!0)
+},H.createElement(G,o.__assign({},Q.noteToSelfPlaceholder))))))):H.createElement(i.default,{variant:"primary",size:"small",forwardedRef:this.postButtonForwardRef,
+className:"selenium-comment-create-post comment-create-post",tooltip:{title:n},onClick:this.postComment},this.state.isPrivate?H.createElement(G,o.__assign({noEvents:!0
+},Q.addButton)):H.createElement(G,o.__assign({noEvents:!0},Q.postButton)));return H.createElement("div",{className:"comment-create-actions"},e,H.createElement(i.default,{variant:"transparent",
+size:"small",className:"comment-create-cancel",onClick:this.onCancel_},H.createElement(G,o.__assign({},Q.cancelButton))))};t.prototype.renderStickerButton=function(){var e=this
+;if(!this.props.canCreateComments)return null;if(!this.state.isEmpty)return null;var t=J(Q.axStickerButton),n=null
+;this.featureEasyComment&&this.state.isEmpty&&!this.state.isStickerMenuSeen&&(n=H.createElement(c.default,{allowOutOfBounds:!1,attachment:"top right",className:"easy-comment-sticker",offset:"5 -17",
+overlay:!1,reposition:!1,springOffsetMagnitude:0,target:"#sticker-button-"+this.props.threadId,targetAttachment:"bottom left"},H.createElement(W.TrackContext,{
+trackContext:W.EditorContext.Comment.EasyStickers},H.createElement(B.EasyStickers,{onStickerSelected:this.onEasyStickerSelected}))));return H.createElement(H.Fragment,null,H.createElement(P.default,{
+id:"sticker-button-"+this.props.threadId,className:"sticker-button",ref:function(t){return e.stickers=t},disableAutoCloseOnScroll:!0,dontReposition:N.isNativeMobileApp(),onOpen:this.onStickerMenuOpen
+},H.createElement(T.IconButton,{variant:"transparent",isRounded:!0,title:t,"aria-label":t},H.createElement(V.UIIcon,{src:g.EmojiSmileLine})),H.createElement(W.TrackContext,{
+trackContext:W.EditorContext.Comment.Stickers},H.createElement(S.default,{noPadding:!0,type:"custom",takeScrollbarIntoAccount:!0},H.createElement(B.default,{
+initialSelected:this.featureEasyComment?"Utilitarian":void 0,onStickerSelected:this.onStickerSelected_})))),n)};t.prototype.handleCommentSettingsClick=function(e){var t;this.setState({isPrivate:e})
+;null===(t=this.postCommentMenuButton)||void 0===t||t.close()};t.prototype.getTangoPlaceholder=function(e){
+return e["ON"===F.getVariantButDoNotLog(L.PaperStormcrow.TANGO_COMMENT_PLACEHOLDER_QA)?this.props.entryIndex%e.length:x.getRandomInt(e.length)]};t.prototype.getPlaceholder=function(){
+var e=this.props.stores&&this.props.stores.settings.getSettings().prose&&!!z.TANGO_PLACEHOLDERS[h.default.userLocale]
+;return F.isOnButDoNotLog("paper_note_to_self")&&this.state.isPrivate?J(Q.noteToSelfPlaceholder):this.props.isNew?this.featureEasyComment?J(Q.easyCommentPlaceholder):e&&this.props.showTangoPlaceholdersForNewComments?this.getTangoPlaceholder(z.TANGO_PLACEHOLDERS[h.default.userLocale].newPlaceholders):J(Q.newPlaceholder):this.props.content&&!F.isOnButDoNotLog("paper_draft_comments")||F.isOnButDoNotLog("paper_draft_comments")&&!this.props.isNew&&!this.props.isNewReply?J(Q.editPlaceholder):e?this.getTangoPlaceholder(z.TANGO_PLACEHOLDERS[h.default.userLocale].replyPlaceholders):J(Q.replyPlaceholder)
+};t.prototype.render=function(){var e,t=this;e=F.isOnButDoNotLog("paper_draft_comments")?d("selenium-comment-entry-box","comment-entry-box",{"comment-new":this.props.isNew||this.props.isNewReply,
+"comment-modify":!this.props.isNew&&!this.props.isNewReply,"comment-edited":!!this.props.content,"comment-easy":!!this.featureEasyComment}):d("selenium-comment-entry-box","comment-entry-box",{
+"comment-new":this.props.isNew,"comment-modify":!!this.props.content,"comment-edited":!!this.props.annotationLabel,"comment-easy":!!this.featureEasyComment})
+;var n,o="editor-thread-"+this.props.threadId,a=this.content?{zatext:l.atextToZatext(this.content.atext),apool:this.content.apool
+}:null,i=this.props.canCreateComments?f.EditableState.Editable:f.EditableState.Readonly;n=F.isOnButDoNotLog("paper_draft_comments")?this.props.isNew||this.props.isNewReply?null:H.createElement("div",{
+className:"byline-placeholder"}," "):this.props.content?H.createElement("div",{className:"byline-placeholder"}," "):null;var c=null,h=null;this.props.annotationLabel&&(c=H.createElement(m.default,{
+annotationLabel:this.props.annotationLabel}));if(this.props.annotationId){var u=J(Q.removeAnnotationButton);h=H.createElement(E.default,{onClick:this.detachAnnotation,
+className:"comment-annotation-button-active",tooltip:u,"track-title":"Remove annotation","aria-label":u},H.createElement(j.default,{name:"annotation"}))}else if(this.props.awaitingAnnotation){
+var g=J(Q.cancelButton);h=H.createElement(E.default,{onClick:this.cancelAnnotation,className:"comment-annotation-button-active",tooltip:g,"track-title":"Cancel annotation selection","aria-label":g
+},H.createElement(j.default,{name:"annotation"}))}else if(this.props.canAttachAnnotations&&!this.props.annotationId){var C=J(Q.addAnnotationButton);h=H.createElement(E.default,{
+onClick:this.requestAnnotation,className:"comment-annotation-button-inactive",tooltip:C,"track-title":"Start annotation","aria-label":C},H.createElement(j.default,{name:"annotation"}))}
+var v=d("comment-entry","selenium-comment-entry",o,{"comment-private-toggled":!!this.state.isPrivate}),S="."+o,k=this.props.authorUserInfo,I=H.createElement(r.Avatar,{className:"notranslate",
+src:k.userPic,backgroundColor:(0,y.getBgcolor)(k),size:"small",hasNoOutline:!0},(0,D.nameToInitials)((0,y.getNameForInitials)(k))),T=null
+;T=this.state.isPrivate?H.createElement(w.NoteToSelfUserAvatar,{userAvatar:I,annotationIndicator:c}):H.createElement("div",{className:"comment-user-avatar-wrapper"},I,c)
+;var A=this.getPlaceholder(),b=!!this.content,_=J(Q.commentEntryBox);return H.createElement("div",{className:e,ref:function(e){return t.commentEntryBox=e}},T,n,H.createElement("div",{
+className:"comment-entry-wrapper"},H.createElement(s.default,{id:o,ref:function(e){return t.aceUI=e},className:v,editableState:i,content:a||void 0,type:"commententry",placeholder:A,
+manuallyAttachAce:!0,toolbar:!1,scrollSelector:S,onAceCreated:this.onAceCreated_,stores:this.props.stores,isNew:b,"aria-label":_,role:"textbox","aria-multiline":!0
+})),this.renderStickerButton(),h?H.createElement("div",{className:"comment-annotation-button"},h):null,this.renderCommentEditActions(),H.createElement("div",{className:"clear"
+}),H.createElement(p.CommentCancelConfirmModal,{onDiscard:this.clearComment,ref:function(e){return t.commentCancelConfirmModal=e}}))};t.prototype.componentDidMount=function(){var e=this
+;this.props.isNew&&this.timers.setTimeout((function(){return e.focus()}),0);this.props.content&&Promise.resolve().then((function(){e.ensureAceIsCreated();e.focus()})).catch(b.logException)
+;this.featureEasyComment&&(0,W.trackEng)("paper-easy-comments-impression")};t.prototype.componentWillReceiveProps=function(e){
+if(F.isOnButDoNotLog("paper_draft_comments")&&e.content&&e.content!=this.props.content){this.content=e.content;this.setState({isEmpty:!1})}};t.prototype.componentWillUpdate=function(e){
+e.shouldBeFocused&&!this.props.shouldBeFocused&&this.focus()};t.prototype.componentWillUnmount=function(){var e;if(this.ace){
+null===(e=this.ace.observer)||void 0===e||e.off("keydown",this.handleKeyDown);this.ace=null}document.body.classList.remove("hp-posting-comment")};t.displayName="CommentEntry";t.defaultProps={
+showTangoPlaceholdersForNewComments:!0};return t=o.__decorate([v.default],t)}(H.Component);t.CommentEntry=X},921:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.CommentCancelConfirmModal=void 0;var o=n(1),a=n(33),s=n(2),r=n(108),i=n(0),c=(0,n(5).PaperIntlFactory)(),l=c.F,d=c._f,m=(0,s.defineMessages)({title:{id:"jnMKKq",defaultMessage:"Discard comment?"},
+body:{id:"hCTAHi",defaultMessage:"This will get rid of the comment you were writing."},cancel:{id:"aNfH1w",defaultMessage:"Cancel"},discard:{id:"He8fvY",defaultMessage:"Discard"},close:{id:"poBhZv",
+defaultMessage:"Close"}}),p=function(e){o.__extends(t,e);function t(){var t=null!==e&&e.apply(this,arguments)||this;t.state={open:!1};t.discard=function(){t.props.onDiscard();t.close()}
+;t.close=function(){t.setState({open:!1})};return t}t.prototype.open=function(){this.setState({open:!0})};t.prototype.render=function(){return i.createElement(r.Modal,{open:this.state.open,
+isCentered:!0,withCloseButton:d(m.close),onRequestClose:this.close,shouldCloseOnOverlayClick:!0,"aria-labelledby":"discard-comment-confirm"},i.createElement(r.Modal.Header,{
+hasBottomSpacing:"title-standard"},i.createElement(r.Modal.Title,{id:"discard-comment-confirm"},i.createElement(l,o.__assign({},m.title)))),i.createElement(r.Modal.Body,{hasVerticalSpacing:!1
+},i.createElement(l,o.__assign({},m.body))),i.createElement(r.Modal.Footer,null,i.createElement(a.Button,{variant:"opacity",onClick:this.close,autoFocus:!0
+},i.createElement(l,o.__assign({},m.cancel))),i.createElement(a.Button,{variant:"primary",onClick:this.discard},i.createElement(l,o.__assign({},m.discard)))))}
+;t.displayName="confirmCancelCommentModal";return t}(i.Component);t.CommentCancelConfirmModal=p},922:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.EasyStickers=void 0
+;var o=n(1),a=n(3),s=n(47),r=n(11),i=n(562),c=n(10),l=n(266),d=n(545),m=n(0),p=n(24),h=n(395),u=n(13),f=n(18),g=function(e){o.__extends(t,e);function t(){return null!==e&&e.apply(this,arguments)||this
+}t.prototype.componentDidMount=function(){d.default.componentDidMount.call(this)};t.prototype.getClickHandler=function(e,t){var n=this;return function(o){o.preventDefault()
+;var a,r="".concat(s.default.protocol,"//").concat(s.default.host);(0,h.isLiveSticker)(e,t)||(a="original");n.props.onStickerSelected(e,t,(0,h.stickerUrl)(e,t,a,r))}}
+;t.prototype.renderLiveStickers=function(){var e=this.props.stickerSet;if(!e.liveStickers)return null;for(var t=[],n=0,o=e.liveStickers;n<o.length;n++){var a=o[n],s=(0,
+i.getAddStickerAltText)(e.name,a);t.push(m.createElement(c.default,{onClick:this.getClickHandler(e.name,a),key:a,"track-title":e.name+"-"+a},m.createElement(l.default,{size:"small",skipInitial:!0,
+pack:e.name,sticker:a,title:s})))}return t};t.prototype.renderStaticStickers=function(){var e=this.props,t=e.isSelected,n=e.stickerSet;if(!t||!n.staticStickerCount)return null
+;for(var o=[],a=1;a<=n.staticStickerCount;++a){var s=a<10?"0".concat(a):"".concat(a),r=(0,i.getAddStickerAltText)(n.name,s);o.push(m.createElement(c.default,{key:s,
+onClick:this.getClickHandler(n.name,s),"track-title":n.name+"-"+s},m.createElement("img",{alt:r,title:r,src:(0,h.stickerUrl)(n.name,s)})))}return o};t.prototype.render=function(){
+var e=this.props.isSelected,t=a("sticker-set",{"is-selected":e});return m.createElement("div",{className:t,ref:"overflow"},this.renderLiveStickers(),this.renderStaticStickers())}
+;t.displayName="StickerPane";return t=o.__decorate([r.default],t)}(m.PureComponent),C=function(e){o.__extends(t,e);function t(){var t=null!==e&&e.apply(this,arguments)||this;t.handleClick=function(e){
+e.preventDefault();t.props.onChangeSelection(t.props.stickerSet.name)};return t}t.prototype.render=function(){var e=this.props,t=e.stickerSet,n=e.isSelected,o=(0,
+i.getStickerCategoryAltText)(t.name),s=a("sticker-tab",{"is-selected":n});return m.createElement(c.default,{className:s,onClick:this.handleClick,"track-title":t.name},m.createElement(u.default,{
+name:t.tabIcon,title:o}))};t.displayName="StickerTab";return t}(m.PureComponent),v=function(e){o.__extends(t,e);function t(t){var n=e.call(this,t)||this;n.handleChangeSelection=function(e){
+n.setState({selected:e})};n.scrollLeft=function(e){e.preventDefault();n.setState({scrollOffset:Math.min(0,n.state.scrollOffset+180)})};n.scrollRight=function(e){e.preventDefault();n.setState({
+scrollOffset:Math.max(n.getMaxScroll(),n.state.scrollOffset-180)})};var o=(0,h.getActiveStickerSets)();n.state={selected:n.props.initialSelected||o[0].name,sets:o,scrollOffset:0,maxScroll:-1};return n
+}t.prototype.getMaxScroll=function(){var e=0;Array.prototype.slice.call(p.findDOMNode(this).querySelectorAll(".sticker-tab")).forEach((function(t){e+=(0,f.outerWidth)(t,!0)}))
+;var t=p.findDOMNode(this.tabs);return(0,f.width)(t)-e-60};t.prototype.componentWillUpdate=function(){var e=this.getMaxScroll();e!=this.state.maxScroll&&this.setState({maxScroll:e})}
+;t.prototype.render=function(){var e=this,t=this.state,n=t.sets,o=t.selected,s=t.scrollOffset,r=a("sticker-tabs",{"show-left":!!s,"show-right":s!=this.state.maxScroll});return m.createElement("div",{
+className:"sticker-menu"},m.createElement("div",{className:r,ref:function(t){return e.tabs=t}},m.createElement(c.default,{className:"sticker-left",onClick:this.scrollLeft,"track-title":"scroll left"
+},m.createElement(u.default,{name:"previous",title:(0,i.getStickerSetScrollText)("left")})),m.createElement("div",{className:"sticker-tabs-inner",ref:"tabScroller",style:{marginLeft:s}
+},n.map((function(t){return m.createElement(C,{key:t.name,stickerSet:t,isSelected:t.name==o,onChangeSelection:e.handleChangeSelection})}))),m.createElement(c.default,{className:"sticker-right",
+onClick:this.scrollRight,"track-title":"scroll right"},m.createElement(u.default,{name:"next",title:(0,i.getStickerSetScrollText)("right")}))),n.map((function(t){return m.createElement(g,{key:t.name,
+stickerSet:t,isSelected:t.name==o,onStickerSelected:e.props.onStickerSelected})})))};t.displayName="Stickers";return t}(m.PureComponent);t.default=v;t.EasyStickers=function(e){
+return m.createElement("div",{className:"sticker-set easy-sticker-set is-selected"},[{name:"Utilitarian",id:"02",size:"original"},{name:"Utilitarian",id:"14",size:"original"},{name:"Utilitarian",
+id:"12",size:"original"}].map((function(t){return m.createElement(c.default,{onMouseDown:function(n){n.preventDefault();var o="".concat(s.default.protocol,"//").concat(s.default.host)
+;e.onStickerSelected(t.name,t.id,(0,h.stickerUrl)(t.name,t.id,t.size,o))},key:t.id,"track-title":t.name+"-"+t.id,title:(0,i.getCustomStickerAltText)(t.name,t.id)},m.createElement("img",{src:(0,
+h.stickerUrl)(t.name,t.id)}))})))}},923:function(e,t){Object.defineProperty(t,"__esModule",{value:!0});t.TANGO_PLACEHOLDERS=void 0;t.TANGO_PLACEHOLDERS={en:{
+newPlaceholders:["Leave a compliment","Voice your thoughts","Say something nice","Say it with a sticker","What do you think?","Your thoughts here","Speak your mind","Express yourself","Here’s a thought","Type, type, post!","Comment away","Words are hard"],
+replyPlaceholders:["Put it out there","Have your say","Keep it simple","Say it with a sticker","What do you think?","Your thoughts here","What’s your take?","Speak your mind","Add your 2 cents","Here’s a thought","Your thoughts?","Jump right in","Your turn","Chime in","Weigh in"]
+},"en-GB":{
+newPlaceholders:["Leave a compliment","Voice your thoughts","Say something nice","Say it with a sticker","What do you think?","Your thoughts here","Speak your mind","Express yourself","Here’s a thought","Make a statement!","Comment away","Have your say"],
+replyPlaceholders:["Say it with a sticker","What do you think?","Your thoughts here","What’s your take?","Speak your mind","Here’s a thought","Your thoughts?","Jump right in","Your turn","And discuss…","Chime in","Weigh in"]
+},"da-DK":{
+newPlaceholders:["Hvad tænker du?","Giv en kompliment","Sig, hvad du tænker","Sig noget pænt","Brug klistermærker","Hvad synes du?","Hvad er din mening?","Vær oprigtig","Sig din mening","Her er min mening","Skriv, skriv og send!","Skriv bare løs","Det er svært med ord"],
+replyPlaceholders:["Brug klistermærker","Hvad synes du?","Hvad er din mening?","Har du et bud?","Hvad tænker du?","Meld gerne ind her","Her er min mening","Bland dig bare","Din tur","Giv dit besyv med","Sig din mening"]
+},de:{
+newPlaceholders:["Was meinen Sie?","Ein Kompliment","Fassen Sie's in Worte","Sagen Sie was Nettes","Sag’s mit Stickern","Was denken Sie?","Schreiben Sie es auf","Lassen Sie es raus","Sprechen Sie es aus","Ein Vorschlag?","Tippen und senden!","Wechseln Sie Worte","Sprechen Sie darüber"],
+replyPlaceholders:["Sag’s mit Stickern","Was meinen Sie dazu?","Ihr Standpunkt?","Ihre Sichtweise?","Ihre Meinung?","Mischen Sie sich ein","Und Ihr Vorschlag?","Was denken Sie?","Ihr Senf dazu?","Sie sind dran","Was sagen Sie dazu?","Machen Sie mit"]
+},es:{
+newPlaceholders:["¿Qué te parece?","Di algo bonito","Envía tu opinión","Dilo con calcomanías","¿Qué opinas?","Comparte tu opinión","Exprésate","¿Se te ocurrió algo?","¡Adelante, escribe!","¿Alguna idea?","Explícate"],
+replyPlaceholders:["Dilo con calcomanías","¿Qué te parece?","¿Qué opinas?","Comparte tu opinión","¿Qué piensas?","Aporta tu opinión","Deja tu opinión","¿Qué opinas?","¡Vamos, participa!","Ahora te toca a ti","Es tu turno"]
+},"es-ES":{
+newPlaceholders:["¿Qué te parece?","¿Qué opinas?","A ver qué opinas…","Deja tu opinión","¡Tormenta de ideas!","Deja un comentario","Dilo con una pegatina","Di algo bonito","Comparte tu opinión","¡Venga, a escribir!","¿Alguna idea?","¡Ideas, por favor!","Explícate"],
+replyPlaceholders:["¿Qué te parece?","¿Qué opinas?","A ver qué opinas…","Deja tu opinión","¡Tormenta de ideas!","Deja un comentario","Dilo con una pegatina","Di algo bonito","Comparte tu opinión","¿Quieres participar?","¿Alguna idea?","¡Ideas, por favor!","Explícate","¿Quieres decir algo?"]
+},fr:{
+newPlaceholders:["Des commentaires ?","Faites un compliment","Un avis à donner ?","Laissez un mot sympa","Ajoutez un sticker","Qu'en pensez-vous ?","Donnez votre avis","Dites-nous tout","Exprimez-vous","J'ai mon mot à dire","Prêt ? Commentez !","Partagez vos idées","Trouvez les mots"],
+replyPlaceholders:["Ajoutez un sticker","Qu'en pensez-vous ?","Donnez votre avis","Un commentaire ?","Dites-nous tout","Un mot à dire ?","Exprimez-vous","Un avis là-dessus ?","D’autres idées ?","La parole est à vous","Votre point de vue ?","Prononcez-vous"]
+},id:{
+newPlaceholders:["Menurut Anda?","Jangan lupa pujian","Utarakan pendapat","Opini Anda?","Tulis dgn stiker","Menurut Anda…","Pendapat Anda…","Gagasan Anda?","Pendapat Anda?","Begini menurut saya","Ketik, ketik, kirim!","Berikan komentar","Menulis memang susah"],
+replyPlaceholders:["Tulis dgn stiker","Menurut Anda?","Pendapat Anda…","Menurut Anda…","Gagasan Anda?","2 rupiah dari saya","Begini menurut saya","Pendapat Anda?","Balasan Anda…","Giliran Anda","Langsung saja","Menimbang"]
+},it:{
+newPlaceholders:["Di’ quello che pensi","Complimentati","Esprimi le tue idee","Sei d'accordo?","Dillo con un adesivo","Cosa ne pensi?","Hai idee? Scrivile!","Parla apertamente","Esprimiti!","Ecco cosa penso","Scrivi, scrivi e invia!","Commenta comunque","Le parole rimangono"],
+replyPlaceholders:["Dillo con un adesivo","Cosa ne pensi?","Hai idee? Scrivile!","La tua opinione è…","Parla apertamente","Di’ la tua!","Ecco cosa penso","Il tuo punto di vista?","Intervieni!","Tocca a te","Partecipa, rispondi!","Dai un parere"]
+},ja:{newPlaceholders:["思いを伝えましょう","ステッカーをどうぞ","どう思いますか？","褒めてみましょう","会話しましょう"],replyPlaceholders:["気持ちを伝えてみましょう","スタンプで感謝の気持ちを","どう思いますか？","褒めてみましょう","ここで会話しましょう"]},ko:{
+newPlaceholders:["무슨 생각이 드세요?","칭찬을 남겨 주세요","의견을 밝혀 보세요","좋은 말을 전해 보세요","스티커로 표현해 보세요","어떻게 생각하세요?","생각을 적어 보세요","속마음을 표현해 보세요","자신을 표현해 보세요","이런 생각이 드네요","댓글을 올리세요","댓글을 달아 보세요","말로 하기가 쉽지 않죠"],
+replyPlaceholders:["스티커로 표현해 보세요","어떻게 생각하세요?","의견을 적어 주세요","어떤 의견이세요?","속마음을 표현해 보세요","의견을 달아 주세요","이런 생각이 드네요","어떤 생각이 드세요?","함께 생각해 봐요","의견을 들려 주세요","아이디어가 있나요?","머리를 맞대보자고요"]},ms:{
+newPlaceholders:["Apa anda rasa?","Beri kata semangat","Luah pendapat anda","Tulis yang baik-baik","Cakap pakai pelekat","Apa pendapat anda?","Tulis pendapat anda","Amacam?","Ekpresikan diri anda","Apa kata anda?","Taip, taip, kirim!","Silakan komen","Ada cadangan?"],
+replyPlaceholders:["Cakap pakai pelekat","Apa anda rasa?","Tulis pendapat anda","Apa pendapat anda?","Beri cadangan anda","Tambah idea anda","Apa kata anda?","Apa anda rasa?","Amacam?","Giliran anda","Celah masuk","Beri pandangan anda"]
+},"nb-NO":{
+newPlaceholders:["Hva syns du?","Gi en kompliment","Si hva du synes!","Si det som det er","En emoji gjør susen","Er du enig?","Her er en idé","Gi din mening","Start samtalen","Kommenter i vei"],
+replyPlaceholders:["Nå er det din tur","Her er en idé","Gi din mening","Syns du det også?","Vær ærlig tilbake","Hopp inn i samtalen","Hva syns du?","Si noe fint tilbake","Uttrykk deg selv!","Si det som det er","Gi litt ros","Er du enig?"]
+},"nl-NL":{
+newPlaceholders:["Waar denk je aan?","Geef een compliment","Spreek jezelf uit","Zeg iets leuks","Een sticker kan ook","Wat vind jij?","Jouw ideeën hier","Geef je mening","Druk jezelf uit","Dit denk ik","Typ en post!","Zeg het maar","Zonder woorden"],
+replyPlaceholders:["Een sticker kan ook","Wat vind jij?","Jouw ideeën hier ","Hoe zie jij dit?","Geef je mening","Voeg er iets aan toe","Dit denk ik","Jouw visie?","Zeg het maar","Jouw beurt","Laat maar horen","Jouw overwegingen"]
+},pl:{
+newPlaceholders:["O czym myślisz?","Napisz coś miłego","Co Ci leży na sercu","Wyraź swoje myśli","Dodaj coś od siebie","Wyraź to obrazem","Co o tym sądzisz?","Podziel się tym","Oto Twoje miejsce","Napisz, co myślisz","Słowa, myśli","Niech język giętki…"],
+replyPlaceholders:["Wyraź to obrazem","Co Ty na to?","Oto Twoje miejsce","Dodaj coś od siebie","Oto Twoje miejsce","Chwila na szczerość","Dodaj coś","Twoja kolej","Co o tym sądzisz?","Napisz, co myślisz","Dorzuć coś od siebie"]
+},"pt-BR":{
+newPlaceholders:["Diga algo legal","Fale algo bacana","Tá pensando em quê?","Cole um adesivo","O que você acha?","Explique melhor","Algum palpite?","Dê seu pitaco","Dê sua dica","Alguma ideia?","Bota pra fora","Conta pra gente"],
+replyPlaceholders:["Cole um adesivo","O que você acha?","Sua vez!","Emende sua resposta","Bota pra fora","Agora é com você","Explique melhor","Pensando em algo?","Diga o que pensa"]},ru:{
+newPlaceholders:["Что думаете?","Что скажете?","Ваши соображения","Поделитесь идеями","Поделитесь мыслями","Озвучьте свои мысли","Какие будут идеи?","Пишите – смелее!","Излейте душу","Мысли по поводу","Ваше мнение?","Умные мысли"],
+replyPlaceholders:["А вы как думаете?","Ваш ход","Вам слово","Внесите свою лепту","Не молчите","Выскажитесь!","Ваши соображения","Мысли по поводу","Ваше мнение?","Умные мысли","Ваши идеи","Что скажете?"]
+},"sv-SE":{
+newPlaceholders:["Vad tänker du på?","Ge en komplimang","Säg vad du tycker","Säg något najs","Säg det med en dekal","Vad tycker du?","Vad tänker du på?","Var ärlig","Ut med språket!","Jag har en idé","Skriv och nå ut","Tyck till bara","Det är svårt med ord"],
+replyPlaceholders:["Säg det med en dekal","Vad tycker du?","Vad tänker du på?","Håller du med?","Ut med språket!","Hur tänker du?","Jag har en idé","Vad anser du?","Häng med","Din tur","Säg något","Tyck till"]
+},"th-TH":{
+newPlaceholders:["คุณเห็นว่าอย่างไร","ให้คำชื่นชม","ให้ความคิดเห็นของคุณ","พูดสิ่งดีๆ","บอกด้วยสติกเกอร์","คุณคิดว่าอย่างไร","ความเห็นตรงนี้","คิดว่ายังไง","บอกสิ่งที่คุณคิด","ขอเสนอความเห็น","พิมพ์แล้วก็โพสต์เลย!","ติชมได้ตามสบาย","บอกเป็นคำพูดอาจจะยาก"],
+replyPlaceholders:["บอกด้วยสติ๊กเกอร์","คุณคิดว่าอย่างไร","เขียนคำติชมตรงนี้","คุณเห็นเป็นอย่างไร","บอกสิ่งที่คุณคิด","เสนอไอเดียของคุณ","ขอเสนอแนะหน่อย","คุณเห็นว่ายังไง","ติชมได้เลย","ตาคุณแล้ว","เสนอแนะมาเลย","ติชมตามสบาย"]
+},"uk-UA":{
+newPlaceholders:["Що на думці?","Додайте комплімент","Порадьте щось","Порадуйте інших","Додайте наклейку","Як вважаєте?","Думки щодо цього?","Поділіться думкою","Яке ваше ставлення?","Ваші коментарі","Можете щось додати?","Прокоментуйте це","Тепер ваша черга"],
+replyPlaceholders:["Додайте наклейку","Як думаєте?","Думки щодо цього","Яке ваше ставлення?","Поділіться думкою","Ваші 5 копійок","Ваші коментарі","А що думаєте ви?","Давайте обоговоримо","Що порекомендуєте?","Долучайтеся","Що скажете?"]
+},"zh-CN":{newPlaceholders:["您有什么想法？","美言几句呗","说说您的想法","赞美一下呗","用贴纸表达看法","您觉得如何？","说说有啥想法","畅所欲言一下","想啥说啥","道出您的心声","留个意见","给点儿意见吧！"],
+replyPlaceholders:["用贴纸表达心情","您怎么想？","回个话","有啥想法没？","您有什么看法？","说说您的意见","来讨论吧","轮到您发言了","插一句","来个神回复","加入讨论"]},"zh-TW":{
+newPlaceholders:["有什麼想法嗎？","讚美一下吧！","想到什麼就說吧！","給點鼓勵吧！","來張貼圖傳達心情","您覺得如何？","給點意見吧！","提出您的看法","歡迎暢所欲言","意見請進","歡迎指教","留言就對了","該說些什麼呢…"],
+replyPlaceholders:["來張貼圖如何？","您覺得呢？","給點意見吧！","您的看法如何？","提出您的看法","加入討論","發表意見","有什麼看法嗎？","加入討論","輪到您了","幫腔一下","神回一筆吧！"]}}},924:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.EmojiReactionButton=void 0;var o=n(1),a=n(21),s=n(2),r=n(15),i=n(18),c=n(0),l=n(24),d=n(4),m=n(16),p=(0,n(5).PaperIntlFactory)()._f,h=(0,s.defineMessages)({addReaction:{id:"zwXsqA",
+defaultMessage:"Add reaction"}}),u=function(e){o.__extends(t,e);function t(t){var n=e.call(this,t)||this;n.handleEmojiClick=function(){var e=n.props.app.getEmojis();e.setReactionsMode(!0);e.open()
+;n.onEmojiListOpen(e)};n.onEmojiListOpen=function(e){var t=l.findDOMNode(e),o=(0,i.offset)(l.findDOMNode(n.button)),a=o.left,s=o.top,r=(0,i.outerWidth)(t.querySelector(".hp-menu"),!0),c=a+r
+;c+r>window.innerWidth&&(c-=r);t.style.top="".concat(s+10,"px");t.style.left="".concat(c-5,"px");e.setOnSelect((function(t,o){n.handleSelect(o);e.close()}));(0,d.trackUi)("Emoji Reaction")};return n}
+t.prototype.handleSelect=function(e){this.props.onClick(e)};t.prototype.render=function(){var e=this,t=p(h.addReaction);return this.props.renderButton?this.props.renderButton({ref:function(t){
+return t&&(e.button=t)},onClick:this.handleEmojiClick}):c.createElement("div",{className:"emoji-reaction",ref:function(t){return e.button=t}},c.createElement(a.default,{isIcon:!0,size:"small",
+variant:"transparent","aria-label":t,onClick:this.handleEmojiClick,tooltip:{title:t,placement:"bottom",openDelay:300}},c.createElement(m.UIIcon,{src:r.EmojiAddLine})))}
+;t.displayName="EmojiReactionButton";return t}(c.PureComponent);t.EmojiReactionButton=u},925:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});t.EmojiReactions=void 0
+;var o=n(1),a=n(1785),s=n(0),r=n(4),i=function(e){o.__extends(t,e);function t(t){var n=e.call(this,t)||this;n.handleClick=function(e){if(n.props.canCreateComments){var t=n.props.reactions
+;if(t[e]&&n.props.currentUserId&&t[e][n.props.currentUserId]){n.props.onRemoveClick(e);(0,r.trackUi)("Emoji Reaction -1")}else{n.props.onAddClick(e);(0,r.trackUi)("Emoji Reaction +1")}}};return n}
+t.prototype.render=function(){var e=[];if(!this.props.reactions)return null;var t=0,n=this.props.reactions;for(var o in n){var r=Object.keys(n[o]).length;t+=r
+;var i=!!this.props.currentUserId&&!!n[o][this.props.currentUserId];r&&e.push(s.createElement(a.EmojiReaction,{emoji:o,count:r,selfReacted:i,authors:n[o],onClick:this.handleClick,key:o}))}
+return t?s.createElement("div",{className:"comment-reactions"},e):null};t.displayName="EmojiReactions";return t}(s.PureComponent);t.EmojiReactions=i},926:function(e,t,n){
+Object.defineProperty(t,"__esModule",{value:!0});t.SuggestCommentEntry=void 0
+;var o=n(1),a=n(6),s=n(134),r=n(91),i=n(21),c=n(65),l=n(22),d=n(3),m=n(489),p=n(921),h=n(8),u=n(2),f=n(54),g=n(15),C=n(7),v=n(11),y=n(205),E=n(10),S=n(68),k=n(103),I=n(490),T=n(33),A=n(43),b=n(50),_=n(58),x=n(38),P=n(69),N=n(28),D=n(27),w=n(394),R=n(92),M=n(302),L=n(7),O=n(20),H=n(0),B=n(922),U=n(395),F=n(63),j=n(13),z=n(923),W=n(4),Z=n(226),V=n(16),q=n(17),K=n(35),G=n(64),J=n(22),Q=(0,
+n(5).PaperIntlFactory)(),Y=Q.F,X=Q._f,$=(0,u.defineMessages)({replyPlaceholder:{id:"bCu3Na",defaultMessage:"Reply"},newPlaceholder:{id:"r2WuDp",defaultMessage:"New comment"},editPlaceholder:{
+id:"OxaCVx",defaultMessage:"Edit comment"},axStickerButton:{id:"MJzVGO",defaultMessage:"Add sticker"},noteToSelfPlaceholder:{id:"CU4lo8",defaultMessage:"Add note to self"},easyCommentPlaceholder:{
+id:"sgJUuY",defaultMessage:"Add comment, sticker"},addAnnotationButton:{id:"x6Geq1",defaultMessage:"Comment on specific area"},removeAnnotationButton:{id:"drQjXZ",defaultMessage:"Remove annotation"},
+cancelButton:{id:"GemlPv",defaultMessage:"Cancel"},deleteButton:{id:"9v2+SN",defaultMessage:"Delete"},saveButton:{id:"78AHo5",defaultMessage:"Save"},postButton:{id:"eFisP/",defaultMessage:"Post"},
+approveButton:{id:"eyx/FG",defaultMessage:"Approve"},dismissButton:{id:"cK/p7/",defaultMessage:"Dismiss"},addButton:{id:"YcxVqg",defaultMessage:"Add"},postComment:{id:"kjI6dx",
+defaultMessage:"Post comment"},commentEntryBox:{id:"ww8lkF",defaultMessage:"Comment Entry"},suggestChangesText:{id:"sTyVWg",defaultMessage:"What is your edit?"}
+}),ee=q.default.events.getAccel,te=function(e){o.__extends(t,e);function t(t){var n=e.call(this,t)||this;n.ace=null;n.aceUI=null;n.commentEntryBox=null;n.stickers=null;n.postButton=null
+;n.postCommentMenuButton=null;n.featureEasyComment=!1;n.commentCancelConfirmModal=null;n.clearComment=function(){n.props.onCancel?n.props.onCancel():n.clear()};n.saveComment=a.debounce((function(){
+n.content&&n.props.stores.draftCommentsStore.saveComment(n.props.stores.draftCommentsStore.getDraftCommentStoreKey(n.props.authorUserInfo.secureUserId,n.props.hashedPadId),n.props.threadId,n.props.commentId,n.content)
+}),500);n.postComment=function(){n.postComment_()};n.insertSuggestionIntoDoc=function(){if(n.props.onAddSuggestion){var e=n.getContentIfHasIt()
+;null!=e&&n.props.mainAce&&n.props.threadSuggestionInfo&&n.props.onDismissSuggestion&&n.props.onAddSuggestion(e,n.props.mainAce,n.props.threadSuggestionInfo,n.props.onDismissSuggestion)}}
+;n.handleSuggestHighlightClick=function(){n.postComment_({type:C.PaperSuggestionType.Highlight})};n.handleSuggestActionItemClick=function(){n.postComment_({type:C.PaperSuggestionType.ActionItem})}
+;n.handleKeyDown=function(e){var t,o;switch(e.keyCode){case A.KeyCode.UP:if(n.props.onEditPrevious&&n.shouldEditPrevious(e)){e.preventDefault();return!n.props.onEditPrevious()}break
+;case A.KeyCode.RETURN:if(e.ctrlKey||e.altKey||e.metaKey){e.preventDefault();n.state.isEmpty?n.props.onDelete&&n.props.onDelete():n.postComment();return!1}break;case A.KeyCode.ESCAPE:
+if(n.props.onCancel&&(n.props.content||!n.hasContent(n.content))){e.preventDefault();n.props.onCancel();return!1}break;case A.KeyCode.TAB:
+if(!(null===(t=n.ace)||void 0===t?void 0:t.autoComplete.isVisible())&&(n.postButton||n.postButtonForwardRef.current)){e.preventDefault()
+;n.postButtonForwardRef.current?n.postButtonForwardRef.current.focus():null===(o=n.postButton)||void 0===o||o.focus();return!1}break;case A.KeyCode.BACKSPACE:if(n.fullDeletion()){e.preventDefault()
+;return!0}return!1}};n.onChange=function(){if(!n.ace)throw Error("Ace editor not available");var e=n.ace.contents.exportHand(),t={atext:{text:e.text(),attribs:e.attribs()},apool:e.pool()}
+;if(n.hasContent(t)){n.commentEntryBox&&n.commentEntryBox.classList.add("comment-edited");n.content=t;n.setState({isEmpty:!1});F.isOnButDoNotLog("paper_draft_comments")&&n.saveComment()}else{
+n.content=void 0;if(!n.props.isNew||!n.props.annotationLabel){n.commentEntryBox&&n.commentEntryBox.classList.remove("comment-edited");n.setState({isEmpty:!0})}
+if(F.isOnButDoNotLog("paper_draft_comments")&&n.props.hashedPadId){var o=n.props.stores.draftCommentsStore.getDraftCommentStoreKey(n.props.authorUserInfo.secureUserId,n.props.hashedPadId)
+;n.props.stores.draftCommentsStore.clearComment(o,n.props.threadId,n.props.commentId)}}n.props.onChange()};n.onFocus=function(){document.body.classList.add("hp-posting-comment")
+;n.props.onFocus&&n.props.onFocus();n.setState({isFocused:!0})};n.onBlur=function(){document.body.classList.remove("hp-posting-comment");n.setState({isFocused:!1})};n.onCancel_=function(){
+n.hasContent(n.content)&&!n.hasContent(n.props.content)||F.isOnButDoNotLog("paper_draft_comments")&&(n.props.isNewReply||n.props.isNew)?n.openConfirmationModal():n.clearComment()}
+;n.onEasyStickerSelected=function(e,t,o){(0,W.trackEng)("paper-easy-comments-sticker",{type:"".concat(e,"_").concat(t)});n.onStickerSelected_(e,t,o)};n.onStickerSelected_=function(e,t,o){var a
+;null===(a=n.stickers)||void 0===a||a.close();var s=n.ace;if(s){s.execute("insertSticker",(function(){
+var n=s.selection.getStart()?s.selection.getStart():O.Position.zero,a=s.selection.getEnd()?s.selection.getEnd():O.Position.zero;s.contents.performDocumentReplaceRange(n,a,"");var r=n;if(r.col>0){
+s.contents.performDocumentReplaceRange(r,r,"\n");r=new O.Position(r.zone,r.line+1,0)}s.getRep(r.zone).lines.atIndex(r.line).text.length>0&&s.contents.performDocumentReplaceRange(r,r,"\n")
+;var i=U.isLiveSticker(e,t);s.contents.performDocumentReplaceRange(r,r,"*",_.getGalleryAttributesForSticker(i,o))}));n.postComment()}};n.onStickerMenuOpen=function(){
+n.state.isStickerMenuSeen||n.setState({isStickerMenuSeen:!0})};n.requestAnnotation=function(){n.props.onRequestAnnotation&&n.props.onRequestAnnotation()};n.cancelAnnotation=function(){
+n.props.onCancelAnnotation&&n.props.onCancelAnnotation()};n.detachAnnotation=function(){n.props.onDetachAnnotation&&n.props.onDetachAnnotation()};n.dismissSuggestion=function(){
+n.props.onDismissSuggestion&&n.props.onDismissSuggestion()};n.onAceCreated_=function(e){n.ace=e;var t=n.ace.contents.exportZatext(),o=n.ace.getApool();n.setState({selectionZatextAndPool:{zatext:t,
+apool:o}});n.events.on(e.observer,"change",n.onChange);n.events.on(e.observer,"blur",n.onBlur);n.events.on(e.observer,"focus",n.onFocus)
+;e.observer.on("keydown",n.handleKeyDown,M.ObserverEventPriority.Comments);n.props.content?n.focus():n.state.transferredDraftContent&&n.setContent(n.state.transferredDraftContent)}
+;n.content=n.props.content;n.state={isEmpty:!n.props.content,isFocused:!0,isPrivate:!!n.props.threadIsPrivate,isStickerMenuSeen:!1,containsComments:!!n.props.containsComments,
+transferredDraftContent:null,selectionZatextAndPool:n.getSelectionZatextAndPool()};n.props.isNew&&(n.props.authorUserInfo.isOwner||0!=h.default.numComments||(n.featureEasyComment=!0))
+;n.postButtonForwardRef=H.createRef();return n}Object.defineProperty(t.prototype,"__aceForLegacyTests",{get:function(){return this.ace},enumerable:!1,configurable:!0})
+;t.prototype.shouldComponentUpdate=function(e,t){return!R.dumbDeepCompare(this.props,e,["stores","mainAce"])||!R.dumbDeepCompare(this.state,t)||this.props.mainAce!==e.mainAce}
+;t.prototype.hasContent=function(e){return!(!e||!e.atext.text.trim().length)};t.prototype.clear=function(){if(this.ace){this.ace.contents.importText("");this.ace.focus()}}
+;t.prototype.openConfirmationModal=function(){var e;null===(e=this.commentCancelConfirmModal)||void 0===e||e.open()};t.prototype.setContent=function(e){if(this.ace&&e){this.content=e;var t={
+zatext:l.atextToZatext(this.content.atext),apool:this.content.apool};this.ace.contents.importZatext(t.zatext,t.apool)}};t.prototype.setContentFromDraftTransfer=function(e){
+this.ace&&e&&this.setContent(e);this.setState({transferredDraftContent:e})};t.prototype.getContentIfHasIt=function(){var e,t=this.ace;if(!t)return null;t.execute("trimTrailingWhitespace",(function(){
+(0,Z.trimTrailingWhitespace)(t);e=t.contents.exportHand()}));if(!e)return null;var n={atext:{text:e.text(),attribs:e.attribs()},apool:e.pool()};return this.hasContent(n)?n:null}
+;t.prototype.postComment_=function(e){this.saveComment.cancel();var t=this.ace;if(!t)throw Error("Ace editor not available");var n=t.autoComplete.mentionUndoer;n&&n.clearUndoMentionToasts()
+;var o=this.getContentIfHasIt();if(null!=o){this.props.onCommentPost(o,this.state.isPrivate,e);this.content=void 0;this.clear();if(this.featureEasyComment){(0,W.trackEng)("paper-easy-comments-posted")
+;h.default.updateInPlace({numComments:(h.default.numComments||0)+1})}}};t.prototype.shouldEditPrevious=function(e){return!(e.ctrlKey||e.altKey||e.metaKey||e.shiftKey)&&!this.hasContent(this.content)}
+;t.prototype.openStickerMenu=function(){this.stickers&&this.stickers.open()};t.prototype.fullDeletion=function(){var e;if(!this.ace)return!1;if(!this.ace.selection.isCollapsed()){
+var t=this.ace.contents.exportZatext(),n=this.ace.getApool(),o=(0,G.docHand)(t,n);if(a.isEqual(null===(e=this.state.selectionZatextAndPool)||void 0===e?void 0:e.zatext,t)){
+var s=o.changesetFromEachOp((function(e,t){var n=[];n.push(["strikethrough","true"]);n.push(["highlight","#FFBFB5"]);e.keepOverOpWithNewAttributes(t,n)}));this.ace.contents.importZatext((0,
+J.applyToZatext)(s,t,n),n,!0);return!0}}return!1};t.prototype.isFocused=function(){return this.state.isFocused};t.prototype.getContent=function(){this.ensureAceIsCreated();return this.content}
+;t.prototype.focus=function(){this.ensureAceIsCreated();if(this.ace){var e=O.Position.zero,t=O.Position.endOfZone(this.ace,O.Position.ROOT_ZONE);this.ace.selection.focusOn({start:e,end:t})}}
+;t.prototype.ensureAceIsCreated=function(){!this.ace&&this.aceUI&&this.aceUI.attachAce()};t.prototype.getSelectionZatextAndPool=function(){if(this.props.mainAce.hasSelection()){
+var e=this.props.mainAce.selection.getStart(),t=this.props.mainAce.selection.getEnd(),n=this.props.mainAce.selection.getZone(),o=this.props.mainAce.contents.internalZatext(),a=this.props.mainAce.getApool(),s=(0,
+G.zoneHand)(o,a,n),r=s.raw(),i=s.builder();i.removeTo({line:e.line,col:e.col});i.keepTo({line:t.line,col:t.col});var c=O.Position.endOfZone(this.props.mainAce,n);i.removeTo({line:c.line,col:c.col})
+;var l={zatext:(0,J.applyToZatext)(i.toChangeset(),r,a),apool:a},d=(0,G.zoneHand)(l.zatext,l.apool,n).changesetFromEachOp((function(e,t){var n="";t.getAttributePairs().forEach((function(e){
+e[0].startsWith("thread-")&&"false"!=e[1]&&(n=e[0])}));n?e.keepOverOpWithoutAttribute(t,n):e.keepOverOp(t)}));return{zatext:(0,J.applyToZatext)(d,l.zatext,l.apool),apool:l.apool}}return null}
+;t.prototype.renderCommentEditActions=function(){var e=this;if(!this.props.canCreateComments)return null
+;if(!this.state.isEmpty&&!this.props.content||F.isOnButDoNotLog("paper_draft_comments")&&(this.props.isNew||this.props.isNewReply))return this.renderCommentCreateActions()
+;var t,n,a=H.createElement(E.default,{onClick:this.onCancel_},H.createElement(Y,o.__assign({},$.cancelButton))),s="comment-edit-actions"
+;if(this.state.isEmpty&&this.props.annotationLabel)return H.createElement("div",{className:s},a);if(this.state.isEmpty&&!this.props.isNewReply){t=H.createElement(Y,o.__assign({},$.deleteButton))
+;n=this.props.onDelete}else{t=this.props.content?H.createElement(Y,o.__assign({},$.saveButton)):H.createElement(Y,o.__assign({},$.postButton));n=this.postComment}
+var r=H.createElement("kbd",null,ee(),"+",H.createElement("b",null,"↵"));return H.createElement("div",{className:s},H.createElement(E.default,{ref:function(t){return e.postButton=t},
+className:"selenium-comment-edit-save",tooltip:r,onClick:n},t),H.createElement("span",{className:"notranslate"}," • "),a)};t.prototype.renderCommentCreateActions=function(){
+var e,t=this,n=H.createElement("kbd",null,ee(),"+",H.createElement("b",null,"↵"));e=F.isOnButDoNotLog("paper_note_to_self")?this.state.containsComments?H.createElement(E.default,{ref:function(e){
+return t.postButton=e},className:"selenium-comment-create-post comment-create-post",primary:!0,tooltip:H.createElement("kbd",null,ee(),"+",H.createElement("b",null,"↵")),onClick:this.postComment
+},this.props.threadIsPrivate?H.createElement(Y,o.__assign({},$.addButton)):H.createElement(Y,o.__assign({},$.postButton))):H.createElement(P.default,{ref:function(e){return t.postCommentMenuButton=e}
+},H.createElement(I.default,{primary:!0,className:"comment-create-post-dropdown"},H.createElement(E.default,{className:"comment-create-post comment-create-post-dropdown",hasPopup:!0,ref:function(e){
+return t.postButton=e},tooltip:n,onClick:this.postComment
+},this.state.isPrivate?H.createElement(Y,o.__assign({},$.addButton)):H.createElement(Y,o.__assign({},$.postButton)))),H.createElement(S.default,{className:"comment-create-post-dropdown-menu"
+},H.createElement("ul",null,H.createElement(k.HpMenuItem,null,H.createElement(E.default,{className:d("comment-create-post-dropdown-item",{"hp-menu-selected":!this.state.isPrivate}),tooltip:n,
+onClick:this.handleCommentSettingsClick.bind(this,!1)},H.createElement(Y,o.__assign({},$.postComment)))),H.createElement(k.HpMenuItem,null,H.createElement(E.default,{
+className:d("comment-create-post-dropdown-item",{"hp-menu-selected":this.state.isPrivate}),tooltip:n,onClick:this.handleCommentSettingsClick.bind(this,!0)
+},H.createElement(Y,o.__assign({},$.noteToSelfPlaceholder))))))):H.createElement(i.default,{variant:"primary",size:"small",forwardedRef:this.postButtonForwardRef,
+className:"selenium-comment-create-post comment-create-post",tooltip:{title:n},onClick:this.postComment
+},this.state.isPrivate?H.createElement(Y,o.__assign({},$.addButton)):H.createElement(Y,o.__assign({},$.postButton)));return H.createElement("div",{className:"comment-create-actions"
+},e,H.createElement(i.default,{variant:"transparent",size:"small",className:"comment-create-cancel",onClick:this.onCancel_},H.createElement(Y,o.__assign({},$.cancelButton))))}
+;t.prototype.renderStickerButton=function(){var e=this;if(!this.props.canCreateComments)return null;if(!this.state.isEmpty)return null;var t=X($.axStickerButton),n=null
+;this.featureEasyComment&&this.state.isEmpty&&!this.state.isStickerMenuSeen&&(n=H.createElement(c.default,{allowOutOfBounds:!1,attachment:"top right",className:"easy-comment-sticker",offset:"5 -17",
+overlay:!1,reposition:!1,springOffsetMagnitude:0,target:"#sticker-button-"+this.props.threadId,targetAttachment:"bottom left"},H.createElement(W.TrackContext,{
+trackContext:W.EditorContext.Comment.EasyStickers},H.createElement(B.EasyStickers,{onStickerSelected:this.onEasyStickerSelected}))));return H.createElement(H.Fragment,null,H.createElement(P.default,{
+id:"sticker-button-"+this.props.threadId,className:"sticker-button",ref:function(t){return e.stickers=t},disableAutoCloseOnScroll:!0,dontReposition:N.isNativeMobileApp(),onOpen:this.onStickerMenuOpen
+},H.createElement(T.IconButton,{variant:"transparent",isRounded:!0,title:t,"aria-label":t},H.createElement(V.UIIcon,{src:g.EmojiSmileLine})),H.createElement(W.TrackContext,{
+trackContext:W.EditorContext.Comment.Stickers},H.createElement(S.default,{noPadding:!0,type:"custom",takeScrollbarIntoAccount:!0},H.createElement(B.default,{
+initialSelected:this.featureEasyComment?"Utilitarian":void 0,onStickerSelected:this.onStickerSelected_})))),n)};t.prototype.handleCommentSettingsClick=function(e){var t;this.setState({isPrivate:e})
+;null===(t=this.postCommentMenuButton)||void 0===t||t.close()};t.prototype.getTangoPlaceholder=function(e){
+return e["ON"===F.getVariantButDoNotLog(L.PaperStormcrow.TANGO_COMMENT_PLACEHOLDER_QA)?this.props.entryIndex%e.length:x.getRandomInt(e.length)]};t.prototype.getPlaceholder=function(){
+var e=this.props.stores&&this.props.stores.settings.getSettings().prose&&!!z.TANGO_PLACEHOLDERS[h.default.userLocale]
+;return F.isOnButDoNotLog("paper_note_to_self")&&this.state.isPrivate?X($.noteToSelfPlaceholder):this.props.isNew?this.featureEasyComment?X($.easyCommentPlaceholder):e&&this.props.showTangoPlaceholdersForNewComments?this.getTangoPlaceholder(z.TANGO_PLACEHOLDERS[h.default.userLocale].newPlaceholders):X($.newPlaceholder):this.props.content&&!F.isOnButDoNotLog("paper_draft_comments")||F.isOnButDoNotLog("paper_draft_comments")&&!this.props.isNew&&!this.props.isNewReply?X($.editPlaceholder):e?this.getTangoPlaceholder(z.TANGO_PLACEHOLDERS[h.default.userLocale].replyPlaceholders):X($.replyPlaceholder)
+};t.prototype.render=function(){var e,t=this;e=F.isOnButDoNotLog("paper_draft_comments")?d("selenium-comment-entry-box","comment-entry-box",{"comment-new":this.props.isNew||this.props.isNewReply,
+"comment-modify":!this.props.isNew&&!this.props.isNewReply,"comment-edited":!!this.props.content,"comment-easy":!!this.featureEasyComment}):d("selenium-comment-entry-box","comment-entry-box",{
+"comment-new":this.props.isNew,"comment-modify":!!this.props.content,"comment-edited":!!this.props.annotationLabel,"comment-easy":!!this.featureEasyComment})
+;var n,a="editor-thread-"+this.props.threadId,i=this.props.canCreateComments?f.EditableState.Editable:f.EditableState.Readonly
+;n=F.isOnButDoNotLog("paper_draft_comments")?this.props.isNew||this.props.isNewReply?null:H.createElement("div",{className:"byline-placeholder"}," "):this.props.content?H.createElement("div",{
+className:"byline-placeholder"}," "):null;var c=null,l=null;this.props.annotationLabel&&(c=H.createElement(m.default,{annotationLabel:this.props.annotationLabel}));if(this.props.annotationId){
+var h=X($.removeAnnotationButton);l=H.createElement(E.default,{onClick:this.detachAnnotation,className:"comment-annotation-button-active",tooltip:h,"track-title":"Remove annotation","aria-label":h
+},H.createElement(j.default,{name:"annotation"}))}else if(this.props.awaitingAnnotation){var u=X($.cancelButton);l=H.createElement(E.default,{onClick:this.cancelAnnotation,
+className:"comment-annotation-button-active",tooltip:u,"track-title":"Cancel annotation selection","aria-label":u},H.createElement(j.default,{name:"annotation"}))
+}else if(this.props.canAttachAnnotations&&!this.props.annotationId){var g=X($.addAnnotationButton);l=H.createElement(E.default,{onClick:this.requestAnnotation,
+className:"comment-annotation-button-inactive",tooltip:g,"track-title":"Start annotation","aria-label":g},H.createElement(j.default,{name:"annotation"}))}
+var C=d("comment-entry","selenium-comment-entry",a,{"comment-private-toggled":!!this.state.isPrivate}),v="."+a,S=this.props.authorUserInfo,k=H.createElement(r.Avatar,{className:"notranslate",
+src:S.userPic,backgroundColor:(0,y.getBgcolor)(S),size:"small",hasNoOutline:!0},(0,D.nameToInitials)((0,y.getNameForInitials)(S))),I=null
+;I=this.state.isPrivate?H.createElement(w.NoteToSelfUserAvatar,{userAvatar:k,annotationIndicator:c}):H.createElement("div",{className:"comment-user-avatar-wrapper"},k,c)
+;var T=!!this.content,A=H.createElement("div",{className:"comment-suggest-changes"},H.createElement(K.Text,{variant:"label",color:"standard",size:"standard",isBold:!0
+},H.createElement(Y,o.__assign({},$.suggestChangesText))));return H.createElement("div",{className:e,ref:function(e){return t.commentEntryBox=e}},I,n,A,H.createElement("div",{
+className:"comment-entry-wrapper"},H.createElement(s.default,{id:a,ref:function(e){return t.aceUI=e},className:C,editableState:i,content:this.state.selectionZatextAndPool||void 0,
+type:"suggestcommententry",manuallyAttachAce:!0,toolbar:!1,scrollSelector:v,onAceCreated:this.onAceCreated_,stores:this.props.stores,isNew:T})),this.renderStickerButton(),l?H.createElement("div",{
+className:"comment-annotation-button"},l):null,this.renderCommentEditActions(),H.createElement("div",{className:"clear"}),H.createElement(p.CommentCancelConfirmModal,{onDiscard:this.clearComment,
+ref:function(e){return t.commentCancelConfirmModal=e}}))};t.prototype.componentDidMount=function(){var e=this;this.props.isNew&&this.timers.setTimeout((function(){return e.focus()}),0)
+;this.props.content&&Promise.resolve().then((function(){e.ensureAceIsCreated();e.focus()})).catch(b.logException);this.featureEasyComment&&(0,W.trackEng)("paper-easy-comments-impression")}
+;t.prototype.componentWillReceiveProps=function(e){if(F.isOnButDoNotLog("paper_draft_comments")&&e.content&&e.content!=this.props.content){this.content=e.content;this.setState({isEmpty:!1})}}
+;t.prototype.componentWillUpdate=function(e){e.shouldBeFocused&&!this.props.shouldBeFocused&&this.focus()};t.prototype.componentWillUnmount=function(){var e;if(this.ace){
+null===(e=this.ace.observer)||void 0===e||e.off("keydown",this.handleKeyDown);this.ace=null}document.body.classList.remove("hp-posting-comment")};t.displayName="SuggestCommentEntry ";t.defaultProps={
+showTangoPlaceholdersForNewComments:!0};return t=o.__decorate([v.default],t)}(H.Component);t.SuggestCommentEntry=te},927:function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0})
+;t.renderThreadContext=t.renderCommentsBatch=void 0;var o=n(1789),a=n(762),s=n(141),r=n(8),i=n(64),c=n(587),l=n(166),d=n(32),m=n(27);t.renderCommentsBatch=function(e){
+var t=o.renderCommentsToHtmlBatch((0,s.default)(),e).map((function(e){return e.html}));return e.map((function(e,n){
+var o=new Date(Date.parse(e.comment.createdTime)).toLocaleDateString(r.default.userLocale,{month:"long",day:"numeric"});return{id:e.comment.id,html:t[n],authorColor:e.authorColor,
+authorInitials:m.nameToInitials(e.comment.authorName),authorName:e.comment.authorName,authorPic:e.comment.authorPic,secureAuthorId:e.comment.secureAuthorId,formattedDate:o,
+isFirstComment:e.comment.id==e.firstCommentId,index:e.index,isUnread:e.isUnread}}))};t.renderThreadContext=function(e,t,n,r,m,p){void 0===p&&(p={});var h=[],u={},f={};(0,
+i.docHand)(n,r).forEachAtextZone((function(n){var o=n.alines(),s=n.zone();f[s]=n;u[s]=o;for(var i=0;i<o.length;i++){var g=o[i];(0,c.doesAlineContainThreadId)(g,r,t)&&h.push({zoneId:s,lineNumber:i,
+options:{renderContext:p.isNativeComment?(0,l.nativeCommentRenderContext)():(0,l.emailRenderContext)(),relativeUrlPrefix:m,lineNumberInHand:i,lineNumberInEditor:i,disallowAnchorTags:!0,
+classToStyleFuncOptions:{type:a.ClassToStyleFuncType.HighlightThread,threadId:t},locale:"en",padId:d.idAndTitleFromUrl(e).id,galleryIndex:(0,c.getGalleryIndexWithThread)(g,r,t)}})}}))
+;var g=o.renderLinesInZatextToHtmlBatch((0,s.default)(),n,r,h),C="";g.forEach((function(t,n){var o=h[n],a=o.zoneId,s=o.lineNumber,i=e
+;p.addAceHashToLinks&&(i+=d.padUrlSuffixString(d.fullLineFocusOptions(f[a].textline(s),u[a][s],r)));C+='<div class="'+t.className+'">'
+;C+='<a style="text-decoration: none; color: inherit;" href="'+i+'">';C+=t.innerHTML;C+="</a>";C+="</div>"}));return C}}}]);
+
+//# sourceMappingURL=https://paper.dropbox.com/static/sourcemap/c47a7ec7100706d3eb55.PItX1xyuSgdo5QOV6l9XOHqUQpxwSk_RholHYrAet9Y.js.map

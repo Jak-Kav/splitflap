@@ -1,0 +1,33 @@
+Comment,Designator,Footprint,LCSC
+74HC595,"U1,U5,U7,U9",ModifiedSymbols:SOIC-16_3.9x9.9mm_P1.27mm_silk,C5947
+MountingHole,"H1,H2,H3,H4,H5",MountingHole:MountingHole_3.2mm_M3_ISO7380_Pad,
+0.1uF,"C2,C4,C5,C7,C6,C1,C9,C10,C12,C11",Capacitor_SMD:C_0603_1608Metric,C14663
+TPL7407L,"U2,U6,U10,U8",ModifiedSymbols:SOIC-16_3.9x9.9mm_P1.27mm_silk,C7512
+Motor A,J3,Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical,
+Motor B,J5,Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical,
+Motor C,J6,Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical,
+Motor D,J7,Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical,
+74HC165,U4,ModifiedSymbols:SOIC-16_3.9x9.9mm_P1.27mm_silk,C5613
+100uF,C3,Capacitor_SMD:CP_Elec_8x10,C176665
+10uF,C8,Capacitor_SMD:CP_Elec_4x5.3,C134721
+LED A,D1,ModifiedSymbols:LED_0603_1608Metric_Silkscreen,C2286
+LED B,D2,ModifiedSymbols:LED_0603_1608Metric_Silkscreen,C2286
+LED C,D3,ModifiedSymbols:LED_0603_1608Metric_Silkscreen,C2286
+LED D,D4,ModifiedSymbols:LED_0603_1608Metric_Silkscreen,C2286
+220R,"R2,R3,R4,R5,R1,R10",Resistor_SMD:R_0603_1608Metric,C22962
+Sensor A,J8,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+Sensor B,J9,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+Sensor C,J10,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+Sensor D,J11,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+47k,"R6,R7,R8,R9,R11,R12,R14",Resistor_SMD:R_0603_1608Metric,C25819
+Motor E,J12,Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical,
+Motor F,J13,Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical,
+LED E,D5,ModifiedSymbols:LED_0603_1608Metric_Silkscreen,C2286
+LED F,D6,ModifiedSymbols:LED_0603_1608Metric_Silkscreen,C2286
+Sensor E,J14,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+Sensor F,J15,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,
+74HC125,U3,ModifiedSymbols:SOIC-14_3.9x8.7mm_P1.27mm_silk,C5598
+MountingHole,"H6,H7",JLCPCB:AssemblyToolingHole,
+Power,"J16,J17,J18",ScrewTerminals:Generic-5.08-2P,C395868
+Input,J19,ModifiedSymbols:IDC-Header_2x04_P2.54mm_Vertical,
+Output,J20,ModifiedSymbols:IDC-Header_2x04_P2.54mm_Vertical,

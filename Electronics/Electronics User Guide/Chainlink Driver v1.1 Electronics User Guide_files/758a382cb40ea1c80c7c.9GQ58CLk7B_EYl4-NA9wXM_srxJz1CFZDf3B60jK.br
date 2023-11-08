@@ -1,0 +1,71 @@
+(window.__LOADABLE_LOADED_CHUNKS__=window.__LOADABLE_LOADED_CHUNKS__||[]).push([["vendors~paper_binder~paper_bundle~paper_cloud_docs~paper_influencer~paper_native_desktop~paper_nativ~9144ed25"],{
+258:function(e,t,n){"use strict";n.r(t);n.d(t,"Checkbox",(function(){return a}));n.d(t,"RadioButton",(function(){return l}));n.d(t,"SegmentedControl",(function(){return v}))
+;n.d(t,"Toggle",(function(){return h}));var r=n(3),s=n.n(r),o=n(0),a=(n(98),o.forwardRef((({checked:e,className:t,isIndeterminate:n=!1,inverse:r=!1,style:a={},...l},d)=>{
+const[u,f]=o.useState(!1),p=o.useRef(e);o.useEffect((()=>{u||e===p.current||f(!0)}),[e,p,u]);const m=s()("dig-Checkbox-input",{"dig-Checkbox--inverse":r,"dig-Checkbox--initiallyChecked":!u&&e
+}),b=s()("dig-Checkbox",t),g=o.useRef(),v=((e,t)=>n=>{t.current=n;e&&("function"==typeof e?e(n):e.current=n)})(d,g);o.useEffect((()=>{g.current&&(g.current.indeterminate=n)}),[n,d])
+;return o.createElement("span",{className:b,style:a},o.createElement("input",{checked:e,className:m,ref:v,type:"checkbox",...l}),o.createElement("span",{className:"dig-Checkbox-styles"
+}),o.createElement(i,null),o.createElement(c,null))})));a.displayName="Checkbox";var c=()=>o.createElement("svg",{className:"dig-Checkbox-checked-icon","aria-hidden":"true",width:"20px",height:"20px",
+viewBox:"0 0 20 20",fill:"none",xmlns:"http://www.w3.org/2000/svg",focusable:"false"},o.createElement("path",{d:"M1 4L4.5 7.5L11 1",stroke:"currentColor",strokeWidth:"2",transform:"translate(4, 6)"}))
+;c.displayName="CheckedCheckboxIcon";var i=()=>o.createElement("svg",{"aria-hidden":"true",width:"20px",height:"20px",viewBox:"0 0 20 20",version:"1.1",className:"dig-Checkbox-indeterminate-icon",
+focusable:"false"},o.createElement("rect",{x:"5px",y:"9px",width:"10px",height:"2px"}));i.displayName="IndeterminateCheckboxIcon";var l=o.forwardRef((({className:e,children:t,inverse:n,...r},a)=>{
+const c=s()("dig-Radio",e,{"dig-Radio--inverse":n});return o.createElement("input",{type:"radio",className:c,ref:a,...r})}));l.displayName="RadioButton";var d=(e,t)=>{o.useEffect((()=>{t.addOption(e)
+;return()=>{t.removeOption(e.value)}}),[]);o.useEffect((()=>{t.updateOption(e)}),[e.value,e.element])},u={options:new Map},f=(e,t)=>{let n;switch(t.type){case"UPDATE_OPTION":const r=new Map(e.options)
+;r.set(t.payload.key,t.payload.value);n={options:r};break;case"REMOVE_OPTION":const s=new Map(e.options);s.delete(t.payload.key);n={options:s}}return{...e,...n}},p={setSelectedOption:()=>!1,
+optionItems:{items:new Map,updateOption:()=>!1,addOption:()=>!1,removeOption:()=>!1}
+},m=o.createContext(p),b=o.forwardRef((({children:e,disabled:t,variant:n="icon",value:r,role:a="tab",onClick:c,...i},l)=>{
+const{setSelectedOption:u,optionItems:f,selectedElement:p}=o.useContext(m),b=o.useRef(null);d({value:r,element:b.current},f)
+;const g=s()("dig-SegmentedControl-option",`dig-SegmentedControl-option--${n}`,{"dig-SegmentedControl-option--disabled":t});o.useImperativeHandle(l,(()=>({
+offsetWidth:b.current?b.current.offsetWidth:0,offsetLeft:b.current?b.current.offsetLeft:0,getBoundingClientRect:()=>{if(b.current)return b.current.getBoundingClientRect()}})))
+;const v=o.useMemo((()=>void 0===p?"false":p===b.current?"true":"false"),[p,b]);return o.createElement("button",{role:a,className:g,disabled:t,ref:b,onClick:e=>{c&&c(e);u({value:r,element:b.current})
+},"aria-selected":v,...i},e)}));b.displayName="Option";var g=({offsetWidth:e,offsetLeft:t})=>{const n=o.useRef(null);o.useEffect((()=>{
+n.current.setAttribute("style",`width: ${e}px; \n       transform: translate(${t}px, 0);`)}),[e,t]);return o.createElement("span",{ref:n,className:"dig-SegmentedControl-selector"})
+},v=({className:e,children:t,selectedValue:n,onSelection:r,onValueChange:a,inverse:c=!1,...i})=>{const[l,d]=o.useState(!1),p=(()=>{const[e,t]=o.useReducer(f,u),n=({value:e,element:n})=>{e&&t({
+type:"UPDATE_OPTION",payload:{key:e,value:n}})},r=n;return{items:e.options,updateOption:n,addOption:r,removeOption:e=>{e&&t({type:"REMOVE_OPTION",payload:{key:e}})}}
+})(),[b,v]=o.useState(null),h=s()("dig-SegmentedControl",e,{"dig-SegmentedControl--inverse":c});o.useEffect((()=>{l||d(!0)}),[]);o.useEffect((()=>{v(((e,t)=>{let n=null
+;void 0!==t&&e.has(t)&&(n=e.get(t));return n})(p.items,n))}),[p.items,n]);o.useEffect((()=>{l&&a&&a(n)}),[n]);const y={setSelectedOption:e=>{v(e.element?e.element:null);a&&a(e.value);r&&r(e.value)},
+optionItems:p,selectedElement:b};return o.createElement(m.Provider,{value:y},o.createElement("div",{role:"tablist",className:h,...i},b&&o.createElement(g,{offsetWidth:b.offsetWidth,
+offsetLeft:b.offsetLeft}),t))};v.displayName="SegmentedControl";v.Option=b;var h=o.forwardRef((({isToggled:e,disabled:t,className:n,wrapperProps:r,inverse:a,...c},i)=>{const l=s()(n,"dig-Toggle",{
+"dig-Toggle--isToggled":e,"dig-Toggle--disabled":t,"dig-Toggle--inverse":a});return o.createElement("label",{className:l,...r},o.createElement("input",{role:"switch",type:"checkbox",
+className:"dig-Toggle-input",checked:e,disabled:t,ref:i,...c}),o.createElement("span",{className:"dig-Toggle-track"}))}));h.displayName="Toggle"},280:function(e,t,n){"use strict";n.r(t)
+;n.d(t,"unwrap",(function(){return b}));n.d(t,"wrap",(function(){return m}));n.d(t,"deleteDB",(function(){return v}));n.d(t,"openDB",(function(){return g}));const r=(e,t)=>t.some((t=>e instanceof t))
+;let s,o;const a=new WeakMap,c=new WeakMap,i=new WeakMap,l=new WeakMap,d=new WeakMap;let u={get(e,t,n){if(e instanceof IDBTransaction){if("done"===t)return c.get(e)
+;if("objectStoreNames"===t)return e.objectStoreNames||i.get(e);if("store"===t)return n.objectStoreNames[1]?void 0:n.objectStore(n.objectStoreNames[0])}return m(e[t])},set(e,t,n){e[t]=n;return!0},
+has:(e,t)=>e instanceof IDBTransaction&&("done"===t||"store"===t)||t in e};function f(e){
+return e!==IDBDatabase.prototype.transaction||"objectStoreNames"in IDBTransaction.prototype?(o||(o=[IDBCursor.prototype.advance,IDBCursor.prototype.continue,IDBCursor.prototype.continuePrimaryKey])).includes(e)?function(...t){
+e.apply(b(this),t);return m(a.get(this))}:function(...t){return m(e.apply(b(this),t))}:function(t,...n){const r=e.call(b(this),t,...n);i.set(r,t.sort?t.sort():[t]);return m(r)}}function p(e){
+if("function"==typeof e)return f(e);e instanceof IDBTransaction&&function(e){if(c.has(e))return;const t=new Promise(((t,n)=>{const r=()=>{e.removeEventListener("complete",s)
+;e.removeEventListener("error",o);e.removeEventListener("abort",o)},s=()=>{t();r()},o=()=>{n(e.error||new DOMException("AbortError","AbortError"));r()};e.addEventListener("complete",s)
+;e.addEventListener("error",o);e.addEventListener("abort",o)}));c.set(e,t)}(e);return r(e,s||(s=[IDBDatabase,IDBObjectStore,IDBIndex,IDBCursor,IDBTransaction]))?new Proxy(e,u):e}function m(e){
+if(e instanceof IDBRequest)return function(e){const t=new Promise(((t,n)=>{const r=()=>{e.removeEventListener("success",s);e.removeEventListener("error",o)},s=()=>{t(m(e.result));r()},o=()=>{
+n(e.error);r()};e.addEventListener("success",s);e.addEventListener("error",o)}));t.then((t=>{t instanceof IDBCursor&&a.set(t,e)})).catch((()=>{}));d.set(t,e);return t}(e);if(l.has(e))return l.get(e)
+;const t=p(e);if(t!==e){l.set(e,t);d.set(t,e)}return t}const b=e=>d.get(e);function g(e,t,{blocked:n,upgrade:r,blocking:s,terminated:o}={}){const a=indexedDB.open(e,t),c=m(a)
+;r&&a.addEventListener("upgradeneeded",(e=>{r(m(a.result),e.oldVersion,e.newVersion,m(a.transaction))}));n&&a.addEventListener("blocked",(()=>n()));c.then((e=>{o&&e.addEventListener("close",(()=>o()))
+;s&&e.addEventListener("versionchange",(()=>s()))})).catch((()=>{}));return c}function v(e,{blocked:t}={}){const n=indexedDB.deleteDatabase(e);t&&n.addEventListener("blocked",(()=>t()))
+;return m(n).then((()=>{}))}const h=["get","getKey","getAll","getAllKeys","count"],y=["put","add","delete","clear"],E=new Map;function T(e,t){
+if(!(e instanceof IDBDatabase)||t in e||"string"!=typeof t)return;if(E.get(t))return E.get(t);const n=t.replace(/FromIndex$/,""),r=t!==n,s=y.includes(n)
+;if(!(n in(r?IDBIndex:IDBObjectStore).prototype)||!s&&!h.includes(n))return;const o=async function(e,...t){const o=this.transaction(e,s?"readwrite":"readonly");let a=o.store;r&&(a=a.index(t.shift()))
+;const c=await a[n](...t);s&&await o.done;return c};E.set(t,o);return o}u=(e=>({...e,get:(t,n,r)=>T(t,n)||e.get(t,n,r),has:(t,n)=>!!T(t,n)||e.has(t,n)}))(u)},513:function(e,t,n){"use strict";n.r(t)
+;n.d(t,"Tabs",(function(){return p}));var r=n(3),s=n.n(r),o=(n(98),n(0)),a={selectedTab:"",addTab:()=>!1,removeTab:()=>!1,selectTab:()=>!1,moveFocus:()=>!1,focusTab:()=>!1,updateSelector:()=>!1,
+selectorProps:{selectorOffset:0,selectorWidth:0}},c=o.createContext(a),i=({style:e})=>{const[t,n]=o.useState(!1),{selectorProps:r}=o.useContext(c),a={...e,width:r.selectorWidth,
+transform:`translate(${r.selectorOffset}px)`};r.selectorColor&&(a.backgroundColor=r.selectorColor);o.useEffect((()=>{0===r.selectorWidth||t||n(!0)}),[t,r]);return o.createElement("span",{
+"data-testid":"digTabsSelector",className:s()("dig-Tabs-selector",{"dig-Tabs-selector--initialValueChanged":t}),style:a})},l=({children:e,className:t,justified:n=!1,containerClassName:r,...a})=>{
+const c=s()("dig-Tabs-group",t,{"dig-Tabs-group--justified":n});return o.createElement("div",{className:r},o.createElement(i,null),o.createElement("ul",{className:c,role:"tablist",...a},e))}
+;l.displayName="Tabs.Group";var d="ArrowUp",u=({children:e,className:t,tabId:n,isCostly:r=!1,style:a,onKeyDown:i,...l})=>{
+const u=o.useRef(!1),{selectedTab:f,focusTab:p}=o.useContext(c),m=n===f,b=s()("dig-Tabs-panel",{"dig-Tabs-panel--isSelected":m},t);o.useEffect((()=>{!u.current&&m&&(u.current=!0)}),[u,m])
+;if(!m&&!r)return null;if(!m&&!u.current)return null;const g=m?a:{...a,display:"none"};return o.createElement("div",{className:b,style:g,id:`${n}-panel`,role:"tabpanel","aria-hidden":!m,
+"aria-describedby":n,onKeyDown:e=>{(e.ctrlKey||e.metaKey)&&e.key===d&&p(n);i&&i(e)},...l},e)};u.displayName="Tabs.Panel";var f=({children:e,className:t,id:n,onClick:r,onKeyDown:a,...i})=>{
+const l=s()("dig-Tabs-tab",t),{selectedTab:u,addTab:f,removeTab:p,selectTab:m,moveFocus:b}=o.useContext(c),g=o.useRef(null);o.useEffect((()=>{if(g.current){f(n,g.current);return()=>p(n)}}),[f,p,g,n])
+;const v=n===u;return o.createElement("li",{...i,ref:g,id:n,role:"tab",onClick:e=>{if(!v&&("buttons"in e&&0===e.buttons||!("buttons"in e))){m(n);r&&r(e)}},onKeyDown:e=>{switch(e.key){case"ArrowDown":
+case"ArrowRight":b(1);e.preventDefault();break;case"ArrowLeft":case d:b(-1);e.preventDefault()}a&&a(e)},onFocus:()=>{v||m(n)},className:l,tabIndex:v?0:-1,"aria-selected":v},e)}
+;f.displayName="Tabs.Tab";var p=({children:e,className:t,inverse:n,onSelection:r,selectedTab:a,selectorColor:i,...l})=>{const d=s()("dig-Tabs-tabs",t,{"dig-Tabs-tabs--inverse":n
+}),{addTab:u,removeTab:f,selectorOffset:p,selectorWidth:m,moveFocus:b,selectTab:g,focusTab:v,updateSelector:h}=(({selectedTab:e,onSelection:t})=>{
+const[n,r]=o.useState({}),[s,a]=o.useState(0),[c,i]=o.useState(0),[l,d]=o.useState(!1),u=o.useCallback(((e,t)=>{r((n=>({...n,[e]:t})))}),[]),f=o.useCallback((e=>{r((t=>({
+...Object.keys(t).reduce(((n,r)=>{r!==e&&(n={...n,[e]:t[e]});return n}),{})})))}),[]),p=o.useCallback((e=>{n[e]&&n[e].focus()}),[n]);o.useEffect((()=>{if(l){d(!1);p(e)}}),[e,p,l])
+;const m=o.useCallback((()=>{if(n&&n[e]){const t=n[e];a(t.offsetWidth);i(t.offsetLeft)}}),[e,n]);o.useEffect((()=>{m()}));const b=o.useCallback((e=>{t&&t(e)}),[t]);return{addTab:u,moveFocus:t=>{
+const r=Object.keys(n);if(r.length>1){let n=0,s=-1;for(const t of r){if(t===e){s=n;break}n++}const o=((e,t,n)=>1===n?t+1>=e?0:t+1:t-1<0?e-1:t-1)(r.length,s,t),a=r[o];d(!0);b(a)}},removeTab:f,
+selectorWidth:s,selectorOffset:c,selectTab:b,focusTab:p,updateSelector:m}})({selectedTab:a,onSelection:r}),y=o.useMemo((()=>({selectedTab:a,addTab:u,removeTab:f,moveFocus:b,selectTab:g,focusTab:v,
+updateSelector:h,selectorProps:{selectorOffset:p,selectorWidth:m,selectorColor:i}})),[a,u,f,b,g,v,h,p,m,i]);o.useEffect((()=>{
+document&&document.fonts&&document.fonts.ready&&document.fonts.ready.finally((()=>{h()}))}),[h]);return o.createElement(c.Provider,{value:y},o.createElement("div",{className:d,
+"data-testid":"digTabsContainer",...l},e))};p.displayName="Tabs";p.Panel=u;p.Tab=f;p.Group=l}}]);
+
+//# sourceMappingURL=https://paper.dropbox.com/static/sourcemap/758a382cb40ea1c80c7c.9GQ58CLk7B_EYl4-NA9wXM_srxJz1CFZDf3B60jK07Q.js.map

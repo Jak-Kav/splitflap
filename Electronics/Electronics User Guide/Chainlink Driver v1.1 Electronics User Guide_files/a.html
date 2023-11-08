@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<!-- Generated on: 2022-09-02T15:30:57.571737 -->
+<html xml:lang="en" lang="en" style="height: 100%;"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Cookies &amp; CCPA Preferences - Dropbox</title>
+    <script type="text/javascript">
+    const {
+    // exports
+} = Object.assign({}, (({
+    // imports
+}, {
+    // template parameters
+    privacyConsentServiceScriptUri,
+}) => {
+
+    document.head.appendChild(Object.assign(document.createElement('script'), {
+        src: privacyConsentServiceScriptUri,
+        charset: 'utf-8',
+        referrerPolicy: 'strict-origin',
+        ['async']: true,
+        defer: true,
+    }));
+
+    // no exports
+
+})({
+    // imports
+}, {
+    // template parameters
+    privacyConsentServiceScriptUri: "https://www.dropbox.com/pithos/privacy_consent_service",
+}));
+
+    </script><script src="a_data/privacy_consent_service.js" charset="utf-8" referrerpolicy="strict-origin" async="" defer="defer"></script>
+<script src="a_data/privacy_consent_service.bundle-vfllLzrBX.js" async="" defer="defer" charset="utf-8" referrerpolicy="strict-origin"></script><style>@keyframes slide-in-left {
+    from {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@keyframes slide-in-bottom {
+    from {
+        transform: translateY(100%);
+        -webkit-transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0%);
+        -webkit-transform: translateY(0%);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+:root {
+    /* Colors */
+    --color__theme__link: #0061ff;
+    --color_primary--light: #0061fe;
+    --color_primary--dark: #0057e5;
+    --color_graphite: #1e1919;
+    --color_graphite--darker: #312a25;
+    --color_coconut: #f7f5f2;
+    --color__utility__focusring: #428bff;
+    --color__disabled__background: #bfbfbf;
+    --color__opacity--darken1: #f3f0eb;
+    --color__opacity--darken2: #e4ddd3;
+
+    /* Animation Speeds */
+    --motion__time--fastest: 100ms;
+    --motion__time--faster: 200ms;
+    --motion__time--slow: 600ms;
+
+    /* Fonts */
+    --type__body--fontfamily: 'Atlas Grotesk Web', 'Atlas Grotesk', 'AtlasGrotesk', -apple-system,
+        'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+
+    /* Elevation */
+    --boxshadow__elevation1: 0px 8px 32px rgba(30, 25, 25, 0.03),
+        0px 8px 16px rgba(30, 25, 25, 0.03), 0px 4px 8px rgba(30, 25, 25, 0.03),
+        0px 2px 4px rgba(30, 25, 25, 0.03), 0px 1px 2px rgba(30, 25, 25, 0.03);
+}
+
+body {
+    background-color: transparent;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+#ccpa-iframe {
+    width: 100%;
+}
+
+/* Overriding Crownpeak styles that can't be configured in the tooling */
+
+/* ========== Main Elements (Banner, Dialog) ========== */
+.evidon-prefdiag-background {
+    /* Can't use animation shorthand here otherwise Safari has trouble reversing the animations */
+    animation-name: fade-in;
+    animation-duration: var(--motion__time--slow);
+    animation-timing-function: ease-out;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-duration: var(--motion__time--slow);
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-play-state: paused;
+}
+
+.evidon-banner {
+    /* Can't use animation shorthand here otherwise Safari has trouble reversing the animations */
+    animation-name: slide-in-bottom;
+    animation-duration: var(--motion__time--faster);
+    animation-timing-function: ease-out;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    -webkit-animation-name: slide-in-bottom;
+    -webkit-animation-duration: var(--motion__time--faster);
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-play-state: paused;
+}
+
+/* evidon-prefdiag-overlay */
+.animate-slide-in-left {
+    /* Can't use animation shorthand here otherwise Safari has trouble reversing the animations */
+    animation-name: slide-in-left;
+    animation-duration: var(--motion__time--slow);
+    animation-timing-function: ease-out;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    -webkit-animation-name: slide-in-left;
+    -webkit-animation-duration: var(--motion__time--slow);
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-direction: normal;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-play-state: paused;
+}
+
+.evidon-prefdiag-overlay.full-screen {
+    width: 100vw !important;
+}
+
+.animate-start {
+    animation-play-state: running;
+    -webkit-animation-play-state: running;
+}
+
+.animate-out {
+    display: flex !important;
+    opacity: 1 !important;
+    animation-direction: reverse !important;
+    -webkit-animation-direction: reverse !important;
+}
+
+#evidon-prefdiag-tabcontainer {
+    position: static !important;
+    order: 1;
+    flex-grow: 1;
+    overscroll-behavior: contain;
+    overflow-y: scroll !important;
+}
+
+#evidon-prefdialog-tabpanel {
+    position: static !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+}
+
+#evidon-prefdiag-tab-0 {
+    height: 100% !important;
+    padding: 0 !important;
+    overflow-y: visible !important;
+    overscroll-behavior: contain;
+}
+
+.evidon-prefdiag-tabfooter {
+    position: static !important;
+    display: flex !important;
+    height: auto !important;
+    border: none !important;
+    justify-content: flex-end;
+    order: 2;
+    padding: 24px 0 0 0 !important;
+}
+
+#prc-tp-cat-container {
+    margin-top: 0 !important;
+}
+
+/* ========== Links/Buttons ========== */
+.evidon-banner a,
+.evidon-prefdiag-message a,
+#ccpa-redirect-link {
+    color: var(--color__theme__link) !important;
+    text-decoration: underline solid var(--color__theme__link) !important;
+}
+
+.evidon-banner a:hover,
+.evidon-prefdiag-message a:hover,
+#ccpa-redirect-link:hover {
+    text-decoration-line: none !important;
+}
+
+.evidon-prefdiag-acceptbtn:hover,
+.evidon-prefdiag-declinebtn:hover,
+.evidon-banner-acceptbutton:hover,
+.evidon-banner-declinebutton:hover {
+    background-color: var(--color_primary--light) !important;
+    border: 1px solid var(--color_primary--light) !important;
+    color: #fff !important;
+}
+
+.evidon-prefdiag-acceptbtn:active,
+.evidon-prefdiag-declinebtn:active,
+.evidon-banner-acceptbutton:active,
+.evidon-banner-declinebutton:active {
+    background-color: var(--color_primary--dark) !important;
+    border: 1px solid var(--color_primary--dark) !important;
+    color: #fff !important;
+}
+
+.evidon-prefdiag-link {
+    font-size: 16px !important;
+    font-weight: normal !important;
+    color: var(--color_graphite) !important;
+}
+
+/* stylelint-disable-next-line */
+#_evh-newvendor-indicator {
+    display: none !important;
+}
+
+/* Disable category links */
+.evidon-prefdiag-categoryheader .evidon-prefdiag-link {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+/* Settings Re-entry Button */
+/* stylelint-disable-next-line */
+#_evh-button {
+    display: none !important;
+    margin: 3px 3px 0 0;
+}
+
+/* stylelint-disable-next-line */
+.button-visible #_evh-button {
+    display: flex !important;
+}
+
+/* stylelint-disable-next-line */
+#_evh-link {
+    border-right: none !important;
+    justify-content: center;
+}
+
+/* stylelint-disable-next-line */
+.button-visible #_evh-link {
+    display: flex !important;
+}
+
+/* stylelint-disable-next-line */
+#_evh-link:hover,
+.collapse-toggle-label:hover {
+    background-color: var(--color__opacity--darken1) !important;
+}
+
+/* stylelint-disable-next-line */
+#_evh-link:active,
+.collapse-toggle-label:active {
+    background-color: var(--color__opacity--darken2) !important;
+}
+
+.evidon-prefdiag-acceptbtn,
+.evidon-prefdiag-declinebtn {
+    display: flex !important;
+}
+
+.evidon-prefdiag-acceptbtn,
+.evidon-prefdiag-declinebtn {
+    display: none !important;
+}
+
+.display-flex {
+    display: flex !important;
+}
+
+/* stylelint-disable-next-line */
+.not-iframe #_evh-link {
+    border: 1px solid rgba(166, 158, 146, 0.6) !important;
+}
+
+/* Settings Re-entry Collapse Toggle Button */
+.collapse-toggle-label {
+    width: 40px;
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(166, 158, 146, 0.6);
+    border-left: none;
+    cursor: pointer;
+    background: #fff;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.collapse-toggle-label input:checked + .collapse-icon {
+    transform: rotate(180deg);
+}
+
+/* ========== Slider/Toggle Control ========== */
+.evidon-switch-slider {
+    background-color: #fff !important;
+    border: 1px solid var(--color_graphite--darker) !important;
+    border-radius: 10px !important;
+    transition: transform var(--motion__time--fastest) ease-in-out !important;
+}
+
+.evidon-switch-slider:hover {
+    background-color: rgba(166, 145, 113, 0.14) !important;
+}
+
+.evidon-switch {
+    display: flex !important;
+    order: 3;
+    height: 20px !important;
+    width: 36px !important;
+    align-self: center;
+    padding: 0 !important;
+}
+
+.evidon-switch:focus,
+a:focus,
+button:focus,
+.collapse-toggle-label:focus {
+    box-shadow: 0 0 0 3px var(--color__utility__focusring);
+    outline: none;
+    z-index: 1;
+}
+
+.evidon-switch:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.collapse-toggle-label:focus:not(:focus-visible) {
+    box-shadow: none;
+}
+
+.slideron {
+    background-color: var(--color_graphite) !important;
+}
+
+.slideron:hover {
+    background-color: var(--color_graphite--darker) !important;
+}
+
+.evidon-switch-slider:before {
+    background-color: var(--color_graphite) !important;
+    height: 12px !important;
+    width: 12px !important;
+    bottom: 3px !important;
+    transition: transform var(--motion__time--fastest) ease-in-out, background-color 0s !important;
+}
+
+.slideron:before {
+    left: 3px !important;
+    background-color: var(--color_coconut) !important;
+    transform: matrix(1, 0, 0, 1, 16, 0) !important;
+    transition: transform var(--motion__time--fastest) ease-in-out, background-color 0s !important;
+}
+
+.slideron.disabled {
+    background-color: var(--color__disabled__background) !important;
+    border-color: var(--color__disabled__background) !important;
+    cursor: default !important;
+}
+
+.slideron.disabled:before {
+    background-color: #fff !important;
+}
+
+.evidon-switch-slider.disabled:before {
+    background-color: #fff !important;
+}
+
+.evidon-switch-slider.disabled {
+    background-color: var(--color__disabled__background) !important;
+    border-color: var(--color__disabled__background) !important;
+    cursor: default !important;
+    pointer-events: none;
+}
+
+.evidon-switch.disabled {
+    pointer-events: none;
+    background-color: transparent;
+}
+
+#evidon-prefdiag-accept:disabled {
+    pointer-events: none;
+    border: none !important;
+    background-color: var(--color__disabled__background) !important;
+}
+
+#ccpa-redirect {
+    font-family: var(--type__body--fontfamily);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+#ccpa-redirect-link {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    padding: 0px;
+    font-family: var(--type__body--fontfamily);
+}
+
+/* ========== Headers/Text ========== */
+.evidon-prefdiag-title:before {
+    content: '';
+    display: block;
+    height: 32px;
+    width: 20px;
+    margin-bottom: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='18' viewBox='0 0 20 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.19644 0.854492L0.393311 3.90906L5.19644 6.96362L10.0004 3.90906L14.8035 6.96362L19.6066 3.90906L14.8035 0.854492L10.0004 3.90906L5.19644 0.854492Z' fill='%231E1919'/%3E%3Cpath d='M5.19644 13.0728L0.393311 10.0183L5.19644 6.96362L10.0004 10.0183L5.19644 13.0728Z' fill='%231E1919'/%3E%3Cpath d='M10.0004 10.0183L14.8035 6.96362L19.6066 10.0183L14.8035 13.0728L10.0004 10.0183Z' fill='%231E1919'/%3E%3Cpath d='M10.0004 17.1455L5.19644 14.091L10.0004 11.0364L14.8035 14.091L10.0004 17.1455Z' fill='%231E1919'/%3E%3C/svg%3E%0A");
+}
+
+#prc-tp-cat-all-toggle-label {
+    font-family: var(--type__body--fontfamily);
+    order: 2;
+    margin-left: auto;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#prc-tp-cat-header {
+    display: none !important;
+}
+
+#prc-tp-cat-message {
+    display: none !important;
+}
+
+@media only screen and (min-width: 768px) {
+    #evidon-prefdialog-tabpanel.full-screen {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #evidon-prefdiag-tabcontainer.full-screen {
+        flex-grow: 0;
+    }
+}
+
+/* Tablet+ */
+@media (min-width: 480px) {
+    /* Horizontal Banner (Unstacked Buttons) */
+    .evidon-banner {
+        /* DWG 3.0 Changes */
+        width: auto !important;
+        right: 24px !important;
+        left: 24px !important;
+        box-shadow: var(--boxshadow__elevation1);
+    }
+    .evidon-banner:not(.animate-out) {
+        bottom: 24px !important;
+    }
+}
+
+/* Tablet Large */
+@media (max-width: 1279px) {
+    .evidon-prefdiag-overlay {
+        width: 61.53% !important;
+    }
+}
+
+/* Tablet Standard */
+@media (max-width: 1023px) {
+    .evidon-prefdiag-overlay {
+        width: 76.92% !important;
+    }
+}
+
+/* ========== Mobile Large ========== */
+@media (max-width: 767px) {
+    .evidon-banner {
+        flex-flow: wrap;
+        padding: 24px !important;
+        justify-content: flex-end !important;
+    }
+
+    .evidon-banner-message {
+        margin-bottom: 16px !important;
+    }
+
+    .evidon-prefdiag-overlay {
+        width: 100% !important;
+    }
+}
+
+/* ========== Mobile Standard ========== */
+@media (max-width: 479px) {
+    /* Banner */
+    .evidon-banner {
+        flex-direction: column;
+        padding: 24px !important;
+    }
+
+    .evidon-banner-declinebutton,
+    .evidon-banner-acceptbutton {
+        flex-direction: row !important;
+        align-self: stretch !important;
+        width: 100%;
+    }
+
+    .evidon-banner-declinebutton {
+        order: 3 !important;
+    }
+
+    .evidon-banner-acceptbutton {
+        order: 2 !important;
+        margin: 16px 0 !important;
+    }
+
+    .evidon-prefdiag-overlay {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Dialog */
+    .evidon-prefdiag-tabfooter {
+        flex-direction: column;
+    }
+
+    .evidon-prefdiag-acceptbtn,
+    .evidon-prefdiag-declinebtn {
+        align-self: stretch !important;
+        width: 100%;
+    }
+
+    .evidon-prefdiag-acceptbtn {
+        order: 1;
+        margin: 0 0 16px 0 !important;
+    }
+
+    .evidon-prefdiag-declinebtn {
+        order: 2;
+    }
+}
+</style><style>
+
+@font-face {
+    font-family: 'Atlas Grotesk Web';
+    font-display: swap;
+    src: url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Regular-Web.woff2') format('woff2'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Regular-Web-vflyEJFZg.woff') format('woff'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Regular-Web-vflJ3txfq.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: 'Atlas Grotesk Web';
+    font-display: swap;
+    src: url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Medium-Web.woff2') format('woff2'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Medium-Web-vflyja8tN.woff') format('woff'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Medium-Web-vflbI0jjP.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: 'Atlas Grotesk Web';
+    font-display: swap;
+    src: url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Bold-Web.woff2') format('woff2'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Bold-Web-vflaLofNp.woff') format('woff'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/paper-atlasgrotesk/AtlasGrotesk-Bold-Web-vflD33tdn.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: 'SharpGrotesk';
+    font-display: swap;
+    src: url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/sharpgrotesk/SharpGroteskDBBook20.woff2') format('woff2'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/sharpgrotesk/SharpGroteskDBBook20-vflay0Vof.woff') format('woff'),
+    url('https://cfl.dropboxstatic.com/static/metaserver/static/fonts/sharpgrotesk/SharpGroteskDBBook20-vflBru9m9.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+    </style></head>
+<body style="height: 100%;">
+
+
+<iframe src="https://www.dropbox.com/ccpa_iframe?hide_gdpr=false&amp;is_migration_gate_enabled=true&amp;should_disable_banner=false&amp;parent_domain_consent_cookie=null&amp;should_auto_open_options=false&amp;locale_override=en_GB&amp;gpc_signal=undefined" id="ccpa-iframe" frameborder="0" height="100%" style="height: 104px;"></iframe></body></html>
