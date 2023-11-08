@@ -15,6 +15,11 @@ The entry point to the code is:
 `arduino/splitflap/esp32/splitflap/main.cpp`    
 When editing the project, make sure you are using PlatformIO, and make sure the enviornment is set to `chainlink`. This is the only one that will work with the hardware and mechanical options implemented.
 
+### BUILD & RELEASE
+You can push commit to this repo as normal. The GitHub Actions will always bulid the firmware and confirm that it compiles and builds ok.    
+If the commit is ready for a build and _RELEASE_, then simply add `*RELEASE*` to the commit message followed by `*V*` and a version number.    
+I.e., `Feature X Added - *RELEASE* *V* 1.1.0` and this will build the firmware and automatically create a GitHub Release with that version number.    
+
 Below is the original README:    
 - - - - - -
 This is a DIY [split-flap display](https://en.wikipedia.org/wiki/Split-flap_display).
