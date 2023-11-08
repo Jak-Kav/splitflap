@@ -82,7 +82,7 @@ jobs:
         if [[ "${{ env.release }}" == "true" ]]; then
           echo "This is a release tag. Creating a GitHub release..."
           gh release create v${{ env.release_version }} ./arduino/splitflap/.pio/build/chainlink/firmware.bin -t "Release v${{ env.release_version }}"
-          gh release upload v${{ env.release_version }} ./arduino/splitflap/.pio/build/chainlink/firmware.bin
+          # gh release upload v${{ env.release_version }} ./arduino/splitflap/.pio/build/chainlink/firmware.bin
         else
           echo "This is not a release tag. Skipping release creation."
         fi
