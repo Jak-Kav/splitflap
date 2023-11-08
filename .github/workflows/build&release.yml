@@ -2,8 +2,7 @@ name: PlatformIO CI B&R
 
 on:
   push:
-    paths:
-      - '**/requirements.txt'
+  pull_request:
 
 jobs:
   pio-build:
@@ -27,7 +26,7 @@ jobs:
       env:
         GITHUB_EVENT_NAME: ${{ github.event_name }}
         GITHUB_EVENT_PATH: ${{ github.event_path }}
-
+        
     - name: Checkout code
       uses: actions/checkout@v2
 
@@ -55,19 +54,25 @@ jobs:
         pip install --upgrade platformio
 
     - name: Build Firmware (esp32)
+      # Run regardless of other build step failures, as long as setup steps completed
       if: always() && steps.pio_install.outcome == 'success'
       run: |
-        pio run -d ./arduino/splitflap -e esp32
+        pio run -d ./arduino/splitflap \
+          -e esp32 \
 
     - name: Build Firmware (chainlink)
+      # Run regardless of other build step failures, as long as setup steps completed
       if: always() && steps.pio_install.outcome == 'success'
       run: |
-        pio run -d ./arduino/splitflap -e chainlink
+        pio run -d ./arduino/splitflap \
+          -e chainlink
 
     - name: Build Firmware (chainlinkBase)
+      # Run regardless of other build step failures, as long as setup steps completed
       if: always() && steps.pio_install.outcome == 'success'
       run: |
-        pio run -d ./arduino/splitflap -e chainlinkBase
+        pio run -d ./arduino/splitflap \
+          -e chainlinkBase
 
     - name: Determine Release
       id: release
@@ -81,4 +86,3 @@ jobs:
         fi
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
