@@ -12,28 +12,26 @@ jobs:
     - name: Check for Release Tag
       id: release_tag
       run: |
-        if [[ $GITHUB_EVENT_NAME == 'push' && $GITHUB_EVENT_PATH == *"refs/tags"* ]]; then
+        if [[ $GITHUB_EVENT_NAME == 'push' ]]; then
           git_log=$(git log -1 --pretty=%B)
           echo "Commit message: $git_log"
-          if [[ "$git_log" == *RELEASE* ]]; then
-            echo "Release tag found"
-            tag_message=$(git log -1 --pretty=%B)
+          if [[ "$git_log" == *RELEASE* && "$git_log" == *V* ]]; then
+            echo "Release commit found"
+            tag_message="$git_log"
             release_version="${tag_message#*V* }"
             echo "Release version: $release_version"
             echo "release=true" >> $GITHUB_ENV
             echo "release_version=$release_version" >> $GITHUB_ENV
           else
-            echo "No release tag found"
+            echo "No release commit found"
             echo "release=false" >> $GITHUB_ENV
           fi
         else
-          echo "Not a tag push event"
+          echo "Not a push event"
           echo "release=false" >> $GITHUB_ENV
         fi
       env:
         GITHUB_EVENT_NAME: ${{ github.event_name }}
-        GITHUB_EVENT_PATH: ${{ github.event_path }}
-
         
     - name: Checkout code
       uses: actions/checkout@v2
