@@ -164,6 +164,7 @@ void setupCalibrateNTP() {
     displayTask.displayClockStatus("NTP Clock Failed", TFT_RED);
   }
   // Set the timezone for Europe/London to adjust for daylight savings
+  // Timezone strings can be found here: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
   setTimezone("GMT0BST,M3.5.0/1,M10.5.0");
 }
 
