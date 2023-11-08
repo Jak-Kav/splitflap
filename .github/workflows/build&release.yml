@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
     - name: Check for Release Tag
       id: release_tag
       run: |
@@ -28,9 +31,6 @@ jobs:
         fi
       env:
         GITHUB_EVENT_PATH: ${{ github.event_path }}
-        
-    - name: Checkout code
-      uses: actions/checkout@v2
 
     - name: Cache pip
       uses: actions/cache@v2
