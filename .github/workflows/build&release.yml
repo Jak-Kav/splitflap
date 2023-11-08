@@ -17,11 +17,11 @@ jobs:
           tag_message=$(git log -1 --pretty=%B)
           release_version="${tag_message#*V* }"
           echo "Release version: $release_version"
-          echo "::set-output name=release::true"
-          echo "::set-output name=release_version::$release_version"
+          echo "release=true" >> $GITHUB_ENV
+          echo "release_version=$release_version" >> $GITHUB_ENV
         else
           echo "No release tag found"
-          echo "::set-output name=release::false"
+          echo "release=false" >> $GITHUB_ENV
         fi
       env:
         GITHUB_EVENT_NAME: ${{ github.event_name }}
@@ -77,10 +77,10 @@ jobs:
     - name: Determine Release
       id: release
       run: |
-        if [[ "${{ steps.release_tag.outputs.release }}" == "true" ]]; then
+        if [[ "${{ env.release }}" == "true" ]]; then
           echo "This is a release tag. Creating a GitHub release..."
-          gh release create v${{ steps.release_tag.outputs.release_version }} ./arduino/splitflap/build/your-binary-file.bin -t "Release v${{ steps.release_tag.outputs.release_version }}"
-          gh release upload v${{ steps.release_tag.outputs.release_version }} ./arduino/splitflap/build/your-binary-file.bin
+          gh release create v${{ env.release_version }} ./arduino/splitflap/build/your-binary-file.bin -t "Release v${{ env.release_version }}"
+          gh release upload v${{ env.release_version }} ./arduino/splitflap/build/your-binary-file.bin
         else
           echo "This is not a release tag. Skipping release creation."
         fi
