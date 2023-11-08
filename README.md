@@ -1,5 +1,21 @@
-# DIY Split-Flap Display
+# DIY Split-Flap Display<br />(Modified by James Kavanagh (jk620))
 
+This project is taken from `scottbez1/splitflap` and has been modofied to suit my needs.    
+This is a 6 module display, with lasercut mechanical parts and base.    
+I am using the chainlink system (v1.1) and the chainlink buddy (PCB version) with a lilygo T-Display.    
+The system will connect to WiFi, and then NTP. It will display the time as a 24 hour clock. It will automatically adjust for daylight savings time in the UK.     
+It will automaitically display 'LUNCH'  between 11:59 and 12:01 every day.     
+It will automatically display 'HOME' between 16:59 and 17:01 every day.    
+It will automatically display 'TINKER' between 18:00 and 18:10 on Wednesday only.    
+
+The device will also start a bluetooth characteristic and broadcast it's current IP address. That way, you can connect to the device via bluetooth to discover it's IP address, and then connect to the webserver on the device. Oonce connected to the webserver, you are greeted with a simple HTML page where you can input a message (upto 6 characters long), and as long as it has been more than 10 minuets since the last custom message was displayed via the webserver, then your message will be displayed.    
+There is also the option to manually force reset/recalibrate the device via the webserver, but you will need the password to do this (prevent spamming), and the password is in the code.
+
+The entry point to the code is:    
+`arduino/splitflap/esp32/splitflap/main.cpp`
+
+Below is the original README:    
+- - - - - -
 This is a DIY [split-flap display](https://en.wikipedia.org/wiki/Split-flap_display).
 Prototype four-character display: [video](https://www.youtube.com/watch?v=vq4o_88kN8g).
 
@@ -56,26 +72,36 @@ Please note, updated documentation for the Chainlink system is still in progress
 * [**Assembly instructions (v0.5/0.6/0.7)**](https://paper.dropbox.com/doc/Splitflap-Kit-v0.5v1.0-Instructions--ASQDu1uoa6n4_t1pva1bM1MgAg-bxXJlke5ROmamcx4OH44r)
 
 # Table of Contents
+- [DIY Split-Flap Display(Modified by James Kavanagh (jk620))](#diy-split-flap-displaymodified-by-james-kavanagh-jk620)
+- [Current Status](#current-status)
+- [Build Your Own](#build-your-own)
+- [Table of Contents](#table-of-contents)
 - [Design Overview](#design-overview)
-  * [Mechanical](#mechanical)
-  * [Electronics](#electronics)
-    + [Module Electronics](#module-electronics)
-    + [Chainlink Electronics](#chainlink-electronics)
+  - [Mechanical](#mechanical)
+  - [Electronics](#electronics)
+    - [Module Electronics](#module-electronics)
+    - [Chainlink Electronics](#chainlink-electronics)
       - [Chainlink Driver](#chainlink-driver)
       - [Chainlink Buddy \[T-Display\]](#chainlink-buddy-t-display)
       - [Chainlink Buddy \[Breadboard\]](#chainlink-buddy-breadboard)
       - [Chainlink Base](#chainlink-base)
-    + [Miscellaneous Tools](#miscellaneous-tools)
+    - [Classic Controller Electronics (deprecated)](#classic-controller-electronics-deprecated)
+    - [Miscellaneous Tools](#miscellaneous-tools)
       - [Flaps and Fonts](#flaps-and-fonts)
       - [3D Printed Tools](#3d-printed-tools)
       - [Chainlink Driver Tester](#chainlink-driver-tester)
-    + [Classic Controller Electronics (deprecated)](#classic-controller-electronics)
-  * [Code](#code)
-    + [Firmware](#firmware)
-    + [Computer Control Software](#computer-control-software)
+  - [Code](#code)
+    - [Firmware](#firmware)
+    - [Computer Control Software](#computer-control-software)
 - [Contributing/Modifying](#contributingmodifying)
-  * [3D Design](#3d-design)
-  * [Electronics Design](#electronics-design)
+  - [3D Design](#3d-design)
+    - [Rendering](#rendering)
+      - [Laser-cut vector files](#laser-cut-vector-files)
+      - [Animated gif](#animated-gif)
+      - [STL models/web viewer](#stl-modelsweb-viewer)
+  - [Electronics Design](#electronics-design)
+    - [Rendering](#rendering-1)
+- [License](#license)
 
 # Design Overview
 
