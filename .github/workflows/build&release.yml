@@ -1,0 +1,84 @@
+name: PlatformIO CI
+
+on:
+  push:
+    paths:
+      - '**/requirements.txt'
+
+jobs:
+  pio-build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Check for Release Tag
+      id: release_tag
+      run: |
+        if [[ $GITHUB_EVENT_NAME == 'push' && $GITHUB_EVENT_PATH == *"refs/tags"* && $(git log -1 --pretty=%B) == *RELEASE* ]]; then
+          echo "Release tag found"
+          tag_message=$(git log -1 --pretty=%B)
+          release_version="${tag_message#*V* }"
+          echo "Release version: $release_version"
+          echo "::set-output name=release::true"
+          echo "::set-output name=release_version::$release_version"
+        else
+          echo "No release tag found"
+          echo "::set-output name=release::false"
+        fi
+      env:
+        GITHUB_EVENT_NAME: ${{ github.event_name }}
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Cache PlatformIO
+      uses: actions/cache@v2
+      with:
+        path: ~/.platformio
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+
+    - name: Install PlatformIO
+      id: pio_install
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade platformio
+
+    - name: Build Firmware (esp32)
+      if: always() && steps.pio_install.outcome == 'success'
+      run: |
+        pio run -d ./arduino/splitflap -e esp32
+
+    - name: Build Firmware (chainlink)
+      if: always() && steps.pio_install.outcome == 'success'
+      run: |
+        pio run -d ./arduino/splitflap -e chainlink
+
+    - name: Build Firmware (chainlinkBase)
+      if: always() && steps.pio_install.outcome == 'success'
+      run: |
+        pio run -d ./arduino/splitflap -e chainlinkBase
+
+    - name: Determine Release
+      id: release
+      run: |
+        if [[ "${{ steps.release_tag.outputs.release }}" == "true" ]]; then
+          echo "This is a release tag. Creating a GitHub release..."
+          gh release create v${{ steps.release_tag.outputs.release_version }} ./arduino/splitflap/build/your-binary-file.bin -t "Release v${{ steps.release_tag.outputs.release_version }}"
+          gh release upload v${{ steps.release_tag.outputs.release_version }} ./arduino/splitflap/build/your-binary-file.bin
+        else
+          echo "This is not a release tag. Skipping release creation."
+        fi
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
