@@ -18,7 +18,9 @@ When editing the project, make sure you are using PlatformIO, and make sure the 
 ### BUILD & RELEASE
 You can push commit to this repo as normal. The GitHub Actions will always bulid the firmware and confirm that it compiles and builds ok.    
 If the commit is ready for a build and _RELEASE_, then simply add `*RELEASE*` to the commit message followed by `*V*` and a version number.    
-I.e., `Feature X Added - *RELEASE* *V* 1.1.0` and this will build the firmware and automatically create a GitHub Release with that version number.    
+I.e., `Feature X Added - *RELEASE* *V* 1.1.0` and this will build the firmware and automatically create a GitHub Release with that version number. 
+
+![My Finished Display](https://github.com/Jak-Kav/splitflap/blob/master/IMG_3592.JPG)
 
 Below is the original README:    
 - - - - - -
